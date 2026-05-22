@@ -1,10 +1,20 @@
 "use client";
 
+import { useState, useEffect } from "react";
+import Image from "next/image";
 import Button from "@/components/Button";
 import FadeIn from "@/components/FadeIn";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Cpu, BarChart3, Workflow, Database, Sparkles } from "lucide-react";
 import { useTranslations } from "next-intl";
+
+const showcaseSlides = [
+  { src: "/case-studies/ts-aromatics/hero.png", alt: "TS Aromatics" },
+  { src: "/case-studies/house-of-giriraj/hero.png", alt: "House of Giriraj" },
+  { src: "/case-studies/netq/overview-screen.svg", alt: "NetQ Command" },
+  { src: "/case-studies/batchflow/today-dashboard.png", alt: "BatchFlow" },
+  { src: "/case-studies/bighi-brothers/overview-screen.jpg", alt: "Bighi Brothers" },
+];
 
 const systemModules = [
   { icon: Database, labelKey: "crmCore", position: "left-0 -translate-x-4 top-1/4" },
@@ -15,6 +25,14 @@ const systemModules = [
 
 export default function Hero() {
   const t = useTranslations("hero");
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % showcaseSlides.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <div className="@container">
@@ -104,27 +122,37 @@ export default function Hero() {
                 </div>
               </div>
 
-              <div className="flex-1 flex items-center justify-center">
-                <div className="relative">
+              <div className="flex-1 relative overflow-hidden rounded-xl">
+                <AnimatePresence mode="wait">
                   <motion.div
-                    className="absolute inset-0 border border-primary/20 rounded-full"
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                  />
-                  <motion.div
-                    className="absolute inset-4 border border-secondary/15 rounded-full"
-                    animate={{ rotate: -360 }}
-                    transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                  />
-                  <motion.div
-                    className="absolute inset-8 border border-tertiary/10 rounded-full"
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                  />
-                  
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-                    <div className="w-8 h-8 rounded-full bg-surface/50" />
-                  </div>
+                    key={showcaseSlides[currentSlide].src}
+                    initial={{ opacity: 0, scale: 1.05 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                    className="absolute inset-0"
+                  >
+                    <Image
+                      src={showcaseSlides[currentSlide].src}
+                      alt={showcaseSlides[currentSlide].alt}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 864px) 100vw, 480px"
+                    />
+                  </motion.div>
+                </AnimatePresence>
+                <div className="absolute inset-0 bg-gradient-to-t from-surface/90 via-surface/30 to-transparent" />
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+                  {showcaseSlides.map((_, i) => (
+                    <div
+                      key={i}
+                      className={`w-1.5 h-1.5 rounded-full transition-all duration-500 ${
+                        i === currentSlide
+                          ? "bg-primary w-4"
+                          : "bg-white/20"
+                      }`}
+                    />
+                  ))}
                 </div>
               </div>
 
