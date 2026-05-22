@@ -24,6 +24,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://chitistudio.com"),
   title: "Chiti Studio — Intelligent Systems & Digital Design",
   description:
     "A premium creative agency specializing in UI/UX design, web development, and brand identity. We build intelligent systems, not just websites.",
@@ -36,6 +37,19 @@ export const metadata: Metadata = {
     "automation",
     "CRM",
   ],
+  openGraph: {
+    title: "Chiti Studio",
+    description:
+      "A premium creative agency specializing in UI/UX design, web development, and brand identity.",
+    images: [
+      {
+        url: "/logo.png",
+        width: 512,
+        height: 512,
+        alt: "Chiti Studio",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({

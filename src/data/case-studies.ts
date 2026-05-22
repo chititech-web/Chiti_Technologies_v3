@@ -237,8 +237,8 @@ export const caseStudies: CaseStudy[] = [
       "Harvest-to-Bottle interactive timeline showing sourcing transparency",
     ],
     images: {
-      hero: "https://www.tsaromatics.in/images/sections/social-botanical.png",
-      cover: "https://www.tsaromatics.in/images/sections/social-botanical.png",
+      hero: "/case-studies/ts-aromatics/hero.png",
+      cover: "/case-studies/ts-aromatics/hero.png",
       logo: "https://www.tsaromatics.in/images/logo-dark.svg",
     },
     testimonial: {
@@ -301,17 +301,17 @@ export const caseStudies: CaseStudy[] = [
     ],
     interfaceScreens: [
       {
-        file: "https://www.tsaromatics.in/images/sections/social-botanical.png",
+        file: "/case-studies/ts-aromatics/hero.png",
         caption:
           "Homepage hero — The heat-reactive ambient interface with scroll-driven fluid simulation sets the tone for the technical depth to follow.",
       },
       {
-        file: "https://www.tsaromatics.in/images/sections/social-lab.png",
+        file: "/case-studies/ts-aromatics/product-catalog.png",
         caption:
            "Product catalog — 127 products with GC/MS data, COA builder, IFRA compliance overlays, and procurement information organized by category.",
       },
       {
-        file: "https://www.tsaromatics.in/images/sections/social-amber-bottle.png",
+        file: "/case-studies/ts-aromatics/academy.png",
         caption:
           "Academy and documentation — Technical education articles alongside procurement-ready documentation for buyers and formulators.",
       },
@@ -406,8 +406,8 @@ export const caseStudies: CaseStudy[] = [
       "First-mover luxury jewelry positioning — India's first digital-first high-end jewelry experience",
     ],
     images: {
-      hero: "https://house-of-giriraj.vercel.app/assets/images/global/hero.png",
-      cover: "https://house-of-giriraj.vercel.app/assets/images/products/diamond-macro/hero.jpg",
+      hero: "/case-studies/house-of-giriraj/hero.png",
+      cover: "/case-studies/house-of-giriraj/diamond-product.jpg",
       logo: "https://house-of-giriraj.vercel.app/assets/images/global/House_of_Giriraj.svg",
     },
     liveUrl: "https://house-of-giriraj.vercel.app",
@@ -459,14 +459,29 @@ export const caseStudies: CaseStudy[] = [
     ],
     interfaceScreens: [
       {
-        file: "https://house-of-giriraj.vercel.app/assets/images/global/hero.png",
+        file: "/case-studies/house-of-giriraj/hero.png",
         caption:
           "Homepage hero — Dark cinematic introduction with video background and value proposition that positions the brand as a sanctuary for exceptional stones.",
       },
       {
-        file: "https://house-of-giriraj.vercel.app/assets/images/products/diamond-macro/hero.jpg",
+        file: "/case-studies/house-of-giriraj/diamond-product.jpg",
         caption:
           "Product detail — Each product page features high-resolution imagery, GIA certification details, and a bespoke enquiry CTA. The layout treats each piece as a collectable artefact.",
+      },
+      {
+        file: "/case-studies/house-of-giriraj/ekta-bracelet.jpg",
+        caption:
+          "The Ekta Lineage Bracelet — High jewelry piece featuring a 12ct D-Flawless diamond set in platinum, part of the curated archive collection.",
+      },
+      {
+        file: "/case-studies/house-of-giriraj/maharani-necklace.jpg",
+        caption:
+          "The Maharani Viraasat Necklace — A masterwork of Burmese rubies and structural platinum, echoing the quiet intensity of royal inheritance.",
+      },
+      {
+        file: "/case-studies/house-of-giriraj/raj-tilak-emerald.jpg",
+        caption:
+          "The Raj Tilak Emerald Parure — Bespoke Kashmir Blue emerald suite with traditional Mughal-inspired settings and contemporary diamond accents.",
       },
     ],
     screenIntro:
