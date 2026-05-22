@@ -14,7 +14,7 @@ export default function Logo() {
         className="rounded-lg"
       />
       <span className="text-on-surface font-headline font-bold text-lg tracking-[-0.02em]">
-        CHITI
+        CHITI TECHNOLOGIES
       </span>
     </Link>
   );
