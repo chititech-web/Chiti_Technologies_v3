@@ -9,10 +9,14 @@ import { Cpu, BarChart3, Workflow, Database, Sparkles } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 const showcaseSlides = [
-  { src: "/case-studies/ts-aromatics/hero.png", alt: "TS Aromatics" },
-  { src: "/case-studies/house-of-giriraj/hero.png", alt: "House of Giriraj" },
-  { src: "/case-studies/netq/overview-screen.svg", alt: "NetQ Command" },
-  { src: "/case-studies/batchflow/today-dashboard.png", alt: "BatchFlow" },
+  { src: "/case-studies/house-of-giriraj/atlier.mp4",     alt: "Giriraj Atelier",        type: "video" },
+  { src: "/case-studies/house-of-giriraj/collection-hero.mp4", alt: "Giriraj Collections", type: "video" },
+  { src: "/case-studies/ts-aromatics/hero.mp4",           alt: "TS Aromatics",           type: "video" },
+  { src: "/case-studies/ts-aromatics/hero.png",           alt: "TS Aromatics" },
+  { src: "/case-studies/ts-aromatics/coconut-oil.jpg",    alt: "TS Aromatics — Coconut Oil" },
+  { src: "/case-studies/house-of-giriraj/hero.png",       alt: "House of Giriraj" },
+  { src: "/case-studies/netq/overview-screen.svg",        alt: "NetQ Command" },
+  { src: "/case-studies/batchflow/today-dashboard.png",   alt: "BatchFlow" },
   { src: "/case-studies/bighi-brothers/overview-screen.jpg", alt: "Bighi Brothers" },
 ];
 
@@ -132,13 +136,25 @@ export default function Hero() {
                     transition={{ duration: 0.8, ease: "easeInOut" }}
                     className="absolute inset-0"
                   >
-                    <Image
-                      src={showcaseSlides[currentSlide].src}
-                      alt={showcaseSlides[currentSlide].alt}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 864px) 100vw, 480px"
-                    />
+                    {showcaseSlides[currentSlide].type === "video" ? (
+                      <video
+                        autoPlay
+                        muted
+                        playsInline
+                        loop
+                        className="absolute inset-0 w-full h-full object-cover"
+                      >
+                        <source src={showcaseSlides[currentSlide].src} type="video/mp4" />
+                      </video>
+                    ) : (
+                      <Image
+                        src={showcaseSlides[currentSlide].src}
+                        alt={showcaseSlides[currentSlide].alt}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 864px) 100vw, 480px"
+                      />
+                    )}
                   </motion.div>
                 </AnimatePresence>
                 <div className="absolute inset-0 bg-gradient-to-t from-surface/90 via-surface/30 to-transparent" />
