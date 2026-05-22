@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Epilogue, Manrope } from "next/font/google";
+import { Outfit, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import AuroraBackground from "@/components/AuroraBackground";
@@ -7,17 +7,24 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Nova from "@/components/nova/Nova";
 
-const epilogue = Epilogue({
+const outfit = Outfit({
   variable: "--font-headline",
   subsets: ["latin"],
   weight: ["400", "700", "800", "900"],
   display: "swap",
 });
 
-const manrope = Manrope({
+const inter = Inter({
   variable: "--font-body",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
   display: "swap",
 });
 
@@ -44,7 +51,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${epilogue.variable} ${manrope.variable} font-body antialiased selection:bg-primary selection:text-on-primary overflow-x-hidden`}
+        className={`${outfit.variable} ${inter.variable} ${jetbrainsMono.variable} font-body antialiased selection:bg-primary selection:text-on-primary overflow-x-hidden`}
       >
         <ThemeProvider>
           <AuroraBackground />
