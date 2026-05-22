@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Button from "@/components/Button";
 import FadeIn from "@/components/FadeIn";
@@ -30,6 +30,7 @@ const systemModules = [
 export default function Hero() {
   const t = useTranslations("hero");
   const [currentSlide, setCurrentSlide] = useState(0);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -37,6 +38,13 @@ export default function Hero() {
     }, 4000);
     return () => clearInterval(timer);
   }, []);
+
+  useEffect(() => {
+    if (showcaseSlides[currentSlide].type === "video" && videoRef.current) {
+      videoRef.current.currentTime = 0;
+      videoRef.current.play().catch(() => {});
+    }
+  }, [currentSlide]);
 
   return (
     <div className="@container">
@@ -138,14 +146,14 @@ export default function Hero() {
                   >
                     {showcaseSlides[currentSlide].type === "video" ? (
                       <video
-                        autoPlay
+                        ref={videoRef}
+                        src={showcaseSlides[currentSlide].src}
                         muted
                         playsInline
                         loop
+                        preload="auto"
                         className="absolute inset-0 w-full h-full object-cover"
-                      >
-                        <source src={showcaseSlides[currentSlide].src} type="video/mp4" />
-                      </video>
+                      />
                     ) : (
                       <Image
                         src={showcaseSlides[currentSlide].src}
