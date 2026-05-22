@@ -8,7 +8,7 @@ const steps = [
     title: "Precision Design",
     description:
       "Crafting sophisticated interfaces where every pixel serves a strategic purpose in the user journey.",
-    color: "#4dd0e1",
+    color: "#9966ff",
   },
   {
     number: "02",
@@ -22,7 +22,7 @@ const steps = [
     title: "Technical Excellence",
     description:
       "Rigorous engineering ensures your platform is secure, exceptionally fast, and ready for global scale.",
-    color: "#b388ff",
+    color: "#5c7cfa",
   },
 ];
 
