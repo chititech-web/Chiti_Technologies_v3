@@ -11,11 +11,15 @@ import { caseStudies } from "@/data/case-studies";
 
 const filters = [
   "All Cases",
-  "Website",
+  "Web Development",
+  "Product Design",
   "UI/UX",
   "B2B",
   "Luxury",
   "E-Commerce",
+  "Brand",
+  "CMS",
+  "SaaS",
 ];
 
 const projectTags = caseStudies.flatMap((p) => p.tags);
@@ -51,11 +55,11 @@ export default function WorkPage() {
               </p>
               <div className="flex items-baseline gap-2 mt-6">
                 <span className="text-5xl font-extrabold font-headline text-on-surface tracking-[-0.03em]">
-                  2
+                  {caseStudies.length}
                 </span>
                 <span className="text-on-surface-variant/20 text-2xl">—</span>
                 <span className="text-5xl font-extrabold font-headline text-on-surface tracking-[-0.03em]">
-                  6
+                  {caseStudies.length * 2}
                 </span>
               </div>
               <span className="text-[10px] font-label uppercase tracking-[0.18em] text-on-surface-variant/35 mt-1">
@@ -123,18 +127,18 @@ export default function WorkPage() {
                     <div className="grid grid-cols-2 gap-4 pt-4 border-t border-white/[0.04]">
                       <div>
                         <p className="text-[9px] font-label uppercase tracking-[0.15em] text-on-surface-variant/30 mb-1.5">
-                          Challenge
+                          Niche
                         </p>
                         <p className="text-[12px] text-on-surface-variant/60 leading-[1.6]">
-                          {project.challenge}
+                          {project.category}
                         </p>
                       </div>
                       <div>
                         <p className="text-[9px] font-label uppercase tracking-[0.15em] text-on-surface-variant/30 mb-1.5">
-                          Approach
+                          Role
                         </p>
                         <p className="text-[12px] text-on-surface-variant/60 leading-[1.6]">
-                          {project.approach}
+                          {project.role}
                         </p>
                       </div>
                     </div>

@@ -241,48 +241,47 @@ export default function ServicesPage() {
                     Case Study
                   </span>
                   <h3 className="text-on-surface text-[1.75rem] font-extrabold font-headline mb-5 tracking-[-0.02em]">
-                    TS Aromatics — B2B Essential Oils
+                    NetQ Command — Product Design
                   </h3>
                   <p className="text-on-surface-variant/65 text-[14px] leading-[1.75] mb-8">
-                    A buyer-facing procurement platform for premium essential oils
-                    featuring an interactive chromatogram, 3D molecular explorer,
-                    and 73 product pages with GC/MS documentation. Built with
-                    Next.js 16, Three.js, and full i18n support.
+                    Translating technical monitoring into a dual-view command system
+                    that both operators and business clients can understand. A deep
+                    product design case study in infrastructure UX.
                   </p>
                   <div className="flex gap-10 mb-8 pt-6 border-t border-white/[0.04]">
                     <div>
                       <p className="text-xl font-extrabold font-headline text-primary/80 tracking-[-0.02em]">
-                        73
+                        2
                       </p>
                       <p className="text-[10px] text-on-surface-variant/40 font-label uppercase tracking-[0.15em] mt-1">
-                        Products
+                        User Views
                       </p>
                     </div>
                     <div>
                       <p className="text-xl font-extrabold font-headline text-secondary/80 tracking-[-0.02em]">
-                        2
+                        4
                       </p>
                       <p className="text-[10px] text-on-surface-variant/40 font-label uppercase tracking-[0.15em] mt-1">
-                        Languages
+                        Decision Groups
                       </p>
                     </div>
                     <div>
                       <p className="text-xl font-extrabold font-headline text-tertiary/80 tracking-[-0.02em]">
-                        35
+                        5
                       </p>
                       <p className="text-[10px] text-on-surface-variant/40 font-label uppercase tracking-[0.15em] mt-1">
-                        3D Molecules
+                        System Layers
                       </p>
                     </div>
                   </div>
-                  <Button variant="primary" size="sm" href="/work/ts-aromatics">
+                  <Button variant="primary" size="sm" href="/work/netq-command">
                     View Case Study <ArrowRight size={14} strokeWidth={1.5} className="ml-2" />
                   </Button>
                 </div>
                 <div className="relative aspect-[4/3] rounded-xl overflow-hidden border border-white/[0.04]">
                   <Image
-                    src="https://www.tsaromatics.in/images/sections/social-botanical.png"
-                    alt="TS Aromatics — B2B Essential Oils Platform"
+                    src="/case-studies/netq/overview-screen.svg"
+                    alt="NetQ Command — Operations Dashboard Concept"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 500px"

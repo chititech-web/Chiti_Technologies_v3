@@ -1,0 +1,44 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" rx="42" fill="#0D1321"/>
+  <rect x="56" y="56" width="1088" height="788" rx="26" fill="#10192E" stroke="#27324B" stroke-width="2"/>
+  <rect x="92" y="96" width="220" height="708" rx="22" fill="#0C1424"/>
+  <text x="126" y="150" fill="white" font-family="Segoe UI, sans-serif" font-size="28" font-weight="700">NetQ Command</text>
+  <rect x="126" y="212" width="152" height="44" rx="12" fill="#1F2E4E"/>
+  <text x="154" y="240" fill="#DCE7FF" font-family="Segoe UI, sans-serif" font-size="18">Overview</text>
+  <text x="126" y="304" fill="#7F8DA8" font-family="Segoe UI, sans-serif" font-size="18">Infrastructure</text>
+  <text x="126" y="352" fill="#7F8DA8" font-family="Segoe UI, sans-serif" font-size="18">Security</text>
+  <text x="126" y="400" fill="#7F8DA8" font-family="Segoe UI, sans-serif" font-size="18">Reports</text>
+
+  <text x="358" y="144" fill="white" font-family="Segoe UI, sans-serif" font-size="42" font-weight="700">System Overview</text>
+  <text x="358" y="184" fill="#8C9AB4" font-family="Segoe UI, sans-serif" font-size="22">High-signal monitoring for operators handling live infrastructure.</text>
+
+  <rect x="358" y="232" width="176" height="116" rx="20" fill="#14213A"/>
+  <rect x="558" y="232" width="176" height="116" rx="20" fill="#14213A"/>
+  <rect x="758" y="232" width="176" height="116" rx="20" fill="#14213A"/>
+  <rect x="958" y="232" width="150" height="116" rx="20" fill="#14213A"/>
+  <text x="390" y="274" fill="#8C9AB4" font-family="Segoe UI, sans-serif" font-size="18">Uptime</text>
+  <text x="390" y="320" fill="white" font-family="Segoe UI, sans-serif" font-size="34" font-weight="700">99.98%</text>
+  <text x="590" y="274" fill="#8C9AB4" font-family="Segoe UI, sans-serif" font-size="18">Active Alerts</text>
+  <text x="604" y="320" fill="white" font-family="Segoe UI, sans-serif" font-size="34" font-weight="700">12</text>
+  <text x="790" y="274" fill="#8C9AB4" font-family="Segoe UI, sans-serif" font-size="18">Systems</text>
+  <text x="798" y="320" fill="white" font-family="Segoe UI, sans-serif" font-size="34" font-weight="700">142</text>
+  <text x="990" y="274" fill="#8C9AB4" font-family="Segoe UI, sans-serif" font-size="18">Threat</text>
+  <text x="992" y="320" fill="#F6C762" font-family="Segoe UI, sans-serif" font-size="34" font-weight="700">Low</text>
+
+  <rect x="358" y="388" width="472" height="340" rx="24" fill="#121D34"/>
+  <text x="390" y="438" fill="white" font-family="Segoe UI, sans-serif" font-size="24" font-weight="700">Service Reliability</text>
+  <path d="M410 652C460 590 490 610 540 540C590 470 630 520 682 484C734 448 754 410 780 432" stroke="#5A8DFF" stroke-width="6" stroke-linecap="round"/>
+  <path d="M410 680C462 650 510 674 562 604C614 534 660 558 708 530C756 502 780 486 796 514" stroke="#7F5AF0" stroke-width="6" stroke-linecap="round"/>
+  <line x1="410" y1="690" x2="780" y2="690" stroke="#27324B" stroke-width="2"/>
+  <line x1="410" y1="522" x2="410" y2="690" stroke="#27324B" stroke-width="2"/>
+
+  <rect x="854" y="388" width="254" height="162" rx="24" fill="#121D34"/>
+  <text x="886" y="438" fill="white" font-family="Segoe UI, sans-serif" font-size="24" font-weight="700">Alert Queue</text>
+  <rect x="886" y="472" width="190" height="48" rx="14" fill="#1C2842"/>
+  <text x="910" y="503" fill="#DCE7FF" font-family="Segoe UI, sans-serif" font-size="18">DB latency spike</text>
+
+  <rect x="854" y="566" width="254" height="162" rx="24" fill="#121D34"/>
+  <text x="886" y="616" fill="white" font-family="Segoe UI, sans-serif" font-size="24" font-weight="700">Health</text>
+  <circle cx="916" cy="660" r="10" fill="#3CCF91"/>
+  <text x="940" y="668" fill="#DCE7FF" font-family="Segoe UI, sans-serif" font-size="18">Primary servers stable</text>
+</svg>

@@ -47,15 +47,30 @@ export default function WorkShowcase() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-surface/80 via-surface/20 to-transparent opacity-70 group-hover:opacity-50 transition-opacity duration-[800ms]" />
               </div>
-              <div className="mt-5 flex justify-between items-start px-1">
-                <div>
-                  <h4 className="text-xl font-bold font-headline text-on-surface mb-1.5 tracking-[-0.01em] group-hover:text-primary/90 transition-colors duration-[500ms]">
-                    {project.client}
-                  </h4>
-                  <p className="text-on-surface-variant/60 text-[13px]">{project.category}</p>
+              <div className="mt-5 px-1">
+                <div className="flex items-start justify-between gap-4">
+                  <div className="min-w-0">
+                    <h4 className="text-xl font-bold font-headline text-on-surface mb-1 tracking-[-0.01em] group-hover:text-primary/90 transition-colors duration-[500ms] truncate">
+                      {project.client}
+                    </h4>
+                    <p className="text-on-surface-variant/60 text-[13px]">{project.category}</p>
+                  </div>
+                  <div className="px-3.5 py-1 rounded-full border border-white/[0.06] text-[10px] font-label uppercase tracking-[0.15em] text-on-surface-variant/40 shrink-0">
+                    {project.year}
+                  </div>
                 </div>
-                <div className="px-3.5 py-1 rounded-full border border-white/[0.06] text-[10px] font-label uppercase tracking-[0.15em] text-on-surface-variant/40">
-                  {project.timeline}
+                <p className="text-on-surface-variant/40 text-[12px] mt-2 line-clamp-2 leading-[1.6]">
+                  {project.subtitle}
+                </p>
+                <div className="flex flex-wrap gap-1.5 mt-3">
+                  {project.tags.slice(0, 3).map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-2.5 py-0.5 rounded-full bg-white/[0.03] text-[9px] font-label uppercase tracking-[0.12em] text-primary/50 border border-white/[0.04]"
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
               </div>
             </Link>
