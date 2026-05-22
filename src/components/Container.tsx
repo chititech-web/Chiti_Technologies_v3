@@ -13,8 +13,8 @@ export default function Container({
   size = "default",
 }: ContainerProps) {
   const sizes = {
-    default: "max-w-6xl",
-    narrow: "max-w-4xl",
+    default: "max-w-[1200px]",
+    narrow: "max-w-[896px]",
     wide: "max-w-7xl",
   };
 

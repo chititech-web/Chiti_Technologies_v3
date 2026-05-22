@@ -16,7 +16,7 @@ export default function MetricsStrip() {
         {metrics.map((metric) => (
           <div
             key={metric.label}
-            className="flex min-w-[180px] flex-1 flex-col gap-2.5 p-8 bg-black/10 transition-all duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-white/[0.03] cursor-default group"
+            className="flex min-w-[180px] flex-1 flex-col gap-2.5 p-8 bg-black/10 transition-all duration-[600ms] ease-[var(--ease-out)] hover:bg-white/[0.03] cursor-default group"
           >
             <p className="text-on-surface-variant/50 text-[10px] font-label tracking-[0.18em] uppercase">
               {metric.label}

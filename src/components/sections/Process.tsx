@@ -48,7 +48,7 @@ export default function Process() {
           <FadeIn key={step.number} delay={0.1 + i * 0.12}>
             <div className="flex gap-8 items-start relative group">
               <div
-                className="w-12 h-12 rounded-full glass flex items-center justify-center shrink-0 font-bold text-[14px] transition-all duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] cursor-default"
+                className="w-12 h-12 rounded-full glass flex items-center justify-center shrink-0 font-bold text-[14px] transition-all duration-[600ms] ease-[var(--ease-out)] cursor-default"
                 style={{ color: step.color }}
               >
                 {step.number}

@@ -12,7 +12,7 @@ export default function AboutPreview() {
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKHdJS_zm5Dppq3C5UvxeLSDa30Z1Ydgi9vyYohyd8qQ4DnzBd9pkA_1gliovoY02ykWQPHHsy7atdr21A8y2sGwuVZns7m8MHbkKQo4K2Qtw3vSXlR9gZOidxcFNYBL2xTfkvpTTcCVa8Ec71hkiU_Q6aee_4v63YQIR1cvuYm_ykSPz-wQbQJBZFueSyLvnx0xzUVjEYCWtnvBZMvYKfYdr3dY-nR-QDrH6_oz6Rx9O7eBDXHDBBdEpwiaZAlQEhgBHdmVd6slU"
             alt="Creative team"
             fill
-            className="object-cover grayscale hover:grayscale-0 transition-all duration-[2500ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
+            className="object-cover grayscale hover:grayscale-0 transition-all duration-[2500ms] ease-[var(--ease-out)]"
             sizes="(max-width: 768px) 100vw, 480px"
           />
         </div>

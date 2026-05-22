@@ -77,9 +77,9 @@ export default function WorkPage() {
               <button
                 key={filter}
                 onClick={() => setActiveFilter(filter)}
-                className={`px-5 py-2 rounded-full text-[12px] font-medium font-headline transition-all duration-[500ms] ease-[cubic-bezier(0.22,1,0.36,1)] cursor-pointer ${
+                className={`px-5 py-2 rounded-full text-[12px] font-medium font-headline transition-all duration-[var(--duration-normal)] ease-[var(--ease-out)] cursor-pointer ${
                   activeFilter === filter
-                    ? "bg-primary/90 text-on-primary shadow-[0_0_16px_rgba(77,208,225,0.2)]"
+                    ? "bg-primary/90 text-on-primary shadow-[0_0_16px_rgba(153,102,255,0.2)]"
                     : "border border-white/[0.06] text-on-surface-variant/50 hover:text-on-surface hover:border-white/[0.1] bg-white/[0.02]"
                 }`}
               >
@@ -102,7 +102,7 @@ export default function WorkPage() {
                       src={project.images.hero}
                       alt={project.client}
                       fill
-                      className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-[1.04] transition-all duration-[2000ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
+                      className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-[1.04] transition-all duration-[2000ms] ease-[var(--ease-out)]"
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 380px"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-surface/80 via-surface/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-[800ms]" />

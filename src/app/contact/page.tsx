@@ -4,6 +4,7 @@ import { useState } from "react";
 import Container from "@/components/Container";
 import FadeIn from "@/components/FadeIn";
 import Button from "@/components/Button";
+import { Input } from "@chiti/ui";
 import {
   CheckCircle2,
   Clock,
@@ -81,7 +82,7 @@ ${message || "No message provided."}`;
             <div
               className="absolute top-0 right-0 w-[250px] h-[250px] rounded-full"
               style={{
-                background: "radial-gradient(circle, rgba(77,208,225,0.06) 0%, transparent 70%)",
+                background: "radial-gradient(circle, rgba(153,102,255,0.06) 0%, transparent 70%)",
               }}
             />
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
@@ -98,7 +99,7 @@ ${message || "No message provided."}`;
                 href="https://calendly.com/chiti-studio/discovery"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-primary to-primary-dim text-on-primary text-[14px] font-semibold hover:shadow-[0_0_30px_rgba(77,208,225,0.3)] transition-all duration-[500ms] shrink-0"
+                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-primary to-primary-dim text-on-primary text-[14px] font-semibold hover:shadow-[0_0_30px_rgba(153,102,255,0.3)] transition-all duration-[500ms] shrink-0"
               >
                 Book a Discovery Call
               </a>
@@ -114,25 +115,20 @@ ${message || "No message provided."}`;
           <FadeIn className="lg:col-span-7">
             <div className="glass-panel rounded-[1.75rem] p-10 md:p-14">
               <form onSubmit={handleSubmit} className="space-y-14">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-14 gap-y-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-14 gap-y-10">
                   {[
                     { label: "Name", name: "name", type: "text", placeholder: "John Doe", required: true },
                     { label: "Email Address", name: "email", type: "email", placeholder: "john@company.com", required: true },
                     { label: "Company / Brand", name: "company", type: "text", placeholder: "The Future Inc.", required: false },
                   ].map((field) => (
-                    <div key={field.name} className="group relative">
-                      <label className="block text-[10px] uppercase tracking-[0.15em] text-on-surface-variant/50 font-label mb-3 group-focus-within:text-primary/80 transition-colors duration-[400ms]">
-                        {field.label}
-                      </label>
-                      <input
-                        name={field.name}
-                        required={field.required}
-                        className="w-full bg-transparent border-0 border-b border-white/[0.06] py-3.5 px-0 focus:ring-0 focus:border-primary/50 text-on-surface placeholder:text-on-surface-variant/20 transition-all duration-[500ms] font-body text-[15px] outline-none"
-                        placeholder={field.placeholder}
-                        type={field.type}
-                      />
-                      <div className="absolute bottom-0 left-0 h-[0.5px] w-0 bg-gradient-to-r from-primary/60 to-secondary/40 group-focus-within:w-full transition-all duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)]" />
-                    </div>
+                    <Input
+                      key={field.name}
+                      label={field.label}
+                      name={field.name}
+                      type={field.type}
+                      placeholder={field.placeholder}
+                      required={field.required}
+                    />
                   ))}
 
                   {/* Budget */}
@@ -149,7 +145,7 @@ ${message || "No message provided."}`;
                       <option className="bg-surface-container-high">$50k - $100k</option>
                       <option className="bg-surface-container-high">$100k+</option>
                     </select>
-                    <div className="absolute bottom-0 left-0 h-[0.5px] w-0 bg-gradient-to-r from-primary/60 to-secondary/40 group-focus-within:w-full transition-all duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)]" />
+                    <div className="absolute bottom-0 left-0 h-[0.5px] w-0 bg-gradient-to-r from-primary/60 to-secondary/40 group-focus-within:w-full transition-all duration-[600ms] ease-[var(--ease-out)]" />
                   </div>
                 </div>
 
@@ -164,9 +160,9 @@ ${message || "No message provided."}`;
                         key={type}
                         type="button"
                         onClick={() => setActiveType(type)}
-                        className={`px-6 py-2.5 rounded-full border text-[12px] font-medium transition-all duration-[500ms] ease-[cubic-bezier(0.22,1,0.36,1)] cursor-pointer ${
+                        className={`px-6 py-2.5 rounded-full border text-[12px] font-medium transition-all duration-[500ms] ease-[var(--ease-out)] cursor-pointer ${
                           activeType === type
-                            ? "border-primary/40 bg-primary/[0.08] text-primary/90 shadow-[0_0_16px_rgba(77,208,225,0.1)]"
+                            ? "border-primary/40 bg-primary/[0.08] text-primary/90 shadow-[0_0_16px_rgba(153,102,255,0.1)]"
                             : "border-white/[0.06] bg-white/[0.02] text-on-surface-variant/50 hover:border-primary/20 hover:bg-primary/[0.03] hover:text-primary/70"
                         }`}
                       >
@@ -187,7 +183,7 @@ ${message || "No message provided."}`;
                     placeholder="Briefly describe your goals, timeline, and any existing brand assets..."
                     rows={4}
                   />
-                  <div className="absolute bottom-0 left-0 h-[0.5px] w-0 bg-gradient-to-r from-primary/60 to-secondary/40 group-focus-within:w-full transition-all duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)]" />
+                  <div className="absolute bottom-0 left-0 h-[0.5px] w-0 bg-gradient-to-r from-primary/60 to-secondary/40 group-focus-within:w-full transition-all duration-[600ms] ease-[var(--ease-out)]" />
                 </div>
 
                 {/* Submit */}
@@ -207,7 +203,7 @@ ${message || "No message provided."}`;
                 <div
                   className="absolute top-0 right-0 w-20 h-20 rounded-full"
                   style={{
-                    background: "radial-gradient(circle, rgba(77,208,225,0.06) 0%, transparent 70%)",
+                    background: "radial-gradient(circle, rgba(153,102,255,0.06) 0%, transparent 70%)",
                   }}
                 />
                 <h3 className="font-headline text-lg font-bold mb-8 text-on-surface tracking-[-0.01em]">
@@ -257,7 +253,7 @@ ${message || "No message provided."}`;
                     className="text-2xl font-headline font-bold text-on-surface hover:text-primary/80 transition-colors duration-[500ms] relative inline-block group tracking-[-0.02em]"
                   >
                     hello@chiti.studio
-                    <span className="absolute bottom-0 left-0 w-0 h-[0.5px] bg-primary/50 group-hover:w-full transition-all duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)]" />
+                    <span className="absolute bottom-0 left-0 w-0 h-[0.5px] bg-primary/50 group-hover:w-full transition-all duration-[600ms] ease-[var(--ease-out)]" />
                   </a>
                 </div>
 

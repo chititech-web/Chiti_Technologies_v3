@@ -8,6 +8,7 @@ import Container from "@/components/Container";
 import Section from "@/components/Section";
 import FadeIn from "@/components/FadeIn";
 import Button from "@/components/Button";
+import { Badge, Modal } from "@chiti/ui";
 import CTASection from "@/components/sections/CTASection";
 import { caseStudies, orderedCaseStudies } from "@/data/case-studies";
 import {
@@ -17,7 +18,6 @@ import {
   Clock,
   Layers,
   CheckCircle2,
-  X,
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
@@ -63,20 +63,8 @@ export default function CaseStudyPage() {
     <>
       {/* Lightbox */}
       {lightbox && (
-        <div
-          className="fixed inset-0 z-[100] bg-surface/95 backdrop-blur-xl flex items-center justify-center p-4 md:p-10"
-          onClick={() => setLightbox(null)}
-        >
-          <button
-            onClick={() => setLightbox(null)}
-            className="absolute top-6 right-6 p-2 text-on-surface-variant/60 hover:text-on-surface transition-colors"
-          >
-            <X size={24} strokeWidth={1.5} />
-          </button>
-          <div
-            className="relative max-w-5xl w-full max-h-[90vh] flex flex-col"
-            onClick={(e) => e.stopPropagation()}
-          >
+        <Modal open={!!lightbox} onClose={() => setLightbox(null)}>
+          <div className="p-6 md:p-10">
             <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden border border-white/[0.06]">
               <Image
                 src={screenImagePath(project.slug, lightbox.file)}
@@ -91,7 +79,7 @@ export default function CaseStudyPage() {
               {lightbox.caption}
             </p>
           </div>
-        </div>
+        </Modal>
       )}
 
       {/* Back link */}
@@ -139,12 +127,7 @@ export default function CaseStudyPage() {
             </p>
             <div className="flex flex-wrap gap-2.5 mb-8">
               {project.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="px-4 py-1.5 rounded-full border border-white/[0.06] text-[10px] font-label uppercase tracking-[0.12em] text-primary/60"
-                >
-                  {tag}
-                </span>
+                <Badge key={tag}>{tag}</Badge>
               ))}
             </div>
             <div className="flex flex-wrap gap-8 pt-6 border-t border-white/[0.04]">
@@ -428,7 +411,7 @@ export default function CaseStudyPage() {
                 className="absolute top-0 right-0 w-[300px] h-[300px] rounded-full"
                 style={{
                   background:
-                    "radial-gradient(circle, rgba(77,208,225,0.04) 0%, transparent 70%)",
+                    "radial-gradient(circle, rgba(153,102,255,0.04) 0%, transparent 70%)",
                 }}
               />
               <div className="relative z-10">
@@ -455,9 +438,7 @@ export default function CaseStudyPage() {
           <div className="flex flex-wrap gap-2.5">
             {project.techStack.map((tech) => (
               <FadeIn key={tech} delay={0.03}>
-                <span className="px-4 py-2 rounded-full border border-white/[0.06] text-[11px] text-on-surface-variant/60 bg-white/[0.02]">
-                  {tech}
-                </span>
+                <Badge>{tech}</Badge>
               </FadeIn>
             ))}
           </div>

@@ -210,7 +210,7 @@ export default function ServicesPage() {
                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEYxlpbwhzO2KzP9BV4zTUfCNXlfvSEvENAxa-IV1AE_AdsQNlLUII7VO6xub8uqyEZqaoguMRIoNdDuV48qdRfsmwjlmXpBkpqGA8vqy0D-i7BQDmnsM4bvoWeINFuSTqSUqT6G2GJxvb5gDCqgHWW5rGff6aHDWL2lVG0R38QWFvuMaaRrLWd4PdWSHnhEfVJMBnevK9BHw80vr6AoNrO7s7Tmkky73Y5VG5iioAd7lyrKOZdpNwQZDj2V1VMr8U1_bt-HMgR5Q"
                             alt="Minimalist design audit setup"
                             fill
-                            className="object-cover grayscale hover:grayscale-0 transition-all duration-[1500ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
+                            className="object-cover grayscale hover:grayscale-0 transition-all duration-[1500ms] ease-[var(--ease-out)]"
                             sizes="(max-width: 1024px) 100vw, 600px"
                           />
                         </div>
@@ -232,7 +232,7 @@ export default function ServicesPage() {
               <div
                 className="absolute top-0 right-0 w-[350px] h-[350px] rounded-full"
                 style={{
-                  background: "radial-gradient(circle, rgba(77,208,225,0.04) 0%, transparent 70%)",
+                  background: "radial-gradient(circle, rgba(153,102,255,0.04) 0%, transparent 70%)",
                 }}
               />
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">

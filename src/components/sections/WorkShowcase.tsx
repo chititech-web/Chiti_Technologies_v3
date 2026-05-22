@@ -21,7 +21,7 @@ export default function WorkShowcase() {
           </div>
           <a
             href="/work"
-            className="text-on-surface-variant/50 hover:text-primary transition-all duration-[500ms] ease-[cubic-bezier(0.22,1,0.36,1)] flex items-center gap-2 group text-[13px]"
+            className="text-on-surface-variant/50 hover:text-primary transition-all duration-[500ms] ease-[var(--ease-out)] flex items-center gap-2 group text-[13px]"
           >
             View Archive
             <ArrowUpRight
@@ -42,7 +42,7 @@ export default function WorkShowcase() {
                   src={project.images.hero}
                   alt={project.client}
                   fill
-                  className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-[1.04] transition-all duration-[2000ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
+                  className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-[1.04] transition-all duration-[2000ms] ease-[var(--ease-out)]"
                   sizes="(max-width: 768px) 380px, 560px"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-surface/80 via-surface/20 to-transparent opacity-70 group-hover:opacity-50 transition-opacity duration-[800ms]" />

@@ -72,7 +72,7 @@ export default function AboutPage() {
             {stats.map((stat) => (
               <div
                 key={stat.label}
-                className="glass-panel rounded-2xl p-8 text-center group hover:-translate-y-1 transition-all duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] cursor-default"
+                className="glass-panel rounded-2xl p-8 text-center group hover:-translate-y-1 transition-all duration-[600ms] ease-[var(--ease-out)] cursor-default"
               >
                 <p className="text-on-surface text-[2rem] font-extrabold font-headline mb-2 tracking-[-0.02em]">
                   {stat.value}
@@ -94,7 +94,7 @@ export default function AboutPage() {
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlPmQGelY2OByVROP_yoP1njLnVX-B3x8pK56gY99xyYJruzOFdkDb6knqlXjVJw1GZnIWanre9DdiDRE1FCA4f4RnsUEsZCl5GApbCDZHttHBsLTOJlOlYkLhMvoWzC8zoiGOVIz5Sah-m3avorMnlpqg5m6eqPoexo05POx4A5U85p9BiFgFD3lP6UCq8C5gCuZfWYYm1PUOESkaBfR1YpjlhMpHkBSTETByQkzoCemNIuC0-bGM1vyO2bz4f9y7k6YYnsZsjtU"
               alt="Minimalist design studio interior"
               fill
-              className="object-cover grayscale hover:grayscale-0 transition-all duration-[2500ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
+              className="object-cover grayscale hover:grayscale-0 transition-all duration-[2500ms] ease-[var(--ease-out)]"
               sizes="100vw"
               priority
             />
@@ -120,7 +120,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {expertise.map((item, i) => (
               <FadeIn key={item.title} delay={0.08 + i * 0.1}>
-                <div className="glass-panel rounded-2xl p-8 group hover:-translate-y-1 transition-all duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)]">
+                <div className="glass-panel rounded-2xl p-8 group hover:-translate-y-1 transition-all duration-[600ms] ease-[var(--ease-out)]">
                   <div
                     className={`size-11 rounded-xl ${item.bg} flex items-center justify-center mb-6 ${item.color}`}
                   >

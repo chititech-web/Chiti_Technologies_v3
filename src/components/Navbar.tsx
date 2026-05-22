@@ -35,7 +35,7 @@ export default function Navbar() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)]",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-[600ms] ease-[var(--ease-out)]",
         scrolled
           ? "bg-surface-container/80 backdrop-blur-xl border-b border-white/[0.04] py-3"
           : "bg-transparent py-6"

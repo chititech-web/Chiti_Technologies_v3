@@ -68,7 +68,7 @@ export default function ServicesGrid() {
           const colors = accentMap[service.accent];
           return (
             <FadeIn key={service.title} delay={0.1 + i * 0.12}>
-              <div className="group relative p-9 rounded-2xl glass-panel transition-all duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1">
+              <div className="group relative p-9 rounded-2xl glass-panel transition-all duration-[700ms] ease-[var(--ease-out)] hover:-translate-y-1">
                 <div
                   className={`size-12 rounded-xl ${colors.bg} flex items-center justify-center mb-8 ${service.iconColor} transition-all duration-[500ms]`}
                 >
