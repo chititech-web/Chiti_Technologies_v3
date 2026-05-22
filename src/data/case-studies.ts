@@ -486,8 +486,8 @@ export const caseStudies: CaseStudy[] = [
       "Editorial serif + functional sans-serif typography system",
     ],
     images: {
-      hero: "/case-studies/bighi-brothers/overview-screen.png",
-      cover: "/case-studies/bighi-brothers/overview-screen.png",
+      hero: "/case-studies/bighi-brothers/design-system-screen.png",
+      cover: "/case-studies/bighi-brothers/design-system-screen.png",
       diagram: "/case-studies/bighi-brothers/system-diagram.svg",
     },
     liveUrl: undefined,
@@ -534,7 +534,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     interfaceScreens: [
       {
-        file: "overview-screen.png",
+        file: "overview-screen.jpg",
         caption:
           "Ritual homepage concept — Shows the No-Line design principle in action with tonal shifts instead of borders. Establishes emotional entry before commerce.",
       },
