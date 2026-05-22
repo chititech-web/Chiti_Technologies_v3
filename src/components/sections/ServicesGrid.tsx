@@ -2,33 +2,7 @@
 
 import FadeIn from "@/components/FadeIn";
 import { Brush, Terminal, Box, ArrowRight } from "lucide-react";
-
-const services = [
-  {
-    title: "UI/UX Design",
-    description:
-      "Human-centric digital architecture that converts complexity into intuitive, high-performance visual journeys.",
-    icon: Brush,
-    accent: "primary",
-    iconColor: "text-primary/80",
-  },
-  {
-    title: "Web Development",
-    description:
-      "Technical excellence meeting editorial precision to build scalable, future-proof digital infrastructure.",
-    icon: Terminal,
-    accent: "secondary",
-    iconColor: "text-secondary/80",
-  },
-  {
-    title: "Brand Identity",
-    description:
-      "Strategic visual systems and dynamic identities engineered to command attention in a crowded marketplace.",
-    icon: Box,
-    accent: "tertiary",
-    iconColor: "text-tertiary/80",
-  },
-];
+import { useTranslations } from "next-intl";
 
 const accentMap: Record<string, { bg: string; line: string }> = {
   primary: {
@@ -46,6 +20,32 @@ const accentMap: Record<string, { bg: string; line: string }> = {
 };
 
 export default function ServicesGrid() {
+  const t = useTranslations("services");
+
+  const services = [
+    {
+      title: t("brandStrategy"),
+      description: t("brandStrategyDesc"),
+      icon: Brush,
+      accent: "primary",
+      iconColor: "text-primary/80",
+    },
+    {
+      title: t("digitalCuration"),
+      description: t("digitalCurationDesc"),
+      icon: Terminal,
+      accent: "secondary",
+      iconColor: "text-secondary/80",
+    },
+    {
+      title: t("visualIdentity"),
+      description: t("visualIdentityDesc"),
+      icon: Box,
+      accent: "tertiary",
+      iconColor: "text-tertiary/80",
+    },
+  ];
+
   return (
     <div>
       <FadeIn>

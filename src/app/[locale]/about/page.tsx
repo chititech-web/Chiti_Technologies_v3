@@ -7,6 +7,7 @@ import FadeIn from "@/components/FadeIn";
 import Button from "@/components/Button";
 import CTASection from "@/components/sections/CTASection";
 import { Palette, Code, Sparkles, Network } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const stats = [
   { value: "12", label: "Awards Won" },
@@ -14,59 +15,57 @@ const stats = [
   { value: "5", label: "Active Retainers" },
 ];
 
-const expertise = [
-  {
-    title: "Identity Design",
-    description: "Strategic visual systems that define and differentiate brands in competitive landscapes.",
-    icon: Palette,
-    color: "text-primary/80",
-    bg: "bg-primary/[0.06]",
-  },
-  {
-    title: "Digital Craft",
-    description: "Pixel-perfect interfaces engineered for performance, accessibility, and delight.",
-    icon: Code,
-    color: "text-secondary/80",
-    bg: "bg-secondary/[0.06]",
-  },
-  {
-    title: "Creative Strategy",
-    description: "Data-informed creative direction that aligns brand vision with market opportunity.",
-    icon: Sparkles,
-    color: "text-tertiary/80",
-    bg: "bg-tertiary/[0.06]",
-  },
-  {
-    title: "Ecosystem Scaling",
-    description: "Design systems and infrastructure built to grow with your organization.",
-    icon: Network,
-    color: "text-primary-fixed-dim/80",
-    bg: "bg-primary/[0.06]",
-  },
-];
-
 export default function AboutPage() {
+  const t = useTranslations("about");
+
+  const expertise = [
+    {
+      title: t("identity"),
+      description: t("identityDesc"),
+      icon: Palette,
+      color: "text-primary/80",
+      bg: "bg-primary/[0.06]",
+    },
+    {
+      title: t("digital"),
+      description: t("digitalDesc"),
+      icon: Code,
+      color: "text-secondary/80",
+      bg: "bg-secondary/[0.06]",
+    },
+    {
+      title: t("strategy"),
+      description: t("strategyDesc"),
+      icon: Sparkles,
+      color: "text-tertiary/80",
+      bg: "bg-tertiary/[0.06]",
+    },
+    {
+      title: t("ecosystem"),
+      description: t("ecosystemDesc"),
+      icon: Network,
+      color: "text-primary-fixed-dim/80",
+      bg: "bg-primary/[0.06]",
+    },
+  ];
+
   return (
     <>
-      {/* Hero */}
       <Container size="narrow" className="pt-36">
         <FadeIn>
           <div className="text-center mb-20">
             <span className="text-primary/60 font-label text-[11px] tracking-[0.3em] uppercase mb-6 block font-medium">
-              The Collective
+              {t("tagline")}
             </span>
             <h1 className="text-on-surface text-[2.5rem] md:text-[3.5rem] font-extrabold font-headline tracking-[-0.04em] leading-[1.08] mb-8">
-              A small studio with{" "}
-              <span className="gradient-text-aurora">big creative energy</span>
+              {t("title")}
             </h1>
             <p className="text-on-surface-variant/65 text-[17px] max-w-[520px] mx-auto leading-[1.7]">
-              We are a high-frequency collective of specialists dedicated to the
-              art of digital craft.
+              {t("subtitle")}
             </p>
           </div>
         </FadeIn>
 
-        {/* Stats */}
         <FadeIn delay={0.1}>
           <div className="grid grid-cols-3 gap-4 mb-24">
             {stats.map((stat) => (
@@ -86,7 +85,6 @@ export default function AboutPage() {
         </FadeIn>
       </Container>
 
-      {/* Manifesto Image */}
       <Container>
         <FadeIn>
           <div className="relative w-full aspect-[21/9] rounded-2xl overflow-hidden border border-white/[0.04] mb-28">
@@ -103,16 +101,15 @@ export default function AboutPage() {
         </FadeIn>
       </Container>
 
-      {/* Expertise Grid */}
       <Container size="narrow">
         <Section>
           <FadeIn>
             <div className="text-center mb-16">
               <span className="text-secondary/60 font-label text-[11px] tracking-[0.3em] uppercase mb-4 block font-medium">
-                Core Disciplines
+                {t("disciplines")}
               </span>
               <h2 className="text-on-surface text-[2rem] font-extrabold font-headline tracking-[-0.02em]">
-                What We Do Best
+                {t("whatWeDo")}
               </h2>
             </div>
           </FadeIn>
@@ -139,7 +136,6 @@ export default function AboutPage() {
         </Section>
       </Container>
 
-      {/* CTA */}
       <Container>
         <Section>
           <CTASection />

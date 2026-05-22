@@ -2,12 +2,14 @@
 
 import Button from "@/components/Button";
 import FadeIn from "@/components/FadeIn";
+import { useTranslations } from "next-intl";
 
 export default function CTASection() {
+  const t = useTranslations("cta");
+
   return (
     <FadeIn>
       <div className="relative overflow-hidden rounded-[2rem] p-14 md:p-28 text-center glass-panel">
-        {/* Glow blobs */}
         <div
           className="absolute -top-48 -left-48 w-[500px] h-[500px] rounded-full"
           style={{
@@ -25,16 +27,14 @@ export default function CTASection() {
 
         <div className="relative z-10 flex flex-col items-center gap-8">
           <h2 className="text-on-surface text-[2.5rem] md:text-[3.5rem] font-extrabold font-headline tracking-[-0.04em] max-w-[720px] leading-[1.08]">
-            Ready to evolve your{" "}
-            <span className="gradient-text-aurora">digital infrastructure</span>?
+            {t("headline")}
           </h2>
           <p className="text-on-surface-variant/60 text-[16px] max-w-[460px] leading-[1.7]">
-            Limited intake for Q2. We prioritize partnerships that demand
-            excellence and strategic innovation.
+            {t("subtitle")}
           </p>
           <div className="flex flex-wrap items-center gap-4">
             <Button variant="primary" size="lg" href="/contact">
-              Send an Inquiry
+              {t("button")}
             </Button>
             <a
               href="https://calendly.com/chiti-studio/discovery"

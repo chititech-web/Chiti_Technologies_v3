@@ -1,19 +1,22 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import FadeIn from "@/components/FadeIn";
 import { ArrowUpRight } from "lucide-react";
 import { featuredCaseStudies } from "@/data/case-studies";
+import { useTranslations } from "next-intl";
 
 export default function WorkShowcase() {
+  const t = useTranslations("work");
+
   return (
     <div>
       <FadeIn>
         <div className="flex justify-between items-end mb-14">
           <div className="flex flex-col gap-3">
             <span className="text-primary/60 font-label text-[11px] tracking-[0.25em] uppercase font-medium">
-              Showcase
+              {t("showcase")}
             </span>
             <h2 className="text-on-surface text-[2rem] font-extrabold font-headline tracking-[-0.02em]">
               Selected Work
@@ -23,7 +26,7 @@ export default function WorkShowcase() {
             href="/work"
             className="text-on-surface-variant/50 hover:text-primary transition-all duration-[500ms] ease-[var(--ease-out)] flex items-center gap-2 group text-[13px]"
           >
-            View Archive
+            {t("viewArchive")}
             <ArrowUpRight
               size={14}
               strokeWidth={1.5}

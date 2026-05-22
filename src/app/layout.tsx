@@ -1,11 +1,6 @@
 import type { Metadata } from "next";
 import { Outfit, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/ThemeProvider";
-import AuroraBackground from "@/components/AuroraBackground";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import Nova from "@/components/nova/Nova";
 
 const outfit = Outfit({
   variable: "--font-headline",
@@ -49,17 +44,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html suppressHydrationWarning>
       <body
         className={`${outfit.variable} ${inter.variable} ${jetbrainsMono.variable} font-body antialiased selection:bg-primary selection:text-on-primary overflow-x-hidden`}
       >
-        <ThemeProvider>
-          <AuroraBackground />
-          <Navbar />
-          <main className="relative z-10">{children}</main>
-          <Footer />
-          <Nova />
-        </ThemeProvider>
+        {children}
       </body>
     </html>
   );

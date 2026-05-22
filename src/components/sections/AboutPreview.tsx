@@ -2,8 +2,11 @@
 
 import Image from "next/image";
 import FadeIn from "@/components/FadeIn";
+import { useTranslations } from "next-intl";
 
 export default function AboutPreview() {
+  const t = useTranslations("about");
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center">
       <FadeIn direction="left" className="order-2 md:order-1">
@@ -21,7 +24,7 @@ export default function AboutPreview() {
       <FadeIn direction="right" delay={0.15} className="order-1 md:order-2">
         <div className="flex flex-col gap-8">
           <span className="text-primary/60 font-label text-[11px] tracking-[0.3em] uppercase font-medium">
-            The Collective
+            {t("tagline")}
           </span>
           <h2 className="text-on-surface text-[2.5rem] font-extrabold font-headline leading-[1.12] tracking-[-0.03em]">
             Clean interfaces.{" "}

@@ -1,24 +1,27 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { Link, usePathname } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 import Logo from "@/components/Logo";
+import ThemeToggle from "@/components/ThemeToggle";
+import LanguageToggle from "@/components/LanguageToggle";
 import { Menu, X } from "lucide-react";
-
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/work", label: "Work" },
-  { href: "/services", label: "Services" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
-];
+import { useTranslations } from "next-intl";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const t = useTranslations("navbar");
+
+  const navLinks = [
+    { href: "/" as const, label: t("home") },
+    { href: "/work" as const, label: t("work") },
+    { href: "/services" as const, label: t("services") },
+    { href: "/about" as const, label: t("about") },
+    { href: "/contact" as const, label: t("contact") },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,7 +49,7 @@ export default function Navbar() {
           <Logo />
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -67,11 +70,15 @@ export default function Navbar() {
                 />
               </Link>
             ))}
+            <div className="flex items-center gap-1">
+              <ThemeToggle />
+              <LanguageToggle />
+            </div>
             <Link
               href="/contact"
               className="px-5 py-2.5 rounded-full bg-primary/10 text-primary text-[12px] font-semibold hover:bg-primary/20 transition-colors duration-[400ms]"
             >
-              Start Project
+              {t("startProject")}
             </Link>
           </nav>
 
@@ -104,11 +111,15 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
+            <div className="flex items-center gap-2 px-4 py-2">
+              <ThemeToggle />
+              <LanguageToggle />
+            </div>
             <Link
               href="/contact"
               className="mt-2 px-4 py-3 text-center rounded-lg bg-primary text-on-primary font-semibold text-[13px]"
             >
-              Start Project
+              {t("startProject")}
             </Link>
           </nav>
         </div>

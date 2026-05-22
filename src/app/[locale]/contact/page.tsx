@@ -10,26 +10,28 @@ import {
   Clock,
 } from "lucide-react";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 const projectTypes = ["New Website", "App UI/UX", "Branding", "Product System"];
 
-const fitChecks = [
-  {
-    title: "Modern & High-End Branding",
-    description: "For companies looking to redefine their visual soul.",
-  },
-  {
-    title: "Product & UI Systems",
-    description: "Scalable design systems built for long-term growth.",
-  },
-  {
-    title: "Editorial Web Experiences",
-    description: "Breaking the grid with intentional and elite layouts.",
-  },
-];
-
 export default function ContactPage() {
   const [activeType, setActiveType] = useState("App UI/UX");
+  const t = useTranslations("contact");
+
+  const fitChecks = [
+    {
+      title: t("fit01"),
+      description: t("fit01Desc"),
+    },
+    {
+      title: t("fit02"),
+      description: t("fit02Desc"),
+    },
+    {
+      title: t("fit03"),
+      description: t("fit03Desc"),
+    },
+  ];
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -56,26 +58,22 @@ ${message || "No message provided."}`;
 
   return (
     <>
-      {/* Hero */}
       <Container size="wide" className="pt-36">
         <FadeIn>
           <div className="max-w-3xl mb-24">
             <span className="text-secondary/70 font-label text-[10px] tracking-[0.3em] uppercase mb-6 block font-bold neon-text-glow">
-              Ready to evolve?
+              {t("tagline")}
             </span>
             <h1 className="text-on-surface text-[3rem] md:text-[4.5rem] font-extrabold font-headline tracking-[-0.04em] mb-8 leading-[0.95]">
-              Tell us about{" "}
-              <span className="gradient-text-aurora">your project</span>
+              {t("title")}
             </h1>
             <p className="text-on-surface-variant/60 text-[17px] md:text-[19px] font-light leading-[1.7] max-w-[520px]">
-              We work with founders, startups, and growing businesses looking
-              for design that stands out and systems that scale.
+              {t("subtitle")}
             </p>
           </div>
         </FadeIn>
       </Container>
 
-      {/* Book a Call Banner */}
       <Container size="wide">
         <FadeIn>
           <div className="glass-panel rounded-[1.75rem] p-8 md:p-10 mb-12 relative overflow-hidden border border-white/[0.03]">
@@ -88,11 +86,10 @@ ${message || "No message provided."}`;
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
               <div>
                 <h3 className="text-on-surface text-[1.25rem] font-bold font-headline mb-2">
-                  Prefer a conversation?
+                  {t("callHeadline")}
                 </h3>
                 <p className="text-on-surface-variant/60 text-[14px] max-w-[420px]">
-                  Book a free discovery call. We&rsquo;ll discuss your project,
-                  answer your questions, and see if we&rsquo;re the right fit.
+                  {t("callDesc")}
                 </p>
               </div>
               <a
@@ -101,25 +98,23 @@ ${message || "No message provided."}`;
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-primary to-primary-dim text-on-primary text-[14px] font-semibold hover:shadow-[0_0_30px_rgba(153,102,255,0.3)] transition-all duration-[500ms] shrink-0"
               >
-                Book a Discovery Call
+                {t("callCta")}
               </a>
             </div>
           </div>
         </FadeIn>
       </Container>
 
-      {/* Main Content */}
       <Container size="wide">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 items-start">
-          {/* Contact Form */}
           <FadeIn className="lg:col-span-7">
             <div className="glass-panel rounded-[1.75rem] p-10 md:p-14">
               <form onSubmit={handleSubmit} className="space-y-14">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-14 gap-y-10">
                   {[
-                    { label: "Name", name: "name", type: "text", placeholder: "John Doe", required: true },
-                    { label: "Email Address", name: "email", type: "email", placeholder: "john@company.com", required: true },
-                    { label: "Company / Brand", name: "company", type: "text", placeholder: "The Future Inc.", required: false },
+                    { label: t("formName"), name: "name", type: "text", placeholder: t("formPlaceholderName"), required: true },
+                    { label: t("formEmail"), name: "email", type: "email", placeholder: t("formPlaceholderEmail"), required: true },
+                    { label: t("formCompany"), name: "company", type: "text", placeholder: t("formPlaceholderCompany"), required: false },
                   ].map((field) => (
                     <Input
                       key={field.name}
@@ -131,10 +126,9 @@ ${message || "No message provided."}`;
                     />
                   ))}
 
-                  {/* Budget */}
                   <div className="group relative">
                     <label className="block text-[10px] uppercase tracking-[0.15em] text-on-surface-variant/50 font-label mb-3 group-focus-within:text-primary/80 transition-colors duration-[400ms]">
-                      Budget Range
+                      {t("formBudget")}
                     </label>
                     <select
                       name="budget"
@@ -149,10 +143,9 @@ ${message || "No message provided."}`;
                   </div>
                 </div>
 
-                {/* Project Type Chips */}
                 <div>
                   <label className="block text-[10px] uppercase tracking-[0.15em] text-on-surface-variant/50 font-label mb-6">
-                    Project Type
+                    {t("formType")}
                   </label>
                   <div className="flex flex-wrap gap-3">
                     {projectTypes.map((type) => (
@@ -172,31 +165,28 @@ ${message || "No message provided."}`;
                   </div>
                 </div>
 
-                {/* Message */}
                 <div className="group relative">
                   <label className="block text-[10px] uppercase tracking-[0.15em] text-on-surface-variant/50 font-label mb-3 group-focus-within:text-primary/80 transition-colors duration-[400ms]">
-                    Message
+                    {t("formMessage")}
                   </label>
                   <textarea
                     name="message"
                     className="w-full bg-transparent border-0 border-b border-white/[0.06] py-3.5 px-0 focus:ring-0 focus:border-primary/50 text-on-surface placeholder:text-on-surface-variant/20 transition-all duration-[500ms] font-body resize-none text-[15px] outline-none"
-                    placeholder="Briefly describe your goals, timeline, and any existing brand assets..."
+                    placeholder={t("formPlaceholderMessage")}
                     rows={4}
                   />
                   <div className="absolute bottom-0 left-0 h-[0.5px] w-0 bg-gradient-to-r from-primary/60 to-secondary/40 group-focus-within:w-full transition-all duration-[600ms] ease-[var(--ease-out)]" />
                 </div>
 
-                {/* Submit */}
                 <div className="pt-6">
                   <Button variant="primary" size="lg" type="submit">
-                    Send Inquiry
+                    {t("formSubmit")}
                   </Button>
                 </div>
               </form>
             </div>
           </FadeIn>
 
-          {/* Sidebar */}
           <aside className="lg:col-span-5 space-y-10">
             <FadeIn delay={0.2}>
               <div className="glass-panel rounded-[1.75rem] p-9 relative overflow-hidden border border-white/[0.03]">
@@ -207,7 +197,7 @@ ${message || "No message provided."}`;
                   }}
                 />
                 <h3 className="font-headline text-lg font-bold mb-8 text-on-surface tracking-[-0.01em]">
-                  Is Chiti Studio the right fit?
+                  {t("fitTitle")}
                 </h3>
                 <ul className="space-y-6 mb-10">
                   {fitChecks.map((check) => (
@@ -232,12 +222,11 @@ ${message || "No message provided."}`;
                 <div className="flex items-center gap-3 mb-3">
                   <Clock className="text-tertiary/60" size={16} strokeWidth={1.5} />
                   <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-on-surface/80">
-                    Response Time
+                    {t("responseTime")}
                   </span>
                 </div>
                 <p className="text-[12px] text-on-surface-variant/55 leading-[1.7]">
-                  Typically within 24-48 hours. We value deep work and intentional
-                  responses over speed.
+                  {t("responseDesc")}
                 </p>
               </div>
             </FadeIn>
@@ -246,7 +235,7 @@ ${message || "No message provided."}`;
               <div className="px-2 space-y-10">
                 <div>
                   <span className="text-[10px] uppercase tracking-[0.15em] text-on-surface-variant/40 font-label mb-4 block font-medium">
-                    Direct Contact
+                    {t("directContact")}
                   </span>
                   <a
                     href="mailto:hello@chiti.studio"
@@ -260,7 +249,7 @@ ${message || "No message provided."}`;
                 <div className="grid grid-cols-2 gap-8">
                   <div>
                     <span className="text-[10px] uppercase tracking-[0.15em] text-on-surface-variant/40 font-label mb-4 block font-medium">
-                      Social
+                      {t("social")}
                     </span>
                     <div className="flex flex-col gap-2.5">
                       {["LinkedIn", "Instagram", "Dribbble"].map((social) => (
@@ -276,21 +265,17 @@ ${message || "No message provided."}`;
                   </div>
                   <div>
                     <span className="text-[10px] uppercase tracking-[0.15em] text-on-surface-variant/40 font-label mb-4 block font-medium">
-                      Location
+                      {t("location")}
                     </span>
                     <p className="text-[12px] font-medium text-on-surface/80 leading-relaxed">
-                      Remote-first,
-                      <br />
-                      Based Globally.
+                      {t("locationValue")}
                     </p>
                   </div>
                 </div>
 
                 <div className="p-7 glass-panel rounded-xl border border-white/[0.03]">
                   <p className="text-[12px] text-on-surface-variant/50 italic leading-[1.7]">
-                    &ldquo;Whether you need a full website, a product redesign,
-                    or a long-term design partner, we&rsquo;d love to hear from
-                    you.&rdquo;
+                    &ldquo;{t("quote")}&rdquo;
                   </p>
                 </div>
               </div>

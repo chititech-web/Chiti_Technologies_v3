@@ -144,6 +144,223 @@
   --text-5xl: 3rem;
 }
 
+/* ===== LIGHT THEME ===== */
+.light {
+  --color-surface: #f8f9fb;
+  --color-surface-dim: #e8eaed;
+  --color-surface-bright: #ffffff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f0f1f5;
+  --color-surface-container: #e8eaed;
+  --color-surface-container-high: #dcdfe4;
+  --color-surface-container-highest: #d1d5db;
+  --color-surface-variant: #e0e3e8;
+  --color-surface-tint: #7c4dff;
+
+  --color-background: #ffffff;
+
+  --color-on-surface: #1a1d23;
+  --color-on-surface-variant: #5c6872;
+  --color-on-background: #1a1d23;
+
+  --color-primary: #7c4dff;
+  --color-primary-dim: #651fff;
+  --color-primary-fixed: #9966ff;
+  --color-primary-fixed-dim: #7c4dff;
+  --color-on-primary: #ffffff;
+  --color-on-primary-fixed: #1a0033;
+  --color-on-primary-fixed-variant: #2d0059;
+  --color-on-primary-container: #1a0033;
+  --color-primary-container: #f3e5f5;
+  --color-inverse-primary: #b388ff;
+
+  --color-secondary: #0097a7;
+  --color-secondary-dim: #00838f;
+  --color-secondary-fixed: #00acc1;
+  --color-secondary-fixed-dim: #0097a7;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-fixed: #00363d;
+  --color-on-secondary-fixed-variant: #004448;
+  --color-on-secondary-container: #00363d;
+  --color-secondary-container: #e0f7fa;
+  --color-inverse-secondary: #4dd0e1;
+
+  --color-tertiary: #3b5bdb;
+  --color-tertiary-dim: #2a4ac9;
+  --color-tertiary-fixed: #4a6bff;
+  --color-tertiary-fixed-dim: #3b5bdb;
+  --color-on-tertiary: #ffffff;
+  --color-on-tertiary-fixed: #1a237e;
+  --color-on-tertiary-fixed-variant: #1e3090;
+  --color-on-tertiary-container: #1a237e;
+  --color-tertiary-container: #e8eaf6;
+  --color-inverse-tertiary: #7986cb;
+
+  --color-accent: #00897b;
+  --color-accent-dim: #00695c;
+
+  --color-error: #c62828;
+  --color-error-dim: #b71c1c;
+  --color-on-error: #ffffff;
+  --color-on-error-container: #ffebee;
+  --color-error-container: #ffcdd2;
+
+  --color-outline: #b0b8c0;
+  --color-outline-variant: #d1d5db;
+
+  --color-inverse-surface: #2c3138;
+  --color-inverse-on-surface: #e8eaed;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+  --shadow-default: 0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.06), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.06), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.06), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+}
+
+/* Light theme — glass/panel overrides */
+.light .glass {
+  background: rgba(255, 255, 255, 0.7);
+  border: 0.5px solid rgba(0, 0, 0, 0.06);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 4px 24px rgba(0, 0, 0, 0.04);
+}
+
+.light .glass:hover {
+  border-color: rgba(124, 77, 255, 0.2);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    inset 0 0 40px rgba(124, 77, 255, 0.03);
+}
+
+.light .glass-panel {
+  background: rgba(255, 255, 255, 0.8);
+  border: 0.5px solid rgba(124, 77, 255, 0.12);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.04),
+    0 0 60px rgba(124, 77, 255, 0.02),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.light .system-module {
+  background: rgba(255, 255, 255, 0.7);
+  border: 0.5px solid rgba(124, 77, 255, 0.12);
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.light .system-module:hover {
+  border-color: rgba(124, 77, 255, 0.2);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.light .aurora-blob-1,
+.light .aurora-blob-2,
+.light .aurora-blob-3,
+.light .aurora-blob-4,
+.light .aurora-blob-5 {
+  opacity: 0.15;
+  mix-blend-mode: normal;
+}
+
+.light .grid-floor {
+  background:
+    linear-gradient(to bottom, transparent 0%, rgba(248, 249, 251, 0.9) 100%),
+    linear-gradient(90deg, rgba(124, 77, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(rgba(124, 77, 255, 0.04) 1px, transparent 1px);
+}
+
+.light .grid-overlay {
+  background-image:
+    linear-gradient(rgba(124, 77, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 77, 255, 0.03) 1px, transparent 1px),
+    radial-gradient(circle, rgba(124, 77, 255, 0.04) 1px, transparent 1px);
+}
+
+.light .noise-overlay {
+  opacity: 0.2;
+  background-image: repeating-conic-gradient(
+    rgba(0, 0, 0, 0.02) 0% 25%,
+    transparent 0% 50%
+  );
+}
+
+.light .vignette {
+  background: radial-gradient(
+    ellipse 60% 60% at 50% 50%,
+    transparent 45%,
+    rgba(0, 0, 0, 0.08) 100%
+  );
+}
+
+.light .btn-primary-wrap::after {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+}
+
+.light section.border-t {
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+.light .neon-line {
+  background: linear-gradient(90deg, transparent, rgba(124, 77, 255, 0.15), transparent);
+}
+
+.light .neon-text-glow {
+  text-shadow: 0 0 20px rgba(124, 77, 255, 0.15), 0 0 40px rgba(124, 77, 255, 0.05);
+}
+
+.light .glow-hover:hover {
+  box-shadow: 0 0 30px rgba(124, 77, 255, 0.08);
+}
+
+.light .ambient-shadow {
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.08), 0 4px 24px rgba(0, 0, 0, 0.04);
+}
+
+.light .particle {
+  background: radial-gradient(circle, rgba(124, 77, 255, 0.3) 0%, rgba(124, 77, 255, 0) 70%);
+}
+
+/* Light theme — border colors */
+.light .border-white\/\[0\.04\],
+.light .border-white\/\[0\.03\],
+.light .border-white\/\[0\.06\],
+.light .border-white\/\[0\.08\],
+.light .border-white\/\[0\.12\] {
+  border-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+.light .bg-white\/\[0\.02\],
+.light .bg-white\/\[0\.03\],
+.light .bg-white\/\[0\.04\] {
+  background-color: rgba(0, 0, 0, 0.02) !important;
+}
+
+.light .text-on-surface-variant\/40,
+.light .text-on-surface-variant\/50,
+.light .text-on-surface-variant\/60,
+.light .text-on-surface-variant\/65,
+.light .text-on-surface-variant\/70 {
+  color: rgba(92, 104, 114, 0.8) !important;
+}
+
+.light .text-on-surface-variant\/20,
+.light .text-on-surface-variant\/30,
+.light .text-on-surface-variant\/35 {
+  color: rgba(92, 104, 114, 0.5) !important;
+}
+
+.light .bg-surface-container\/80,
+.light .bg-surface-container\/95,
+.light .bg-surface-container\/50 {
+  background-color: rgba(232, 234, 237, 0.9) !important;
+}
+
 /* Base Styles */
 html {
   scroll-behavior: smooth;

@@ -21,6 +21,7 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 function screenImagePath(slug: string, file: string) {
   if (file.startsWith("http")) return file;
@@ -35,6 +36,7 @@ export default function CaseStudyPage() {
     file: string;
     caption: string;
   } | null>(null);
+  const t = useTranslations("work");
 
   const currentIndex = orderedCaseStudies.findIndex((c) => c.slug === slug);
   const prevProject =
@@ -49,10 +51,10 @@ export default function CaseStudyPage() {
       <Container className="pt-36">
         <div className="text-center py-32">
           <h1 className="text-on-surface text-2xl font-bold mb-4">
-            Case study not found
+            {t("notFound")}
           </h1>
           <Button variant="primary" size="md" href="/work">
-            Back to Work
+            {t("backToAll")}
           </Button>
         </div>
       </Container>
@@ -61,7 +63,6 @@ export default function CaseStudyPage() {
 
   return (
     <>
-      {/* Lightbox */}
       {lightbox && (
         <Modal open={!!lightbox} onClose={() => setLightbox(null)}>
           <div className="p-6 md:p-10">
@@ -82,7 +83,6 @@ export default function CaseStudyPage() {
         </Modal>
       )}
 
-      {/* Back link */}
       <Container className="pt-28">
         <FadeIn>
           <Link
@@ -90,12 +90,11 @@ export default function CaseStudyPage() {
             className="inline-flex items-center gap-2 text-on-surface-variant/50 hover:text-primary transition-colors duration-[400ms] text-[13px] mb-8 mt-8"
           >
             <ArrowLeft size={14} strokeWidth={1.5} />
-            Back to all work
+            {t("backToAll")}
           </Link>
         </FadeIn>
       </Container>
 
-      {/* Hero */}
       <Container>
         <FadeIn>
           <div className="relative w-full aspect-[21/9] rounded-2xl overflow-hidden border border-white/[0.04] mb-14">
@@ -112,7 +111,6 @@ export default function CaseStudyPage() {
         </FadeIn>
       </Container>
 
-      {/* Title & Meta */}
       <Container size="narrow">
         <FadeIn>
           <div className="mb-14">
@@ -146,7 +144,7 @@ export default function CaseStudyPage() {
                   className="flex items-center gap-2 text-primary/80 hover:text-primary transition-colors duration-[400ms] text-[13px]"
                 >
                   <ExternalLink size={14} strokeWidth={1.5} />
-                  Visit Live Site
+                  {t("visitLive")}
                 </Link>
               )}
             </div>
@@ -154,7 +152,6 @@ export default function CaseStudyPage() {
         </FadeIn>
       </Container>
 
-      {/* Metrics */}
       <Container>
         <FadeIn>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20">
@@ -175,12 +172,11 @@ export default function CaseStudyPage() {
         </FadeIn>
       </Container>
 
-      {/* Problem */}
       <Container size="narrow">
         <Section bordered>
           <FadeIn>
             <span className="text-secondary/60 font-label text-[10px] tracking-[0.3em] uppercase mb-4 block font-medium">
-              The Problem
+              {t("problem")}
             </span>
             <p className="text-on-surface-variant/70 text-[15px] leading-[1.8]">
               {project.problem}
@@ -189,14 +185,13 @@ export default function CaseStudyPage() {
         </Section>
       </Container>
 
-      {/* System Overview */}
       <Container size="narrow">
         <Section>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <FadeIn>
               <div>
                 <span className="text-tertiary/60 font-label text-[10px] tracking-[0.3em] uppercase mb-4 block font-medium">
-                  System Overview
+                  {t("systemOverview")}
                 </span>
                 <p className="text-on-surface-variant/70 text-[15px] leading-[1.8]">
                   {project.systemOverview.text}
@@ -220,12 +215,11 @@ export default function CaseStudyPage() {
         </Section>
       </Container>
 
-      {/* Key Challenges */}
       <Container size="narrow">
         <Section bordered>
           <FadeIn>
             <span className="text-primary/60 font-label text-[10px] tracking-[0.3em] uppercase mb-6 block font-medium">
-              Key Challenges
+              {t("challenges")}
             </span>
           </FadeIn>
           <div className="space-y-3">
@@ -245,15 +239,14 @@ export default function CaseStudyPage() {
         </Section>
       </Container>
 
-      {/* Design Decisions */}
       <Container size="narrow">
         <Section>
           <FadeIn>
             <span className="text-secondary/60 font-label text-[10px] tracking-[0.3em] uppercase mb-6 block font-medium">
-              Design Decisions
+              {t("decisions")}
             </span>
             <h2 className="text-on-surface text-[2rem] font-extrabold font-headline tracking-[-0.02em] mb-10">
-              How We Solved It
+              {t("howWeSolved")}
             </h2>
           </FadeIn>
           <div className="space-y-8">
@@ -276,16 +269,15 @@ export default function CaseStudyPage() {
         </Section>
       </Container>
 
-      {/* Interface Screens */}
       {project.interfaceScreens.length > 0 && (
         <Container size="narrow">
           <Section bordered>
             <FadeIn>
               <span className="text-tertiary/60 font-label text-[10px] tracking-[0.3em] uppercase mb-6 block font-medium">
-                Interface Screens
+                {t("screens")}
               </span>
               <h2 className="text-on-surface text-[2rem] font-extrabold font-headline tracking-[-0.02em] mb-6">
-                The Work
+                {t("theWork")}
               </h2>
               {project.screenIntro && (
                 <p className="text-on-surface-variant/60 text-[14px] leading-[1.7] mb-8 max-w-[600px]">
@@ -311,7 +303,7 @@ export default function CaseStudyPage() {
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-[500ms]" />
                       <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-[500ms]">
                         <span className="px-4 py-2 rounded-full bg-on-surface/90 text-surface text-[11px] font-medium backdrop-blur-sm">
-                          Click to expand
+                          {t("clickToExpand")}
                         </span>
                       </div>
                     </div>
@@ -326,16 +318,15 @@ export default function CaseStudyPage() {
         </Container>
       )}
 
-      {/* Key Features */}
       {project.keyFeatures.length > 0 && (
         <Container size="narrow">
           <Section>
             <FadeIn>
               <span className="text-primary/60 font-label text-[10px] tracking-[0.3em] uppercase mb-6 block font-medium">
-                Key Features
+                {t("features")}
               </span>
               <h2 className="text-on-surface text-[2rem] font-extrabold font-headline tracking-[-0.02em] mb-10">
-                What We Delivered
+                {t("whatWeDelivered")}
               </h2>
             </FadeIn>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -360,12 +351,11 @@ export default function CaseStudyPage() {
         </Container>
       )}
 
-      {/* Impact */}
       <Container size="narrow">
         <Section bordered>
           <FadeIn>
             <span className="text-primary/60 font-label text-[10px] tracking-[0.3em] uppercase mb-6 block font-medium">
-              Impact
+              {t("impact")}
             </span>
           </FadeIn>
           <div className="space-y-3">
@@ -402,7 +392,6 @@ export default function CaseStudyPage() {
         </Section>
       </Container>
 
-      {/* Reflection */}
       <Container size="narrow">
         <Section>
           <FadeIn>
@@ -416,7 +405,7 @@ export default function CaseStudyPage() {
               />
               <div className="relative z-10">
                 <span className="text-secondary/60 font-label text-[10px] tracking-[0.3em] uppercase mb-4 block font-medium">
-                  Reflection
+                  {t("reflection")}
                 </span>
                 <p className="text-on-surface-variant/65 text-[15px] leading-[1.8] italic">
                   {project.reflection}
@@ -427,7 +416,6 @@ export default function CaseStudyPage() {
         </Section>
       </Container>
 
-      {/* Journal */}
       {project.journal && project.journal.length > 0 && (
         <Container size="narrow">
           <Section bordered>
@@ -467,12 +455,11 @@ export default function CaseStudyPage() {
         </Container>
       )}
 
-      {/* Tech Stack */}
       <Container size="narrow">
         <Section bordered>
           <FadeIn>
             <span className="text-secondary/60 font-label text-[10px] tracking-[0.3em] uppercase mb-6 block font-medium">
-              Tech Stack
+              {t("techStack")}
             </span>
           </FadeIn>
           <div className="flex flex-wrap gap-2.5">
@@ -485,7 +472,6 @@ export default function CaseStudyPage() {
         </Section>
       </Container>
 
-      {/* Pagination */}
       {(prevProject || nextProject) && (
         <Container size="narrow">
           <Section>
@@ -497,7 +483,7 @@ export default function CaseStudyPage() {
                 >
                   <span className="flex items-center gap-2 text-on-surface-variant/40 text-[10px] font-label uppercase tracking-[0.15em] mb-3">
                     <ChevronLeft size={12} strokeWidth={1.5} />
-                    Previous
+                    {t("previous")}
                   </span>
                   <p className="text-on-surface text-[14px] font-bold font-headline group-hover:text-primary/80 transition-colors duration-[400ms]">
                     {prevProject.title.split(" — ")[0] ||
@@ -516,7 +502,7 @@ export default function CaseStudyPage() {
                   className="glass-panel rounded-2xl p-6 group hover:-translate-y-0.5 transition-all duration-[500ms] text-right"
                 >
                   <span className="flex items-center justify-end gap-2 text-on-surface-variant/40 text-[10px] font-label uppercase tracking-[0.15em] mb-3">
-                    Next
+                    {t("next")}
                     <ChevronRight size={12} strokeWidth={1.5} />
                   </span>
                   <p className="text-on-surface text-[14px] font-bold font-headline group-hover:text-primary/80 transition-colors duration-[400ms]">
@@ -532,7 +518,6 @@ export default function CaseStudyPage() {
         </Container>
       )}
 
-      {/* CTA */}
       <Container>
         <Section>
           <CTASection />

@@ -1,15 +1,18 @@
 "use client";
 
 import FadeIn from "@/components/FadeIn";
-
-const metrics = [
-  { label: "Systems Deployed", value: "150", suffix: "+", accent: "text-primary/70" },
-  { label: "Automation Rate", value: "99", suffix: "%", accent: "text-secondary/70" },
-  { label: "Data Points", value: "40", suffix: "M+", accent: "text-tertiary/70" },
-  { label: "Uptime Guaranteed", value: "99.9", suffix: "%", accent: "text-on-surface-variant/50" },
-];
+import { useTranslations } from "next-intl";
 
 export default function MetricsStrip() {
+  const t = useTranslations("metrics");
+
+  const metrics = [
+    { label: t("projects"), value: t("value"), suffix: "+", accent: "text-primary/70" },
+    { label: t("clients"), value: t("valueClients"), suffix: "+", accent: "text-secondary/70" },
+    { label: t("uptime"), value: t("valueUptime"), suffix: "%", accent: "text-tertiary/70" },
+    { label: t("awards"), value: t("valueAwards"), suffix: "", accent: "text-on-surface-variant/50" },
+  ];
+
   return (
     <FadeIn delay={0.15}>
       <div className="flex flex-wrap gap-px p-px bg-white/[0.03] rounded-2xl overflow-hidden glass">
