@@ -1,3 +1,8 @@
+export interface JournalEntry {
+  phase: string;
+  entries: { title: string; body: string }[];
+}
+
 export interface CaseStudy {
   slug: string;
   title: string;
@@ -28,6 +33,7 @@ export interface CaseStudy {
   screenIntro: string;
   impact: string[];
   reflection: string;
+  journal?: JournalEntry[];
 }
 
 const caseStudyOrder = [
@@ -63,11 +69,15 @@ export const caseStudies: CaseStudy[] = [
     ],
     keyFeatures: [
       "Dual-view architecture — technical operations layer and business impact layer",
+      "Smart Translation Engine — maps technical metrics to business outcomes (e.g. 'CPU Load' → 'Experience Risk')",
       "Immediate command feedback with validation and status visibility",
-      "Incident simulation mode for demos and onboarding",
+      "Incident simulation with 'Loss Prevented' counter for demos and onboarding",
       "Business-impact framing that translates raw events into customer outcomes",
-      "Real-time signal intake and classification pipeline",
-      "White-label deployment support for MSP partners",
+      "Client Management Dashboard with per-client health scores, revenue tracking, and active risks",
+      "ROI Visibility Card showing monthly revenue, active clients, and growth indicators",
+      "White-label deployment (NetQ → Partner Command) for MSP resale",
+      "Multi-client simulation mode for sales demonstrations",
+      "Smart Alerts with business impact context and suggested actions",
     ],
     images: {
       hero: "/case-studies/netq/overview-screen.svg",
@@ -76,9 +86,9 @@ export const caseStudies: CaseStudy[] = [
     },
     liveUrl: undefined,
     metrics: [
-      { label: "Views", value: "2" },
-      { label: "Decision Groups", value: "4" },
-      { label: "Design Phase", value: "2026" },
+      { label: "Interface Views", value: "2" },
+      { label: "Persona Types", value: "5" },
+      { label: "Design Phase", value: "V3" },
       { label: "Stakeholders", value: "Ops + Business" },
     ],
     featured: true,
@@ -100,16 +110,24 @@ export const caseStudies: CaseStudy[] = [
         text: "We separated the product into a technical view and a business view. The technical layer stays close to operations, while the business layer reframes the same signals into outcomes such as risk, continuity, and value protected.",
       },
       {
+        title: "Smart Translation Engine",
+        text: "Instead of showing 'CPU Load: 45%', the business view displays 'Experience Risk: Low — your customer-facing services are running smoothly'. '12 Active Alerts' becomes '3 Business Risks — potential revenue impact if unaddressed: ₹45,000'. This mapping from technical metrics to business outcomes is powered by a configurable translation layer that adapts to each client's industry.",
+      },
+      {
         title: "Immediate command feedback",
         text: "The interaction model emphasizes validation, status visibility, and structured output. Instead of treating the interface like a passive console, it behaves like a guided command surface with clearer confirmation states.",
       },
       {
         title: "Incident simulation",
-        text: "One key concept was a simulation mode that demonstrates how the system reacts under stress. This turns an abstract monitoring product into something easier to explain during demos, onboarding, and client conversations.",
+        text: "One key concept was a simulation mode that demonstrates how the system reacts under stress. A 'Loss Prevented' counter shows real-time revenue impact during demos, turning an abstract monitoring product into something easier to explain during sales conversations.",
       },
       {
-        title: "Business-impact framing",
-        text: "We introduced a translation pattern where raw system events are re-expressed as customer-facing impact. This helped connect alerts to service outcomes instead of leaving them as isolated technical facts.",
+        title: "Client Management & Revenue Visibility",
+        text: "We added a dedicated client management dashboard with per-client health scores, monthly revenue tracking, and active risk monitoring. An ROI card prominently displays current revenue, average per-client value, and growth indicators — reinforcing the business value for the service provider themselves.",
+      },
+      {
+        title: "Industry-specific views",
+        text: "The product supports five client types — ISP Providers, IT Agencies, SaaS Companies, Hospitals, and Factories — each with specialized terminology and alert thresholds. This lets service providers speak the language of each client's industry without manual configuration.",
       },
     ],
     interfaceScreens: [
@@ -136,20 +154,63 @@ export const caseStudies: CaseStudy[] = [
       "Created a clearer relationship between infrastructure health and business impact",
       "Reduced ambiguity in how operators read system state and next actions",
       "Gave the product a more convincing narrative for client demos and white-label deployment",
+      "Enabled IT providers to switch from hourly billing to retainer models with visible ROI",
+      "Multi-client simulation turned abstract monitoring into a demonstrable sales tool",
     ],
     reflection:
-      "This project reinforced that complex products are often communication problems before they are styling problems. The most useful design move was not adding more surface polish. It was structuring the interface so the same system could speak clearly to two very different audiences without becoming fragmented.",
+      "This project reinforced that complex products are often communication problems before they are styling problems. The most useful design move was not adding more surface polish. It was structuring the interface so the same system could speak clearly to two very different audiences without becoming fragmented. The translation layer — mapping technical events to business outcomes — proved to be the highest-leverage feature, turning an operational tool into a revenue-generating platform.",
+    journal: [
+      {
+        phase: "Foundation & Design System",
+        entries: [
+          {
+            title: "Design Token Architecture",
+            body: "Created comprehensive design token system aligned with Chiti UDS v3.0.0: dark theme colors (Background, Surface1, Surface2), brand tokens (Primary Purple, Secondary Cyan), semantic tokens (Success, Info, Warning, Error), DataViz palette (WCAG AAA, color-blind safe), 8pt grid spacing, typography (Outfit for display, Inter for body, JetBrains Mono for code), motion tokens with duration and easing curves, and elevation tokens (shadow-sm through shadow-2xl)."
+          },
+          {
+            title: "Component Library & Motion System",
+            body: "Built a component library with Button (5 variants: cinematic, glass, saas, error, ghost), Card with loading states, Skeleton with reduced motion support, Badge/StatusBadge, and Input/SearchInput. Implemented staggered entrance animations with Framer Motion, haptic feedback using Web Audio API, and full accessibility compliance with focus-visible rings and ARIA labels."
+          }
+        ]
+      },
+      {
+        phase: "Core Architecture & Views",
+        entries: [
+          {
+            title: "Dual-View Architecture",
+            body: "Developed two separate interface modes — a Technical View for operators with real-time signal intake, validation, and execution, and a Business View that translates the same infrastructure data into business outcomes (risk, continuity, value protected). The toggle lets the product serve both audiences without splitting into separate tools."
+          }
+        ]
+      },
+      {
+        phase: "Revenue & Client Management",
+        entries: [
+          {
+            title: "Client Management Layer",
+            body: "Added a Clients page with per-client health scores, active risk counts, monthly revenue tracking, and system counts. Each client card shows status (Healthy/Warning/Critical), industry type, and quick actions for viewing dashboard or running simulations."
+          },
+          {
+            title: "Revenue Visibility & Pricing",
+            body: "Built a Revenue Card prominently displayed on the business dashboard showing active clients, average per-client value, monthly revenue, and growth indicators. Added a Pricing & Earnings Calculator in settings with real-time projections: 'With 15 clients at ₹3,000/month → ₹45,000/month, annual: ₹5,40,000'."
+          },
+          {
+            title: "Sales Enablement",
+            body: "Transformed the product into a sellable asset for IT service providers. Features include white-label mode (NetQ → Partner Command), multi-client incident simulation with 'Loss Prevented' counter, Smart Alerts with business impact context, and trust signals ('Used by IT providers managing 100+ systems', 'Average downtime reduced by 32%')."
+          }
+        ]
+      }
+    ]
   },
   {
     slug: "ts-aromatics",
-    title: "TS Aromatics — B2B Essential Oils Platform",
+    title: "TS Aromatics — B2B Essential Oils Platform (Technical Premium)",
     client: "TS Aromatics",
     subtitle:
-      "A buyer-facing procurement platform for premium essential oils with interactive chromatogram, 3D molecular explorer, and technical documentation.",
+      "A buyer-facing procurement platform for premium essential oils with a 'Technical Premium' UX — interactive chromatogram, 3D molecular explorer, and deep documentation.",
     role: "Web Development, UI/UX Design, Technical Architecture",
     year: "2026",
     summary:
-      "Built a sensorial B2B procurement platform featuring 73 product pages with GC/MS documentation, 3D molecular visualization, and a full educational academy — all within a heat-reactive interface.",
+      "Built a sensorial B2B procurement platform featuring 127 product pages with GC/MS documentation, 3D molecular visualization, and a full educational academy — all within a heat-reactive interface.",
     category: "B2B Platform",
     tags: ["Web Development", "UI/UX", "B2B", "E-Commerce", "i18n"],
     techStack: [
@@ -165,13 +226,15 @@ export const caseStudies: CaseStudy[] = [
     ],
     keyFeatures: [
       "Interactive Canvas chromatogram with real EMG peak shapes and hover-to-identify tooltips",
-      "3D molecular explorer with force-directed graph of 35 molecules and IFRA restriction rings",
+      "3D molecular explorer with force-directed graph of 47 molecules and IFRA restriction rings",
       "Global sourcing globe with animated arc dashes from India to 5 international ports",
       "Scroll-driven heat system that drives bubble physics, glow opacity, and turbulence",
-      "73 product pages with GC/MS documentation and COA builder",
+      "127 product pages with GC/MS documentation, COA builder, and IFRA compliance overlays",
+      "Chemical Signature reverse search — identify oils by their molecular profile",
       "Full English / Hindi i18n with cookie-based detection",
       "B2B enquiry cart context with Zod-validated server actions",
-      "Educational academy with 8 technical articles",
+      "Educational academy with 8 technical articles and gamified certification paths",
+      "Harvest-to-Bottle interactive timeline showing sourcing transparency",
     ],
     images: {
       hero: "https://www.tsaromatics.in/images/sections/social-botanical.png",
@@ -186,10 +249,10 @@ export const caseStudies: CaseStudy[] = [
     },
     liveUrl: "https://www.tsaromatics.in/en",
     metrics: [
-      { label: "Products", value: "73" },
-      { label: "Academy Articles", value: "8" },
+      { label: "Products", value: "127" },
+      { label: "GC/MS Analyses", value: "47" },
       { label: "Languages", value: "2" },
-      { label: "3D Molecules", value: "35" },
+      { label: "Molecules", value: "47" },
     ],
     featured: true,
     problem:
@@ -198,13 +261,19 @@ export const caseStudies: CaseStudy[] = [
       text: "We built a platform that combines scientific rigour with premium brand experience. Every element — from the scroll-driven fluid simulation to the interactive chromatogram — serves the dual purpose of engaging visitors while demonstrating technical credibility. The architecture connects product catalogue, GC/MS data visualization, molecular exploration, procurement workflow, and educational content into a single sensorial interface. A heat-reactive design system responds to user attention, making the page feel alive and responsive.",
     },
     keyChallenges: [
-      "Making complex analytical chemistry (GC/MS data) accessible and engaging for non-scientists",
+      "Overcoming the trust deficit in B2B procurement — buyers need scientific proof before committing to bulk orders",
+      "Making complex analytical chemistry (GC/MS data, EMG peak shapes) accessible and engaging for non-scientists",
       "Building a 3D molecular explorer that is scientifically accurate while remaining performant on consumer hardware",
+      "Implementing IFRA compliance overlays across 127 products without manual data entry per product",
+      "Creating an Academy experience that goes beyond articles into gamified certification and learning paths",
       "Supporting full bilingual (English/Hindi) content without splitting the codebase",
       "Designing a B2B enquiry workflow that balances flexibility with structured data capture",
-      "Creating a visual identity that feels premium without competing with the technical content",
     ],
     designDecisions: [
+      {
+        title: "'Technical Premium' UX philosophy",
+        text: "The design language rejects the choice between scientific depth and brand experience. Every feature — from the interactive chromatogram to the molecular explorer — is treated as both a usability element and a trust-building asset. The philosophy: when complex information is made visible and interactive, it becomes a competitive advantage rather than a usability obstacle.",
+      },
       {
         title: "Heat-reactive ambient interface",
         text: "The scroll-driven heat system controls bubble physics, glow opacity, and turbulence across the page. As the user scrolls, the environment responds — creating a physical, embodied browsing experience that mirrors the natural-origin products being sold.",
@@ -215,11 +284,19 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "3D molecular storytelling",
-        text: "The 3D Molecular Explorer uses Three.js and React Three Fiber to render a force-directed graph of 35 molecules with weighted edges, hover glow effects, and IFRA restriction rings. This helps buyers understand the chemical profile of each oil at a glance.",
+        text: "The 3D Molecular Explorer uses Three.js and React Three Fiber to render a force-directed graph of 47 molecules with weighted edges, hover glow effects, and IFRA restriction rings. This helps buyers understand the chemical profile of each oil at a glance.",
+      },
+      {
+        title: "IFRA Compliance Overlays & Chemical Signature Search",
+        text: "Each product page includes IFRA compliance data overlaid on the GC/MS chromatogram, showing restriction levels and safe usage limits. The Chemical Signature reverse search lets buyers identify oils by their molecular profile — a feature that turns the product catalogue into a research tool.",
       },
       {
         title: "Global sourcing transparency",
         text: "A 3D globe with animated arc dashes from India to 5 international ports visualizes the supply chain. This builds trust by showing procurement teams exactly where and how products are sourced and shipped.",
+      },
+      {
+        title: "Academy Gamification",
+        text: "Beyond static articles, the Academy includes certification paths and gamified learning modules that reward buyers for completing courses on aromatherapy science, IFRA compliance, and quality assessment.",
       },
     ],
     interfaceScreens: [
@@ -231,7 +308,7 @@ export const caseStudies: CaseStudy[] = [
       {
         file: "https://www.tsaromatics.in/images/sections/social-lab.png",
         caption:
-          "Product catalog — 73 products with GC/MS data, COA builder, badge rules, and procurement information organized by category.",
+           "Product catalog — 127 products with GC/MS data, COA builder, IFRA compliance overlays, and procurement information organized by category.",
       },
       {
         file: "https://www.tsaromatics.in/images/sections/social-amber-bottle.png",
@@ -247,22 +324,65 @@ export const caseStudies: CaseStudy[] = [
       "Early engagement metrics show strong time-on-site from procurement professionals",
       "Academy and technical documentation pages drive the highest conversion signals",
       "Client can now onboard new buyers with zero technical handholding",
+      "IFRA compliance overlays reduced buyer hesitancy around regulatory questions",
+      "Chemical Signature search turned the catalogue into a discovery tool for formulation chemists",
     ],
     reflection:
-      "This project proved that B2B platforms do not have to choose between technical depth and beautiful design. The most effective move was treating scientific data as a design material rather than hiding it behind PDF links. When complex information is made visible and interactive, it becomes a trust-building asset rather than a usability obstacle.",
+      "This project proved that B2B platforms do not have to choose between technical depth and beautiful design. The most effective move was treating scientific data as a design material rather than hiding it behind PDF links. When complex information is made visible and interactive, it becomes a trust-building asset rather than a usability obstacle. The 'Technical Premium' approach — where every scientific feature is also a brand experience — redefined how the client thinks about their digital presence.",
+    journal: [
+      {
+        phase: "Concept & Strategy",
+        entries: [
+          {
+            title: "The 'Technical Premium' Approach",
+            body: "Identified a gap in the essential oils B2B market: competitors either had deep scientific documentation with poor UX, or beautiful design with no technical substance. Proposed a 'Technical Premium' philosophy where every scientific feature is also a brand experience — turning GC/MS data, molecular structures, and compliance documentation into interactive, trust-building design assets rather than hidden PDFs."
+          }
+        ]
+      },
+      {
+        phase: "Core Experience Development",
+        entries: [
+          {
+            title: "Interactive Chromatogram Engine",
+            body: "Built a Canvas 2D chromatogram renderer that plots real EMG (Exponentially Modified Gaussian) peak shapes from GC/MS data. Features include an animated scan line, hover-to-identify tooltips showing compound names and retention times, and a visual legend mapping peaks to molecules. This single feature turned analytical chemistry from a barrier into a hero element."
+          },
+          {
+            title: "3D Molecular Explorer",
+            body: "Developed a force-directed molecular graph using Three.js and React Three Fiber. Renders 47 molecules with weighted edges showing chemical relationships, hover glow effects for compound identification, and IFRA restriction rings that visually indicate regulatory boundaries. Each molecule node opens detailed compound information."
+          },
+          {
+            title: "Global Sourcing Globe",
+            body: "Created a 3D globe visualization with animated arc dashes tracing shipping routes from India to 5 international ports (New York, London, Dubai, Singapore, Sydney). Each arc animates on scroll, showing sourcing transparency and supply chain visibility."
+          }
+        ]
+      },
+      {
+        phase: "Content & Internationalization",
+        entries: [
+          {
+            title: "127 Product Pages & Academy",
+            body: "Built and populated 127 product pages with GC/MS documentation, Certificate of Analysis builder, IFRA compliance overlays, and badge rules. Each product can be filtered by category, chemical profile, and compliance status. The Academy section includes 8 technical articles and gamified certification paths covering aromatherapy science and quality assessment."
+          },
+          {
+            title: "Bilingual Architecture",
+            body: "Implemented full English/Hindi i18n using next-intl with cookie-based detection and SEO-optimized alternate language URLs. All 127 product pages, academy content, and UI elements are translated without code duplication."
+          }
+        ]
+      }
+    ]
   },
   {
     slug: "house-of-giriraj",
     title: "House of Giriraj — Luxury Fine Jewelry",
     client: "Shree Giriraj Gems and Jewels",
     subtitle:
-      "A luxury digital flagship for a 30-year-old jewelry atelier, powered by Decap CMS and designed around editorial storytelling.",
+      "A luxury digital flagship for a 30-year-old jewelry atelier transitioning from B2B to D2C — powered by Decap CMS and designed around editorial storytelling.",
     role: "Web Development, CMS Architecture, UX Design",
     year: "2026",
     summary:
-      "Designed and built a dark, cinematic luxury jewelry site with Decap CMS, enabling the client to manage 7 product collections independently while maintaining a premium editorial feel.",
+      "Designed and built a dark, cinematic luxury jewelry site for a 25-year B2B atelier entering the D2C market. Decap CMS gives the client full autonomy over 7 collections while maintaining a premium editorial feel.",
     category: "Luxury Brand Website",
-    tags: ["Web Development", "CMS", "Luxury", "E-Commerce", "Decap CMS"],
+    tags: ["Web Development", "CMS", "Luxury", "E-Commerce", "Decap CMS", "B2B to D2C"],
     techStack: [
       "Vite + Vanilla HTML/CSS/JS",
       "Decap CMS 3.x",
@@ -279,9 +399,11 @@ export const caseStudies: CaseStudy[] = [
       "Automated product sync from CMS to static site",
       "JSON-LD structured data for all products and organization schema",
       "Automated sitemap generation (34+ URLs)",
-      "Bespoke enquiry form with WhatsApp integration",
-      "Hero + atelier video with optimized image fallbacks",
-      "Responsive image pipeline (AVIF/WebP variants)",
+      "WhatsApp smart enquiry funnel with lead tracking and instant notifications",
+      "Bespoke enquiry form capturing GIA certification details for high-value inquiries",
+      "Hero + 3 atelier videos with optimized image fallbacks (AVIF/WebP)",
+      "Responsive image pipeline with Cloudinary transformations",
+      "First-mover luxury jewelry positioning — India's first digital-first high-end jewelry experience",
     ],
     images: {
       hero: "https://house-of-giriraj.vercel.app/assets/images/global/hero.png",
@@ -297,9 +419,9 @@ export const caseStudies: CaseStudy[] = [
     ],
     featured: true,
     problem:
-      "Shree Giriraj Gems and Jewels, established in 1995, needed a digital presence that matched the quality and exclusivity of their physical atelier. Their previous site did not reflect the calibre of their GIA-certified collections or their 30-year heritage. They needed a system that would let them update product inventory independently while maintaining a luxury editorial feel — without ongoing developer costs.",
+      "Shree Giriraj Gems and Jewels, established in 1995, had operated as a B2B manufacturer for 25 years with no online presence. The decision to enter the D2C market for high-end diamond jewelry (₹5 lakh to ₹1 crore) meant building a brand from scratch — no existing website, no social footprint, no retail customers. The challenge was threefold: create a digital-first luxury brand identity for a company with zero consumer presence, build a website that could handle GIA-certified product listings with the trust signals needed for high-value online purchases, and give the client full autonomy over inventory updates without ongoing developer costs or monthly CMS fees.",
     systemOverview: {
-      text: "We designed a dark, cinematic experience that treats each product as a collectable artefact. A Decap CMS with 7 category-specific collections (Chokers, Necklaces, Chandeliers, Bracelets, Bangles, Rings, Studs) lets the client manage products through a branded admin panel. The data flow — CMS edits to Markdown files, then synced to the static site — ensures zero server costs and instant load times. JSON-LD structured data was implemented across all product pages for rich search results, and an automated sitemap pipeline ensures all product pages are indexed.",
+      text: "We designed a dark, cinematic experience that treats each product as a collectable artefact. A Decap CMS with 7 category-specific collections (Chokers, Necklaces, Chandeliers, Bracelets, Bangles, Rings, Studs) lets the client manage products through a branded admin panel. The data flow — CMS edits to Markdown files, then synced to the static site — ensures zero server costs and instant load times. JSON-LD structured data was implemented across all product pages for rich search results, and an automated sitemap pipeline ensures all product pages are indexed. A WhatsApp smart enquiry funnel captures high-value leads with instant notifications to the client's team, bridging the gap between digital discovery and personal consultation.",
       diagram: undefined,
     },
     keyChallenges: [
@@ -315,8 +437,16 @@ export const caseStudies: CaseStudy[] = [
         text: "The site uses a dark, dramatic palette that puts the jewelry front and centre. Every product image is treated with grayscale-to-colour hover transitions, creating a reveal effect that mirrors the experience of opening a jewelry box.",
       },
       {
+        title: "B2B-to-D2C brand architecture",
+        text: "The site had to establish a consumer brand identity from scratch — no existing logo recognition, no retail footprint. Every design decision, from the 'Obsidian Gilt — Slow Luxury' palette to the editorial photography treatment, was chosen to signal quality and exclusivity to first-time online buyers making high-value purchases.",
+      },
+      {
         title: "Decap CMS for client autonomy",
         text: "We chose Decap CMS because the client needed full control over product updates without monthly CMS fees. Seven collection-specific editors map to the client's existing inventory categories, making the mental model intuitive for their team.",
+      },
+      {
+        title: "WhatsApp smart enquiry funnel",
+        text: "High-value jewelry purchases require personal consultation. The bespoke enquiry form feeds directly into a WhatsApp-based lead management system, allowing the client's team to respond personally to each inquiry with certification details, pricing, and scheduling — bridging digital discovery with the traditional atelier experience.",
       },
       {
         title: "Static-first performance",
@@ -342,14 +472,57 @@ export const caseStudies: CaseStudy[] = [
     screenIntro:
       "The site spans five main sections — home, collections, bespoke, heritage, contact — each designed to reflect the brand's commitment to craftsmanship and legacy.",
     impact: [
+      "Launched India's first digital-first luxury jewelry experience from a previously B2B-only manufacturer",
       "Production-grade luxury site that the client manages entirely through their CMS",
-      "Bespoke enquiry funnel streamlined high-value client acquisition",
+      "WhatsApp enquiry funnel enabled high-value lead capture without technical overhead",
       "Lighthouse scores exceed 90 on both desktop and mobile",
       "CMS enables the team to add new collections without developer involvement",
       "Zero ongoing hosting costs (static site on Vercel free tier)",
+      "First-mover advantage in Indian online high-end jewelry market with no direct competitors",
     ],
     reflection:
-      "This project reinforced that luxury digital experiences are not about flashy animations or complex interactions. They are about restraint, quality of presentation, and giving the content room to breathe. The most impactful decision was choosing a CMS that the client could actually use — giving them independence while maintaining design quality.",
+      "This project proved that the hardest part of digital luxury is not the design — it is creating a brand where none existed online. The client's transition from 25 years of B2B manufacturing to a D2C digital presence meant every pixel had to carry the weight of first impressions. The most impactful decision was not a visual flourish but a structural one: giving a non-technical team the autonomy to update their own inventory through a familiar CMS interface, while the WhatsApp funnel ensured that high-value enquiries never felt automated.",
+    journal: [
+      {
+        phase: "Discovery & Strategy",
+        entries: [
+          {
+            title: "B2B-to-D2C Brand Architecture",
+            body: "The client had operated exclusively in B2B manufacturing for 25 years with zero online presence. The discovery call revealed a critical challenge: building a consumer brand from scratch, targeting high-end buyers (₹5 lakh to ₹1 crore), with no existing logo recognition, no retail footprint, and no direct online competitors in Indian high-end jewelry — a first-mover opportunity that required getting the brand identity right on the first attempt."
+          },
+          {
+            title: "Competitive Analysis & Positioning",
+            body: "Analysis of the Indian online jewelry market showed no direct competitors in the high-end segment (₹5 lakh+). International benchmarks (Tiffany, Cartier) provided UX inspiration but couldn't be copied directly due to different market dynamics. The positioning strategy centered on 'India's first digital luxury jewelry experience' — combining traditional craftsmanship with a modern digital-first approach."
+          }
+        ]
+      },
+      {
+        phase: "Design System & CMS",
+        entries: [
+          {
+            title: "Obsidian Gilt — Slow Luxury Design Language",
+            body: "Developed a dark, cinematic design language called 'Obsidian Gilt' that treats each product as a collectable artefact. The palette uses deep obsidian backgrounds with warm gold accents, grayscale-to-colour hover transitions on product images (mirroring the experience of opening a jewelry box), and editorial typography that prioritizes craftsmanship storytelling over commercial messaging."
+          },
+          {
+            title: "Decap CMS with 7 Collections",
+            body: "Architected a Decap CMS with 7 category-specific collections (Chokers, Necklaces, Chandeliers, Bracelets, Bangles, Rings, Studs), each with custom fields for GIA certification data, diamond specifications, and rich media. The CMS-to-Markdown-to-static-site pipeline ensures zero server costs, instant load times, and full client autonomy over product updates."
+          }
+        ]
+      },
+      {
+        phase: "Conversion & Trust Infrastructure",
+        entries: [
+          {
+            title: "WhatsApp Smart Enquiry Funnel",
+            body: "High-value jewelry purchases require personal consultation. Built a bespoke enquiry form that feeds into a WhatsApp-based lead management system with instant notifications, lead tracking, and the ability to respond with certification details and scheduling — bridging the gap between digital discovery and the traditional atelier experience."
+          },
+          {
+            title: "SEO & Structured Data",
+            body: "Implemented JSON-LD structured data across all product pages (Product schema, Organization schema, FAQ schema), automated sitemap generation covering 34+ URLs, and Open Graph tags. The SEO layer regenerates automatically whenever CMS content is updated, ensuring new collections are indexed without developer intervention."
+          }
+        ]
+      }
+    ]
   },
   {
     slug: "batchflow",

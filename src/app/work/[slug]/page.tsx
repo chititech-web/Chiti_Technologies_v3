@@ -427,6 +427,46 @@ export default function CaseStudyPage() {
         </Section>
       </Container>
 
+      {/* Journal */}
+      {project.journal && project.journal.length > 0 && (
+        <Container size="narrow">
+          <Section bordered>
+            <FadeIn>
+              <span className="text-primary/60 font-label text-[10px] tracking-[0.3em] uppercase mb-6 block font-medium">
+                Development Journal
+              </span>
+              <h2 className="text-on-surface text-[2rem] font-extrabold font-headline tracking-[-0.02em] mb-10">
+                Process & Progress
+              </h2>
+            </FadeIn>
+            <div className="space-y-10">
+              {project.journal.map((phase, pi) => (
+                <FadeIn key={phase.phase} delay={0.05 + pi * 0.08}>
+                  <div className="relative pl-8 border-l border-white/[0.06]">
+                    <div className="absolute left-0 top-0 w-3 h-3 rounded-full bg-primary/30 border-2 border-primary/60 -translate-x-[6.5px]" />
+                    <span className="text-primary/50 text-[10px] font-label uppercase tracking-[0.2em] mb-2 block">
+                      {phase.phase}
+                    </span>
+                    <div className="space-y-6 mt-4">
+                      {phase.entries.map((entry, ei) => (
+                        <div key={entry.title} className="glass-panel rounded-xl p-5">
+                          <h3 className="text-on-surface text-[15px] font-bold font-headline mb-2 tracking-[-0.01em]">
+                            {entry.title}
+                          </h3>
+                          <p className="text-on-surface-variant/60 text-[13px] leading-[1.7]">
+                            {entry.body}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
+          </Section>
+        </Container>
+      )}
+
       {/* Tech Stack */}
       <Container size="narrow">
         <Section bordered>
