@@ -32,9 +32,19 @@ export default function CTASection() {
             Limited intake for Q2. We prioritize partnerships that demand
             excellence and strategic innovation.
           </p>
-          <Button variant="primary" size="lg" href="/contact">
-            Book a Call
-          </Button>
+          <div className="flex flex-wrap items-center gap-4">
+            <Button variant="primary" size="lg" href="/contact">
+              Send an Inquiry
+            </Button>
+            <a
+              href="https://calendly.com/chiti-studio/discovery"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full border border-white/[0.08] text-on-surface bg-white/[0.03] backdrop-blur-sm text-[15px] font-semibold font-headline hover:bg-white/[0.06] hover:border-white/[0.12] transition-all duration-[500ms]"
+            >
+              Book a Call
+            </a>
+          </div>
         </div>
       </div>
     </FadeIn>

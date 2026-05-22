@@ -37,6 +37,11 @@ export default function Footer() {
               A premium creative agency specializing in UI/UX design, web
               development, and brand identity. We build intelligent systems.
             </p>
+            <div className="mt-6">
+              <span className="inline-block px-4 py-1.5 rounded-full border border-primary/20 text-primary/70 text-[11px] font-semibold tracking-wide">
+                Projects start at ₹1.5L
+              </span>
+            </div>
           </div>
 
           {/* Work Links */}

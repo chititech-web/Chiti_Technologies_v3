@@ -145,6 +145,30 @@ export default function ServicesPage() {
         </Section>
       </Container>
 
+      {/* Investment Note */}
+      <Container size="narrow">
+        <Section>
+          <FadeIn>
+            <div className="text-center">
+              <span className="text-primary/60 font-label text-[11px] tracking-[0.25em] uppercase mb-4 block font-medium">
+                Investment
+              </span>
+              <h2 className="text-on-surface text-[2rem] font-extrabold font-headline mb-5 tracking-[-0.02em]">
+                Strategic partnerships, not page counts
+              </h2>
+              <p className="text-on-surface-variant/60 text-[14px] max-w-[520px] mx-auto leading-[1.7] mb-8">
+                We evaluate every engagement by operational complexity, system
+                architecture, and business goals — not by deliverables or page
+                counts.
+              </p>
+              <div className="inline-block px-6 py-3 rounded-full border border-primary/20 text-primary/80 text-[14px] font-bold font-headline">
+                Minimum engagement: ₹1,50,000
+              </div>
+            </div>
+          </FadeIn>
+        </Section>
+      </Container>
+
       {/* Strategic Process */}
       <Container>
         <Section id="process" bordered>
@@ -217,40 +241,48 @@ export default function ServicesPage() {
                     Case Study
                   </span>
                   <h3 className="text-on-surface text-[1.75rem] font-extrabold font-headline mb-5 tracking-[-0.02em]">
-                    The Ethereal Project
+                    TS Aromatics — B2B Essential Oils
                   </h3>
                   <p className="text-on-surface-variant/65 text-[14px] leading-[1.75] mb-8">
-                    A complete brand transformation that redefined how a fintech
-                    startup connects with its audience. From visual identity to
-                    digital experience, every touchpoint was meticulously
-                    crafted.
+                    A buyer-facing procurement platform for premium essential oils
+                    featuring an interactive chromatogram, 3D molecular explorer,
+                    and 73 product pages with GC/MS documentation. Built with
+                    Next.js 16, Three.js, and full i18n support.
                   </p>
                   <div className="flex gap-10 mb-8 pt-6 border-t border-white/[0.04]">
                     <div>
                       <p className="text-xl font-extrabold font-headline text-primary/80 tracking-[-0.02em]">
-                        340%
+                        73
                       </p>
                       <p className="text-[10px] text-on-surface-variant/40 font-label uppercase tracking-[0.15em] mt-1">
-                        Engagement
+                        Products
                       </p>
                     </div>
                     <div>
                       <p className="text-xl font-extrabold font-headline text-secondary/80 tracking-[-0.02em]">
-                        2.1M
+                        2
                       </p>
                       <p className="text-[10px] text-on-surface-variant/40 font-label uppercase tracking-[0.15em] mt-1">
-                        Impressions
+                        Languages
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-xl font-extrabold font-headline text-tertiary/80 tracking-[-0.02em]">
+                        35
+                      </p>
+                      <p className="text-[10px] text-on-surface-variant/40 font-label uppercase tracking-[0.15em] mt-1">
+                        3D Molecules
                       </p>
                     </div>
                   </div>
-                  <Button variant="primary" size="sm" href="/work">
+                  <Button variant="primary" size="sm" href="/work/ts-aromatics">
                     View Case Study <ArrowRight size={14} strokeWidth={1.5} className="ml-2" />
                   </Button>
                 </div>
                 <div className="relative aspect-[4/3] rounded-xl overflow-hidden border border-white/[0.04]">
                   <Image
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQleV-WqKnu5OUNB3uMumlJX5oaf30iFPsN9ZUi9x-u5civdXmJ6bi2qCt0iTa1NiobwVD9_qUfjDQY5Xuls8kZI72Zos917pDg72akgZ_Ptgqi5aa2GxhuPOawxuFoVzHoaE2BCxuloALCRyA7VIsdf8Sxi3WQ4yi_9UEqqI9tvv42wTocoTe3BzarrRkI2c7q-IdrqpTockqHltKvIZrdVbRcfwrzPksfUghZiXihYuCgAgxJoGblG-Yivnvku12xlfm0oUPKM0"
-                    alt="Abstract 3D render"
+                    src="https://www.tsaromatics.in/images/sections/social-botanical.png"
+                    alt="TS Aromatics — B2B Essential Oils Platform"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 500px"

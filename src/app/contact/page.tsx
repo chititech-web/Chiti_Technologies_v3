@@ -74,6 +74,39 @@ ${message || "No message provided."}`;
         </FadeIn>
       </Container>
 
+      {/* Book a Call Banner */}
+      <Container size="wide">
+        <FadeIn>
+          <div className="glass-panel rounded-[1.75rem] p-8 md:p-10 mb-12 relative overflow-hidden border border-white/[0.03]">
+            <div
+              className="absolute top-0 right-0 w-[250px] h-[250px] rounded-full"
+              style={{
+                background: "radial-gradient(circle, rgba(77,208,225,0.06) 0%, transparent 70%)",
+              }}
+            />
+            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+              <div>
+                <h3 className="text-on-surface text-[1.25rem] font-bold font-headline mb-2">
+                  Prefer a conversation?
+                </h3>
+                <p className="text-on-surface-variant/60 text-[14px] max-w-[420px]">
+                  Book a free discovery call. We&rsquo;ll discuss your project,
+                  answer your questions, and see if we&rsquo;re the right fit.
+                </p>
+              </div>
+              <a
+                href="https://calendly.com/chiti-studio/discovery"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-primary to-primary-dim text-on-primary text-[14px] font-semibold hover:shadow-[0_0_30px_rgba(77,208,225,0.3)] transition-all duration-[500ms] shrink-0"
+              >
+                Book a Discovery Call
+              </a>
+            </div>
+          </div>
+        </FadeIn>
+      </Container>
+
       {/* Main Content */}
       <Container size="wide">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 items-start">
