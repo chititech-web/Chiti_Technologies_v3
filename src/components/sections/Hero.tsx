@@ -40,9 +40,15 @@ export default function Hero() {
   }, []);
 
   useEffect(() => {
-    if (showcaseSlides[currentSlide].type === "video" && videoRef.current) {
-      videoRef.current.currentTime = 0;
-      videoRef.current.play().catch(() => {});
+    const slide = showcaseSlides[currentSlide];
+    if (slide.type === "video" && videoRef.current) {
+      const vid = videoRef.current;
+      if (vid.src !== window.location.origin + slide.src) {
+        vid.src = slide.src;
+        vid.load();
+      }
+      vid.currentTime = 0;
+      vid.play().catch(() => {});
     }
   }, [currentSlide]);
 
@@ -135,35 +141,36 @@ export default function Hero() {
               </div>
 
               <div className="flex-1 relative overflow-hidden rounded-xl">
+                <video
+                  ref={videoRef}
+                  muted
+                  playsInline
+                  loop
+                  preload="auto"
+                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-800 ${
+                    showcaseSlides[currentSlide].type === "video" ? "opacity-100" : "opacity-0 pointer-events-none"
+                  }`}
+                />
                 <AnimatePresence mode="wait">
-                  <motion.div
-                    key={showcaseSlides[currentSlide].src}
-                    initial={{ opacity: 0, scale: 1.05 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.8, ease: "easeInOut" }}
-                    className="absolute inset-0"
-                  >
-                    {showcaseSlides[currentSlide].type === "video" ? (
-                      <video
-                        ref={videoRef}
-                        src={showcaseSlides[currentSlide].src}
-                        muted
-                        playsInline
-                        loop
-                        preload="auto"
-                        className="absolute inset-0 w-full h-full object-cover"
-                      />
-                    ) : (
+                  {showcaseSlides[currentSlide].type !== "video" && (
+                    <motion.div
+                      key={showcaseSlides[currentSlide].src}
+                      initial={{ opacity: 0, scale: 1.05 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ duration: 0.8, ease: "easeInOut" }}
+                      className="absolute inset-0"
+                    >
                       <Image
                         src={showcaseSlides[currentSlide].src}
                         alt={showcaseSlides[currentSlide].alt}
                         fill
                         className="object-cover"
                         sizes="(max-width: 864px) 100vw, 480px"
+                        unoptimized
                       />
-                    )}
-                  </motion.div>
+                    </motion.div>
+                  )}
                 </AnimatePresence>
                 <div className="absolute inset-0 bg-gradient-to-t from-surface/90 via-surface/30 to-transparent" />
                 <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
