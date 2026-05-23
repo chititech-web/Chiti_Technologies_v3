@@ -32,7 +32,7 @@ export default function AboutPreview() {
             Better results.
           </h2>
           <p className="text-on-surface-variant/70 text-[16px] leading-[1.75] max-w-[420px]">
-            Chiti Studio is a high-frequency collective of specialists dedicated
+            Chiti Technologies is a high-frequency collective of specialists dedicated
             to the art of digital craft. We partner with ambitious brands to
             navigate the new frontier of the digital economy.
           </p>

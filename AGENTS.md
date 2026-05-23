@@ -1,4 +1,4 @@
-# Chiti Studio Premium — Project Guide
+# Chiti Technologies Premium — Project Guide
 
 ## Build & Dev Commands
 - `npm run dev` — development server
@@ -12,6 +12,9 @@ src/
 ├── app/
 │   ├── globals.css                      # All CSS: theme tokens, glass, aurora, keyframes
 │   ├── layout.tsx                       # Root layout (fonts, metadata, theme-clip div)
+│   ├── robots.ts                        # SEO: robots.txt rules
+│   ├── sitemap.ts                       # SEO: sitemap.xml (all locales + case studies)
+│   ├── manifest.ts                      # PWA manifest
 │   └── [locale]/
 │       ├── layout.tsx                   # Locale layout: ThemeProvider, Preloader, CustomCursor,
 │       │                                  AuroraBackground, Navbar, SmoothScrollProvider, Footer, Nova
@@ -21,7 +24,7 @@ src/
 │       ├── services/page.tsx            # Services detail page
 │       ├── work/page.tsx                # Work archive
 │       └── work/[slug]/                 # Case study pages: Problem → System Overview → Challenges → Decisions → Screens → Features → Impact → Reflection
-│           ├── page.tsx                 # Server (generateStaticParams)
+       │   ├── page.tsx                 # Server (generateStaticParams + generateMetadata per slug)
 │           └── CaseStudyClient.tsx      # Client rendering
 ├── components/
 │   ├── Button.tsx                       # Re-export from @chiti/ui
@@ -126,6 +129,13 @@ reflection, journal?
 - Tracked via Git LFS: `public/case-studies/**/*.mp4` in `.gitattributes`
 - Persistent `<video>` element outside AnimatePresence with dynamic src swapping
 - User interaction listener for iOS autoplay compliance
+
+## SEO
+- `src/app/robots.ts` — allows all, disallows `/api/`, sitemap URL set
+- `src/app/sitemap.ts` — all locales × static pages + case study pages, priority tiers
+- `src/app/manifest.ts` — PWA name, icon, theme/background colors
+- `src/app/layout.tsx` — metadata: `title.template`, `robots`, `alternates.languages`, `twitter:card`, OG
+- `src/app/[locale]/work/[slug]/page.tsx` — `generateMetadata()` per project (dynamic OG image)
 
 ## Deployment
 - Hosted on Vercel (25/25 static pages)

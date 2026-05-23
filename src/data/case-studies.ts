@@ -243,7 +243,7 @@ export const caseStudies: CaseStudy[] = [
     },
     testimonial: {
       quote:
-        "Chiti Studio understood exactly what we needed — a platform that speaks to procurement professionals in a language they trust. The chromatogram integration alone has changed how our clients evaluate our products.",
+        "Chiti Technologies understood exactly what we needed — a platform that speaks to procurement professionals in a language they trust. The chromatogram integration alone has changed how our clients evaluate our products.",
       author: "Operations Team",
       title: "TS Aromatics",
     },

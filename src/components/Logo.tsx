@@ -8,7 +8,7 @@ export default function Logo() {
     <Link href="/" className="flex items-center gap-2.5 group">
       <Image
         src="/logo.png"
-        alt="Chiti Studio"
+        alt="Chiti Technologies"
         width={36}
         height={36}
         className="rounded-lg"

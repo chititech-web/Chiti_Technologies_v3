@@ -102,7 +102,7 @@ export default function Footer() {
 
         <div className="mt-16 pt-8 border-t border-white/[0.04] flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-on-surface-variant/40 text-[12px]">
-            © {new Date().getFullYear()} Chiti Studio. {t("rights")}
+            © {new Date().getFullYear()} Chiti Technologies. {t("rights")}
           </p>
           <div className="flex items-center gap-6">
             {socialLinks.map((link) => (

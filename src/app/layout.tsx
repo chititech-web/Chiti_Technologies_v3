@@ -25,9 +25,12 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://chitistudio.com"),
-  title: "Chiti Studio — Intelligent Systems & Digital Design",
+  title: {
+    default: "Chiti Technologies — Intelligent Systems & Digital Design",
+    template: "%s | Chiti Technologies",
+  },
   description:
-    "A premium creative agency specializing in UI/UX design, web development, and brand identity. We build intelligent systems, not just websites.",
+    "We build intelligent systems, automation workflows, and scalable digital infrastructure. A premium creative technology collective specializing in UI/UX design, web development, and brand identity.",
   keywords: [
     "design studio",
     "UI/UX",
@@ -36,19 +39,37 @@ export const metadata: Metadata = {
     "digital agency",
     "automation",
     "CRM",
+    "chiti technologies",
   ],
+  robots: { index: true, follow: true },
+  alternates: {
+    languages: {
+      en: "/en",
+      hi: "/hi",
+    },
+  },
   openGraph: {
-    title: "Chiti Studio",
+    type: "website",
+    locale: "en_US",
+    siteName: "Chiti Technologies",
+    title: "Chiti Technologies — Intelligent Systems & Digital Design",
     description:
-      "A premium creative agency specializing in UI/UX design, web development, and brand identity.",
+      "We build intelligent systems, automation workflows, and scalable digital infrastructure.",
     images: [
       {
         url: "/logo.png",
         width: 512,
         height: 512,
-        alt: "Chiti Studio",
+        alt: "Chiti Technologies",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Chiti Technologies — Intelligent Systems & Digital Design",
+    description:
+      "We build intelligent systems, automation workflows, and scalable digital infrastructure.",
+    images: ["/logo.png"],
   },
 };
 
