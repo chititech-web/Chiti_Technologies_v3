@@ -84,13 +84,23 @@ export default function Hero() {
   const headlineText = t("headline");
   const splitWords = useCallback(
     (text: string) => {
+      const isEmphasis = (w: string) => {
+        const trimmed = w.replace(/[^a-zA-Z\u0900-\u097F]/g, "").toLowerCase();
+        return trimmed === "intelligent" || trimmed === "बुद्धिमान" || trimmed === "beautiful" || trimmed === "खूबसूरत";
+      };
+      const emphasisClass = (w: string) => {
+        const trimmed = w.replace(/[^a-zA-Z\u0900-\u097F]/g, "").toLowerCase();
+        if (trimmed === "intelligent" || trimmed === "बुद्धिमान") return "hero-emphasis-intelligent";
+        if (trimmed === "beautiful" || trimmed === "खूबसूरत") return "hero-emphasis-beautiful";
+        return "";
+      };
       return text.split(" ").map((word, i) => (
         <span
           key={i}
           className="inline-block overflow-hidden"
           style={{ perspective: "600px" }}
         >
-          <span className="inline-block">
+          <span className={`inline-block ${emphasisClass(word)}`}>
             {word}
             {i < text.split(" ").length - 1 ? "\u00A0" : ""}
           </span>

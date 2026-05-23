@@ -670,6 +670,25 @@ body {
   background-clip: text;
 }
 
+/* Hero Emphasis Words */
+.hero-emphasis-intelligent {
+  background: linear-gradient(135deg, var(--color-primary-dim) 0%, var(--color-primary) 50%, var(--color-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 1.15em;
+  font-weight: 900;
+  display: inline-block;
+}
+
+.hero-emphasis-beautiful {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-secondary);
+  letter-spacing: 0.02em;
+  display: inline-block;
+}
+
 /* Premium Glow on Hover */
 .glow-hover {
   transition: box-shadow var(--duration-slow) var(--ease-out);
