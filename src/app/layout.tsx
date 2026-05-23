@@ -62,6 +62,7 @@ export default function RootLayout({
       <body
         className={`${outfit.variable} ${inter.variable} ${jetbrainsMono.variable} font-body antialiased selection:bg-primary selection:text-on-primary overflow-x-hidden`}
       >
+        <div id="theme-clip" />
         {children}
       </body>
     </html>

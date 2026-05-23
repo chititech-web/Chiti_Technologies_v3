@@ -799,6 +799,50 @@ section.border-t {
   opacity: 1;
 }
 
+/* Grid Pulse — data-flow effect on section borders */
+@keyframes grid-pulse {
+  0% { opacity: 0; transform: translateY(-100%); }
+  50% { opacity: 0.4; }
+  100% { opacity: 0; transform: translateY(100%); }
+}
+
+.grid-pulse::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent, rgba(153, 102, 255, 0.08), transparent);
+  animation: grid-pulse 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Theme clip-path overlay */
+#theme-clip {
+  position: fixed;
+  inset: 0;
+  z-index: 9997;
+  pointer-events: none;
+  background: var(--color-surface);
+  clip-path: circle(0% at 50% 50%);
+  transition: clip-path 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+#theme-clip.active {
+  clip-path: circle(150% at 50% 50%);
+}
+
+/* Sparkline undulation */
+@keyframes sparkline {
+  0%, 100% { d: path("M0,20 Q10,10 20,15 T40,5 T60,18 T80,8 T100,12"); }
+  25% { d: path("M0,18 Q10,8 20,14 T40,8 T60,15 T80,10 T100,14"); }
+  50% { d: path("M0,22 Q10,12 20,17 T40,10 T60,20 T80,12 T100,16"); }
+  75% { d: path("M0,16 Q10,6 20,12 T40,4 T60,12 T80,6 T100,10"); }
+}
+
+@keyframes sparkline-draw {
+  0% { stroke-dashoffset: 200; }
+  100% { stroke-dashoffset: 0; }
+}
+
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   *,

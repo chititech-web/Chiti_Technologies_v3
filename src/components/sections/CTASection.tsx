@@ -33,13 +33,15 @@ export default function CTASection() {
             {t("subtitle")}
           </p>
           <div className="flex flex-wrap items-center gap-4">
-            <Button variant="primary" size="lg" href="/contact">
+            <Button variant="primary" size="lg" href="/contact" data-magnetic data-cursor-text="Send Inquiry">
               {t("button")}
             </Button>
             <a
               href="https://calendly.com/chiti-studio/discovery"
               target="_blank"
               rel="noopener noreferrer"
+              data-magnetic
+              data-cursor-text="Book Call"
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full border border-white/[0.08] text-on-surface bg-white/[0.03] backdrop-blur-sm text-[15px] font-semibold font-headline hover:bg-white/[0.06] hover:border-white/[0.12] transition-all duration-[500ms]"
             >
               Book a Call

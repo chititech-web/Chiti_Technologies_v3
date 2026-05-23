@@ -7,6 +7,9 @@ import AuroraBackground from "@/components/AuroraBackground";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Nova from "@/components/nova/Nova";
+import Preloader from "@/components/Preloader";
+import SmoothScrollProvider from "@/components/SmoothScrollProvider";
+import CustomCursor from "@/components/CustomCursor";
 
 type Props = {
   children: React.ReactNode;
@@ -31,9 +34,13 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
       <ThemeProvider>
+        <Preloader />
+        <CustomCursor />
         <AuroraBackground />
         <Navbar />
-        <main className="relative z-10">{children}</main>
+        <SmoothScrollProvider>
+          <main className="relative z-10">{children}</main>
+        </SmoothScrollProvider>
         <Footer />
         <Nova />
       </ThemeProvider>

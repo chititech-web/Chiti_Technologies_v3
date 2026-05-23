@@ -1,12 +1,15 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Button from "@/components/Button";
 import FadeIn from "@/components/FadeIn";
 import { motion, AnimatePresence } from "framer-motion";
 import { Cpu, BarChart3, Workflow, Database, Sparkles } from "lucide-react";
 import { useTranslations } from "next-intl";
+import CanvasParticles from "@/components/CanvasParticles";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const showcaseSlides = [
   { src: "/case-studies/house-of-giriraj/curation.mp4",       alt: "Giriraj Curation",  type: "video" },
@@ -69,9 +72,62 @@ export default function Hero() {
     };
   }, [currentSlide]);
 
+  const headlineRef = useRef<HTMLHeadingElement>(null);
+  const gsapInitialized = useRef(false);
+
+  useEffect(() => {
+    if (gsapInitialized.current) return;
+    gsap.registerPlugin(ScrollTrigger);
+    gsapInitialized.current = true;
+  }, []);
+
+  const headlineText = t("headline");
+  const splitWords = useCallback(
+    (text: string) => {
+      return text.split(" ").map((word, i) => (
+        <span
+          key={i}
+          className="inline-block overflow-hidden"
+          style={{ perspective: "600px" }}
+        >
+          <span className="inline-block">
+            {word}
+            {i < text.split(" ").length - 1 ? "\u00A0" : ""}
+          </span>
+        </span>
+      ));
+    },
+    []
+  );
+
+  const headlineWords = splitWords(headlineText);
+
+  useEffect(() => {
+    if (!headlineRef.current) return;
+    const words = headlineRef.current.querySelectorAll("span > span");
+    if (words.length === 0) return;
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        words,
+        { y: 60, opacity: 0, rotateX: 30 },
+        {
+          y: 0,
+          opacity: 1,
+          rotateX: 0,
+          duration: 0.8,
+          stagger: 0.04,
+          ease: "power3.out",
+          scrollTrigger: { trigger: headlineRef.current, start: "top 85%" },
+        }
+      );
+    });
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <div className="@container">
-      <div className="flex flex-col gap-16 px-4 py-24 @[864px]:flex-row @[864px]:items-center @[864px]:gap-20">
+    <div className="@container relative">
+      <CanvasParticles />
+      <div className="flex flex-col gap-16 px-4 py-24 @[864px]:flex-row @[864px]:items-center @[864px]:gap-20 relative z-10">
         <div className="flex flex-col gap-10 flex-1 relative">
           <div className="hidden @[1024px]:block absolute inset-0 pointer-events-none">
             {systemModules.map((module, i) => (
@@ -100,8 +156,8 @@ export default function Hero() {
                   {t("tagline")}
                 </span>
               </div>
-              <h1 className="text-on-surface text-[2.75rem] font-extrabold leading-[1.08] tracking-[-0.035em] @[480px]:text-[4rem] font-headline">
-                {t("headline")}
+              <h1 ref={headlineRef} className="text-on-surface text-[2.75rem] font-extrabold leading-[1.08] tracking-[-0.035em] @[480px]:text-[4rem] font-headline">
+                {headlineWords}
               </h1>
               <p className="text-on-surface-variant/70 text-[17px] max-w-[480px] leading-[1.65]">
                 {t("subtitle")}
@@ -111,10 +167,10 @@ export default function Hero() {
 
           <FadeIn direction="none" delay={0.35}>
             <div className="flex flex-wrap gap-4 relative z-10">
-              <Button variant="primary" size="md" href="/contact">
+              <Button variant="primary" size="md" href="/contact" data-magnetic data-cursor-text="Inquire →">
                 {t("cta")}
               </Button>
-              <Button variant="secondary" size="md" href="/work">
+              <Button variant="secondary" size="md" href="/work" data-magnetic data-cursor-text="View Systems">
                 {t("ctaSecondary")}
               </Button>
             </div>

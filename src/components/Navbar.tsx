@@ -76,6 +76,8 @@ export default function Navbar() {
             </div>
             <Link
               href="/contact"
+              data-magnetic
+              data-cursor-text="Inquire →"
               className="px-5 py-2.5 rounded-full bg-primary/10 text-primary text-[12px] font-semibold hover:bg-primary/20 transition-colors duration-[400ms]"
             >
               {t("startProject")}
@@ -117,6 +119,7 @@ export default function Navbar() {
             </div>
             <Link
               href="/contact"
+              data-magnetic
               className="mt-2 px-4 py-3 text-center rounded-lg bg-primary text-on-primary font-semibold text-[13px]"
             >
               {t("startProject")}
