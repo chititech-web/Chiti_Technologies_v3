@@ -1,5 +1,7 @@
 # Chiti Technologies Premium — Project Guide
 
+> **Brand & Positioning:** See [`docs/BRAND_PLAYBOOK.md`](./docs/BRAND_PLAYBOOK.md) for vocabulary, competitive landscape, visual hierarchy rules, and positioning guidelines.
+
 ## Build & Dev Commands
 - `npm run dev` — development server
 - `npm run build` — production build (25 static pages + 1 API route)
