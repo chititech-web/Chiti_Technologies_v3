@@ -679,14 +679,18 @@ body {
   font-size: 1.15em;
   font-weight: 900;
   display: inline-block;
+  animation: glow-breathe 3s ease-in-out infinite;
 }
 
 .hero-emphasis-beautiful {
-  font-style: italic;
-  font-weight: 400;
-  color: var(--color-secondary);
-  letter-spacing: 0.02em;
+  font-weight: 500;
+  color: var(--color-on-surface-variant);
   display: inline-block;
+}
+
+@keyframes glow-breathe {
+  0%, 100% { filter: drop-shadow(0 0 12px rgba(153, 102, 255, 0.2)); }
+  50% { filter: drop-shadow(0 0 24px rgba(153, 102, 255, 0.5)); }
 }
 
 /* Premium Glow on Hover */
