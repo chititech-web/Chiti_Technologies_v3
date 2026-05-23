@@ -12,7 +12,9 @@ Premium systems engineering & automation collective. We build intelligent system
 | File | Purpose |
 |---|---|
 | [`AGENTS.md`](./AGENTS.md) | Dev guide — build commands, project structure, animation reference, conventions |
-| [`docs/BRAND_PLAYBOOK.md`](./docs/BRAND_PLAYBOOK.md) | Brand positioning, vocabulary rules, competitive landscape, visual hierarchy |
+| [`docs/BRAND_PLAYBOOK.md`](./docs/BRAND_PLAYBOOK.md) | Brand positioning, vocabulary rules, engagement tiers, pricing, competitive landscape |
+| [`docs/OPERATIONS_PLAYBOOK.md`](./docs/OPERATIONS_PLAYBOOK.md) | CMS framework, tech stacks, client onboarding, handoff templates, AI prompts |
+| [`docs/FILE_GOVERNANCE.md`](./docs/FILE_GOVERNANCE.md) | File organization rules, deletion protocol, naming conventions |
 | [`docs/JOURNAL.md`](./docs/JOURNAL.md) | Technical & design journal — architecture decisions, component notes, Nova system |
 | [`NOVA_SETUP.md`](./NOVA_SETUP.md) | Nova AI concierge setup guide |
 

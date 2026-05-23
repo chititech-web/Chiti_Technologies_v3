@@ -1,5 +1,7 @@
 # Chiti Technologies — Brand Playbook
 
+> Living document. Update as positioning evolves.
+
 ## Core Positioning
 
 | Attribute | Statement |
@@ -44,11 +46,102 @@
 2. **Automation & Workflow Systems** — custom automation pipelines, CRM infrastructure, digital ecosystems that replace manual processes with intelligent orchestration
 3. **Scalable Design Systems** — component-driven visual languages with semantic tokens, accessibility-first patterns, developer-ready implementation
 
-### Pricing Narrative
+## Engagement Tiers
 
-- "Strategic partnerships, not page counts"
-- "Minimum engagement: ₹1,50,000"
-- "We evaluate every engagement by operational complexity, system architecture, and business goals — not by deliverables or page counts."
+### Stage 1 — Digital Presence
+
+For businesses that need premium credibility.
+
+| Attribute | Detail |
+|---|---|
+| **Investment** | ₹1,50,000 – ₹3,00,000 |
+| **Includes** | Strategic UI/UX architecture, responsive development, core branding integration, hosting & deployment, SEO-ready structural foundation, performance optimization, 30-day post-launch support |
+| **Best for** | Boutique & heritage brands, premium professional services, luxury hospitality, niche e-commerce |
+
+### Stage 2 — Growth Infrastructure
+
+For brands that want consistent leads and operational systems.
+
+| Attribute | Detail |
+|---|---|
+| **Setup** | ₹3,00,000 – ₹6,00,000 |
+| **Monthly** | ₹30,000 – ₹80,000/month |
+| **Includes** | Everything in Stage 1, plus: conversion optimization systems, analytics dashboards, content management workflows (CMS, OAuth, pipelines), SEO monitoring, performance enhancement cycles, lead generation systems, automation workflows & integrations |
+| **Best for** | D2C brands, SaaS products, education platforms, growing multi-channel businesses |
+
+### Stage 3 — Strategic Digital Partner
+
+For companies that need an embedded innovation and growth team.
+
+| Attribute | Detail |
+|---|---|
+| **Monthly retainer** | ₹80,000 – ₹3,00,000/month |
+| **Includes** | Unlimited design & iteration cycles, priority execution pipelines, rapid campaign & landing page deployment, experimentation and optimization systems, advanced analytics, design system scaling, product UX consulting, investor/demo presentation support, AI workflow integration, ongoing strategic advisory |
+| **Best for** | Scaling startups, enterprise modernization, multi-brand ecosystems, high-growth digital businesses |
+
+### Recommended Engagement Structure
+
+| Tier | Setup Investment | Monthly |
+|---|---|---|
+| Digital Presence | ₹1.5L – ₹3L | ₹10K – ₹20K |
+| Growth Infrastructure | ₹3L – ₹6L | ₹30K – ₹80K |
+| Strategic Digital Partner | Custom | ₹80K – ₹3L |
+
+## Pricing Philosophy
+
+We do not price projects based on arbitrary page counts or superficial deliverables.
+
+Every engagement is evaluated based on: operational complexity, system architecture, integrations required, workflow depth, business objectives, growth scope.
+
+❌ "5 pages = ₹50,000"
+✅ "Pricing depends on operational complexity, integrations, and business goals."
+
+### Minimum Engagement
+
+To maintain execution quality and strategic focus, our minimum engagement begins at **₹1,50,000**. This ensures we can dedicate meaningful research, architecture, and execution resources — and that we attract clients who value quality over the lowest price.
+
+### Why ₹1.5L?
+
+Past projects delivering a full CMS + custom build + OAuth + sitemaps + SEO + branding for ₹60-80K were severely under-priced. The depth of work — custom CMS configuration, GitHub OAuth setup, Vercel deployment pipelines, JSON-LD structured data, sitemap generation, branded admin UI, image optimization, mobile responsiveness — justifies significantly more. ₹1.5L filters for clients who understand the value of strategic digital infrastructure versus commodity web production.
+
+### What Clients Are Actually Investing In
+
+Our pricing is not structured around page counts, design revisions, or support hours. It is structured around:
+
+- business transformation
+- operational leverage
+- execution speed
+- premium positioning
+- scalable digital systems
+- long-term strategic advantage
+
+## Portfolio Positioning
+
+### Live Site: chiti-studio.vercel.app (as of playbook creation)
+
+**What works:**
+- Minimal, clean aesthetic — matches the "premium systems" positioning
+- Strong lead-in copy ("intelligent systems, not just websites")
+- Services section clearly articulates UI/UX, web dev, brand identity
+- The "Ready to evolve?" CTA with limited intake creates scarcity
+
+**What was missing (since addressed):**
+- Added 5 real client case studies (NetQ Command, TS Aromatics, House of Giriraj, BatchFlow, Bighi Brothers)
+- Replaced "UI/UX design" vocabulary with "Product Design" and "Interface Engineering"
+- Updated business name from "Chiti Studio" to "Chiti Technologies"
+- Added pricing signal ("Projects start at ₹1.5L") in footer
+- Minimum engagement ₹1,50,000 signal present on site
+- Calendly link for discovery calls connected
+- SEO files deployed (robots.ts, sitemap.ts, manifest.ts, per-project metadata)
+
+### Portfolio Strength by Niche
+
+| Niche | Strength | Best Case Study |
+|---|---|---|
+| Fine jewelry / heritage brands | High | House of Giriraj |
+| B2B ingredients / technical products | High | TS Aromatics |
+| Education / coaching | Medium | BatchFlow |
+| B2B SaaS / enterprise tools | High | NetQ Command |
 
 ## Competitive Landscape
 
@@ -82,7 +175,7 @@ The headline "We build intelligent systems, not just beautiful websites" uses co
 
 | Word | Treatment | Purpose |
 |---|---|---|
-| **intelligent** | Gradient primary→secondary, 1.15em, weight 900, breathing glow animation | **Focal point** — eye lands here first |
+| **intelligent** | Gradient primary→secondary, 1.08em, weight 900, breathing glow animation | **Focal point** — eye lands here first |
 | **beautiful** | Muted `--color-on-surface-variant`, weight 500 | Visually subordinate — beauty is a given, not the sell |
 
 This ensures the typographic emphasis matches the copy's claim: intelligence is premium; beauty is table stakes.

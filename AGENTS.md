@@ -1,6 +1,8 @@
 # Chiti Technologies Premium — Project Guide
 
 > **Brand & Positioning:** See [`docs/BRAND_PLAYBOOK.md`](./docs/BRAND_PLAYBOOK.md) for vocabulary, competitive landscape, visual hierarchy rules, and positioning guidelines.
+> **Operations:** See [`docs/OPERATIONS_PLAYBOOK.md`](./docs/OPERATIONS_PLAYBOOK.md) for CMS framework, client onboarding, handoff templates, and AI prompts.
+> **File Governance:** See [`docs/FILE_GOVERNANCE.md`](./docs/FILE_GOVERNANCE.md) for deletion protocol and naming conventions.
 
 ## Build & Dev Commands
 - `npm run dev` — development server
