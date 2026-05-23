@@ -19,12 +19,12 @@ export default function MetricsStrip() {
         {metrics.map((metric) => (
           <div
             key={metric.label}
-            className="flex min-w-[180px] flex-1 flex-col gap-2.5 p-8 bg-black/10 transition-all duration-[600ms] ease-[var(--ease-out)] hover:bg-white/[0.03] cursor-default group"
+            className="flex min-w-[160px] flex-1 flex-col gap-2 p-6 sm:p-8 bg-black/10 transition-all duration-[600ms] ease-[var(--ease-out)] hover:bg-white/[0.03] cursor-default group"
           >
             <p className="text-on-surface-variant/50 text-[10px] font-label tracking-[0.18em] uppercase">
               {metric.label}
             </p>
-            <p className="text-on-surface text-[2rem] font-extrabold font-headline tracking-[-0.02em]">
+            <p className="text-on-surface text-[1.5rem] sm:text-[2rem] font-extrabold font-headline tracking-[-0.02em]">
               {metric.value}
               <span className={`${metric.accent} text-[1.5rem] font-bold`}>{metric.suffix}</span>
             </p>

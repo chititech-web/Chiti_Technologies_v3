@@ -76,7 +76,7 @@ ${message || "No message provided."}`;
 
       <Container size="wide">
         <FadeIn>
-          <div className="glass-panel rounded-[1.75rem] p-8 md:p-10 mb-12 relative overflow-hidden border border-white/[0.03]">
+          <div className="glass-panel rounded-[1.75rem] p-6 md:p-8 lg:p-10 mb-12 relative overflow-hidden border border-white/[0.03]">
             <div
               className="absolute top-0 right-0 w-[250px] h-[250px] rounded-full"
               style={{
@@ -108,7 +108,7 @@ ${message || "No message provided."}`;
       <Container size="wide">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 items-start">
           <FadeIn className="lg:col-span-7">
-            <div className="glass-panel rounded-[1.75rem] p-10 md:p-14">
+            <div className="glass-panel rounded-[1.75rem] p-6 md:p-10 lg:p-14">
               <form onSubmit={handleSubmit} className="space-y-14">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-14 gap-y-10">
                   {[

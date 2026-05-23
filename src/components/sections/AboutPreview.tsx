@@ -8,7 +8,7 @@ export default function AboutPreview() {
   const t = useTranslations("about");
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 lg:gap-24 items-center">
       <FadeIn direction="left" className="order-2 md:order-1">
         <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden border border-white/[0.04]">
           <Image

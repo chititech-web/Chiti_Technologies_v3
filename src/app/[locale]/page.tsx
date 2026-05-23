@@ -2,6 +2,7 @@ import Container from "@/components/Container";
 import Section from "@/components/Section";
 import Hero from "@/components/sections/Hero";
 import MetricsStrip from "@/components/sections/MetricsStrip";
+import SystemArchitecture from "@/components/sections/SystemArchitecture";
 import ServicesGrid from "@/components/sections/ServicesGrid";
 import WorkShowcase from "@/components/sections/WorkShowcase";
 import Process from "@/components/sections/Process";
@@ -14,6 +15,12 @@ export default function Home() {
       <Container className="pt-28">
         <Hero />
         <MetricsStrip />
+      </Container>
+
+      <Container>
+        <Section id="architecture">
+          <SystemArchitecture />
+        </Section>
       </Container>
 
       <Container>

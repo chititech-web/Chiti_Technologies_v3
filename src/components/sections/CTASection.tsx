@@ -9,7 +9,7 @@ export default function CTASection() {
 
   return (
     <FadeIn>
-      <div className="relative overflow-hidden rounded-[2rem] p-14 md:p-28 text-center glass-panel">
+      <div className="relative overflow-hidden rounded-[2rem] p-8 md:p-14 lg:p-28 text-center glass-panel">
         <div
           className="absolute -top-48 -left-48 w-[500px] h-[500px] rounded-full"
           style={{

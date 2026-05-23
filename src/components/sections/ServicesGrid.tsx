@@ -26,7 +26,7 @@ export default function ServicesGrid() {
     {
       title: t("brandStrategy"),
       description: t("brandStrategyDesc"),
-      icon: Brush,
+      icon: Box,
       accent: "primary",
       iconColor: "text-primary/80",
     },
@@ -40,7 +40,7 @@ export default function ServicesGrid() {
     {
       title: t("visualIdentity"),
       description: t("visualIdentityDesc"),
-      icon: Box,
+      icon: Brush,
       accent: "tertiary",
       iconColor: "text-tertiary/80",
     },
@@ -68,9 +68,9 @@ export default function ServicesGrid() {
           const colors = accentMap[service.accent];
           return (
             <FadeIn key={service.title} delay={0.1 + i * 0.12}>
-              <div className="group relative p-9 rounded-2xl glass-panel transition-all duration-[700ms] ease-[var(--ease-out)] hover:-translate-y-1">
+              <div className="group relative p-6 md:p-9 rounded-2xl glass-panel transition-all duration-[700ms] ease-[var(--ease-out)] hover:-translate-y-1">
                 <div
-                  className={`size-12 rounded-xl ${colors.bg} flex items-center justify-center mb-8 ${service.iconColor} transition-all duration-[500ms]`}
+                  className={`size-12 rounded-xl ${colors.bg} flex items-center justify-center mb-6 md:mb-8 ${service.iconColor} transition-all duration-[500ms]`}
                 >
                   <service.icon size={22} strokeWidth={1.5} />
                 </div>

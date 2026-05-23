@@ -31,6 +31,7 @@ export default function Hero() {
   const t = useTranslations("hero");
   const [currentSlide, setCurrentSlide] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -50,6 +51,22 @@ export default function Hero() {
       vid.currentTime = 0;
       vid.play().catch(() => {});
     }
+  }, [currentSlide]);
+
+  useEffect(() => {
+    const panel = panelRef.current;
+    if (!panel) return;
+    const handleInteraction = () => {
+      if (showcaseSlides[currentSlide].type === "video" && videoRef.current) {
+        videoRef.current.play().catch(() => {});
+      }
+    };
+    panel.addEventListener("touchstart", handleInteraction, { passive: true });
+    panel.addEventListener("click", handleInteraction);
+    return () => {
+      panel.removeEventListener("touchstart", handleInteraction);
+      panel.removeEventListener("click", handleInteraction);
+    };
   }, [currentSlide]);
 
   return (
@@ -121,13 +138,13 @@ export default function Hero() {
         </div>
 
         <FadeIn direction="right" delay={0.25} duration={1.2}>
-          <div className="relative w-full aspect-square @[864px]:w-[480px] @[864px]:h-[480px]">
+          <div className="relative w-full @[864px]:w-[480px] @[864px]:h-[480px] min-h-[280px] @[480px]:min-h-[340px] @[864px]:min-h-0">
             <div
               className="absolute -inset-20 bg-gradient-to-tr from-primary/20 via-secondary/15 to-tertiary/10 blur-[120px] rounded-full"
               style={{ animation: "drift 20s ease-in-out infinite alternate" }}
             />
             
-            <div className="relative w-full h-full glass-panel rounded-3xl overflow-hidden p-8 flex flex-col justify-between">
+            <div ref={panelRef} className="relative w-full h-full glass-panel rounded-3xl overflow-hidden p-6 @[480px]:p-8 flex flex-col justify-between">
               <div className="flex items-center justify-between">
                 <div className="flex gap-2">
                   <div className="w-3 h-3 rounded-full bg-red-500/50" />

@@ -39,7 +39,7 @@ export default function WorkShowcase() {
       <div className="flex gap-6 overflow-x-auto no-scrollbar pb-6 snap-x">
         {featuredCaseStudies.map((project, i) => (
           <FadeIn key={project.slug} delay={0.1 + i * 0.15}>
-            <Link href={`/work/${project.slug}`} className="min-w-[380px] md:min-w-[560px] snap-start group block">
+            <Link href={`/work/${project.slug}`} className="min-w-[300px] md:min-w-[380px] lg:min-w-[560px] snap-start group block">
               <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-white/[0.04]">
                 <Image
                   src={project.images.hero}
