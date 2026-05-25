@@ -54,12 +54,15 @@ export default function WorkShowcase() {
       <FadeIn>
         <div className="flex justify-between items-end mb-14">
           <div className="flex flex-col gap-3">
-            <span className="text-primary/60 font-label text-[11px] tracking-[0.25em] uppercase font-medium">
+            <span className="text-secondary/60 font-label text-[11px] tracking-[0.25em] uppercase font-medium">
               {t("showcase")}
             </span>
-            <h2 className="text-on-surface text-[2rem] font-extrabold font-headline tracking-[-0.02em]">
-              Selected Work
-            </h2>
+            <div className="flex items-center gap-4">
+              <div className="neon-dot" />
+              <h2 className="text-on-surface text-[2rem] font-extrabold font-headline tracking-[-0.02em]">
+                Selected Work
+              </h2>
+            </div>
           </div>
           <a
             href="/work"

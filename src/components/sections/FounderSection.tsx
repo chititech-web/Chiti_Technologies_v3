@@ -17,12 +17,15 @@ export default function FounderSection() {
           }}
         />
         <div className="relative z-10 flex flex-col items-center gap-6 max-w-[600px] mx-auto">
-          <span className="text-primary/50 font-label text-[11px] tracking-[0.25em] uppercase font-medium">
+          <span className="text-secondary/60 font-label text-[11px] tracking-[0.25em] uppercase font-medium">
             {t("tagline")}
           </span>
-          <h2 className="text-on-surface text-[2rem] md:text-[2.5rem] font-extrabold font-headline tracking-[-0.02em]">
+          <div className="flex items-center gap-4">
+            <div className="neon-dot" />
+            <h2 className="text-on-surface text-[2rem] md:text-[2.5rem] font-extrabold font-headline tracking-[-0.02em]">
             {t("name")}
           </h2>
+          </div>
           <p className="text-on-surface-variant/70 text-[15px] md:text-[17px] leading-[1.75]">
             {t("copy")}
           </p>

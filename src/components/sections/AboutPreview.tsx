@@ -23,14 +23,17 @@ export default function AboutPreview() {
 
       <FadeIn direction="right" delay={0.15} className="order-1 md:order-2">
         <div className="flex flex-col gap-8">
-          <span className="text-primary/60 font-label text-[11px] tracking-[0.3em] uppercase font-medium">
+          <span className="text-secondary/60 font-label text-[11px] tracking-[0.25em] uppercase font-medium">
             {t("tagline")}
           </span>
-          <h2 className="text-on-surface text-[2rem] md:text-[2.5rem] font-extrabold font-headline leading-[1.12] tracking-[-0.03em]">
+          <div className="flex items-center gap-4">
+            <div className="neon-dot" />
+            <h2 className="text-on-surface text-[2rem] md:text-[2.5rem] font-extrabold font-headline leading-[1.12] tracking-[-0.02em]">
             Clean interfaces.{" "}
             <span className="gradient-text-aurora">Strong systems.</span>{" "}
             Better results.
           </h2>
+          </div>
           <p className="text-on-surface-variant/70 text-[16px] leading-[1.75] max-w-[420px]">
             Chiti Technologies is a high-frequency collective of specialists dedicated
             to the art of digital craft. We partner with ambitious brands to

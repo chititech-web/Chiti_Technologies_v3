@@ -211,21 +211,23 @@ export default function Hero() {
             </div>
           </FadeIn>
 
-          <motion.div
-            className="absolute top-20 right-10 w-2 h-2 bg-primary/30 rounded-full"
-            animate={{ y: [0, -20, 0], opacity: [0.3, 0.8, 0.3] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          />
-          <motion.div
-            className="absolute top-40 right-20 w-1 h-1 bg-secondary/40 rounded-full"
-            animate={{ y: [0, -15, 0], opacity: [0.4, 0.9, 0.4] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-          />
-          <motion.div
-            className="absolute bottom-10 left-20 w-1.5 h-1.5 bg-tertiary/30 rounded-full"
-            animate={{ y: [0, -25, 0], opacity: [0.3, 0.7, 0.3] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          />
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <motion.div
+              className="absolute top-20 right-10 w-2 h-2 bg-primary/30 rounded-full"
+              animate={{ y: [0, -20, 0], opacity: [0.3, 0.8, 0.3] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <motion.div
+              className="absolute top-40 right-20 w-1 h-1 bg-secondary/40 rounded-full"
+              animate={{ y: [0, -15, 0], opacity: [0.4, 0.9, 0.4] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+            />
+            <motion.div
+              className="absolute bottom-10 left-20 w-1.5 h-1.5 bg-tertiary/30 rounded-full"
+              animate={{ y: [0, -25, 0], opacity: [0.3, 0.7, 0.3] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            />
+          </div>
         </div>
 
         <FadeIn direction="right" delay={0.25} duration={1.2}>

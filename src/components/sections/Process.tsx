@@ -24,7 +24,7 @@ export default function Process() {
   const t = useTranslations("process");
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div>
       <FadeIn>
         <div className="flex flex-col gap-3 mb-16">
           <span className="text-secondary/60 font-label text-[11px] tracking-[0.25em] uppercase font-medium">
@@ -36,16 +36,18 @@ export default function Process() {
               {t("title")}
             </h2>
           </div>
-          <div className="neon-line mt-2 opacity-15" />
+          <p className="text-on-surface-variant/60 text-[14px] max-w-[480px] leading-[1.7] mt-1">
+            Discovery → Architecture → Interface → Automation → Growth
+          </p>
         </div>
       </FadeIn>
 
-      <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-0">
+      <div className="relative flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-0">
         {["step01", "step02", "step03", "step04", "step05"].map((step, i) => {
           const Icon = iconMap[step];
           return (
-            <FadeIn key={step} delay={0.08 + i * 0.1} className="w-full md:w-auto md:flex-1">
-              <div className="flex items-center gap-4 md:flex-col md:text-center group">
+            <FadeIn key={step} delay={0.08 + i * 0.1} className="w-full md:w-auto md:flex-1 relative">
+              <div className="flex items-center gap-4 md:flex-col md:text-center group relative z-10">
                 <div
                   className="shrink-0 size-12 md:size-14 rounded-2xl glass-panel flex items-center justify-center transition-all duration-[600ms] group-hover:-translate-y-1"
                   style={{ color: colorMap[step] }}
@@ -65,7 +67,7 @@ export default function Process() {
                 )}
               </div>
               {i < 4 && (
-                <div className="md:hidden ml-6 w-[1px] h-8 bg-white/[0.04] mx-auto" />
+                <div className="md:hidden absolute left-[23px] top-12 bottom-[-12px] w-[0.5px] bg-white/[0.04]" />
               )}
             </FadeIn>
           );
