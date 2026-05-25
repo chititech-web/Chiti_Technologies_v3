@@ -251,13 +251,10 @@ export default function Hero() {
                   <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
                   <div className="w-3 h-3 rounded-full bg-green-500/50" />
                 </div>
-                <div className="flex items-center gap-2 text-on-surface-variant/40">
+                <div className="flex items-center gap-2 text-on-surface-variant/60">
                   <Sparkles size={14} />
-                  <span className="text-[10px] uppercase tracking-[0.15em]">
-                    [{project.slug.toUpperCase().replace(/-/g, "_")}]
-                  </span>
-                  <span className="text-[10px] uppercase tracking-[0.15em] text-primary/60 ml-1">
-                    {t("systemActive")}
+                  <span className="text-[11px] font-headline font-bold tracking-[-0.01em]">
+                    {project.client}
                   </span>
                 </div>
               </div>
@@ -283,14 +280,21 @@ export default function Hero() {
                     />
                   </motion.div>
                 </AnimatePresence>
-                <div className="absolute inset-0 ken-burns-grain pointer-events-none" />
                 <div className="absolute inset-0 bg-gradient-to-t from-surface/90 via-surface/30 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
+                  <p className="text-on-surface text-lg font-bold font-headline leading-tight">
+                    {project.client}
+                  </p>
+                  <p className="text-on-surface-variant/50 text-[11px] leading-relaxed mt-1 max-w-[280px] line-clamp-2">
+                    {caseStudies.find((s) => s.slug === project.slug)?.subtitle}
+                  </p>
+                </div>
 
                 <button
                   onClick={prev}
                   onMouseEnter={() => { if (timerRef.current) clearInterval(timerRef.current); }}
                   onMouseLeave={() => startTimer()}
-                  className="absolute left-2 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-surface/60 backdrop-blur-sm flex items-center justify-center text-on-surface-variant/60 hover:text-on-surface hover:bg-surface/80 transition-all duration-[400ms] opacity-30 hover:opacity-90 cursor-pointer"
+                  className="absolute left-2 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-surface/60 backdrop-blur-sm flex items-center justify-center text-on-surface-variant/60 hover:text-on-surface hover:bg-surface/80 transition-all duration-[400ms] opacity-60 hover:opacity-100 cursor-pointer"
                   aria-label="Previous project"
                 >
                   <ChevronLeft size={18} />
@@ -299,7 +303,7 @@ export default function Hero() {
                   onClick={next}
                   onMouseEnter={() => { if (timerRef.current) clearInterval(timerRef.current); }}
                   onMouseLeave={() => startTimer()}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-surface/60 backdrop-blur-sm flex items-center justify-center text-on-surface-variant/60 hover:text-on-surface hover:bg-surface/80 transition-all duration-[400ms] opacity-30 hover:opacity-90 cursor-pointer"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-surface/60 backdrop-blur-sm flex items-center justify-center text-on-surface-variant/60 hover:text-on-surface hover:bg-surface/80 transition-all duration-[400ms] opacity-60 hover:opacity-100 cursor-pointer"
                   aria-label="Next project"
                 >
                   <ChevronRight size={18} />
@@ -312,7 +316,7 @@ export default function Hero() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-4 gap-3 pt-6 border-t border-white/[0.04]">
+              <div className="grid grid-cols-2 gap-4 pt-6 border-t border-white/[0.04]">
                 {project.metrics.map((m, i) => (
                   <div key={m.label} className="text-center">
                     <p className="text-on-surface text-lg font-bold font-headline">
@@ -332,7 +336,7 @@ export default function Hero() {
                 target="_blank"
                 className="absolute -top-4 -right-4 glass rounded-xl px-4 py-2 float cursor-pointer block hover:bg-white/[0.06] transition-colors duration-[400ms]"
               >
-                <span className="text-primary text-[10px] font-bold uppercase tracking-[0.15em]">{t("live")}</span>
+                <span className="text-primary text-[10px] font-bold uppercase tracking-[0.15em]">Visit Site →</span>
               </Link>
             )}
 
@@ -342,7 +346,7 @@ export default function Hero() {
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             >
-              <span className="text-secondary text-[10px] font-bold uppercase tracking-[0.15em]">{project.year}</span>
+              <span className="text-secondary text-[10px] font-bold uppercase tracking-[0.15em]">{project.category}</span>
             </motion.div>
           </div>
         </FadeIn>
