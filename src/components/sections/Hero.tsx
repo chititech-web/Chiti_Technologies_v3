@@ -2,26 +2,26 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import Button from "@/components/Button";
 import FadeIn from "@/components/FadeIn";
 import { motion, AnimatePresence } from "framer-motion";
-import { Cpu, BarChart3, Workflow, Database, Sparkles } from "lucide-react";
+import { Cpu, BarChart3, Workflow, Database, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 import CanvasParticles from "@/components/CanvasParticles";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { caseStudies } from "@/data/case-studies";
 
-const showcaseSlides = [
-  { src: "/case-studies/house-of-giriraj/curation.mp4",       alt: "Giriraj Curation",  type: "video" },
-  { src: "/case-studies/house-of-giriraj/maharani-viraasat.mp4", alt: "Maharani Viraasat", type: "video" },
-  { src: "/case-studies/house-of-giriraj/raj-tilak.mp4",     alt: "Raj Tilak",          type: "video" },
-  { src: "/case-studies/ts-aromatics/hero.png",           alt: "TS Aromatics" },
-  { src: "/case-studies/ts-aromatics/coconut-oil.jpg",    alt: "TS Aromatics — Coconut Oil" },
-  { src: "/case-studies/house-of-giriraj/hero.png",       alt: "House of Giriraj" },
-  { src: "/case-studies/netq/overview-screen.svg",        alt: "NetQ Command" },
-  { src: "/case-studies/batchflow/today-dashboard.png",   alt: "BatchFlow" },
-  { src: "/case-studies/bighi-brothers/overview-screen.jpg", alt: "Bighi Brothers" },
-];
+const showcaseProjects = caseStudies.map((s) => ({
+  slug: s.slug,
+  client: s.client,
+  image: s.images.hero,
+  category: s.category,
+  metrics: s.metrics,
+  liveUrl: s.liveUrl,
+  year: s.year,
+}));
 
 const systemModules = [
   { icon: Database, labelKey: "crmCore", position: "left-0 -translate-x-4 top-1/4" },
@@ -30,47 +30,89 @@ const systemModules = [
   { icon: Cpu, labelKey: "aiEngine", position: "right-0 translate-x-2 bottom-1/4" },
 ];
 
+function TypewriterValue({ value, delay = 50 }: { value: string; delay?: number }) {
+  const [displayed, setDisplayed] = useState("");
+
+  useEffect(() => {
+    setDisplayed("");
+    let i = 0;
+    const chars = [...value];
+    const timer = setInterval(() => {
+      if (i < chars.length) {
+        setDisplayed((prev) => prev + chars[i]);
+        i++;
+      } else {
+        clearInterval(timer);
+      }
+    }, delay);
+    return () => clearInterval(timer);
+  }, [value, delay]);
+
+  return <span>{displayed}</span>;
+}
+
+const kenBurnsOrigins = [
+  "center top",
+  "center bottom",
+  "left center",
+  "right center",
+  "top left",
+  "top right",
+  "bottom left",
+  "bottom right",
+];
+
 export default function Hero() {
   const t = useTranslations("hero");
   const [currentSlide, setCurrentSlide] = useState(0);
-  const videoRef = useRef<HTMLVideoElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
+  const [isDesktop, setIsDesktop] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const [originIndex, setOriginIndex] = useState(0);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % showcaseSlides.length);
-    }, 4000);
-    return () => clearInterval(timer);
+    const mq = window.matchMedia("(min-width: 768px)");
+    setIsDesktop(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
   }, []);
 
   useEffect(() => {
-    const slide = showcaseSlides[currentSlide];
-    if (slide.type === "video" && videoRef.current) {
-      const vid = videoRef.current;
-      if (vid.src !== window.location.origin + slide.src) {
-        vid.src = slide.src;
-        vid.load();
-      }
-      vid.currentTime = 0;
-      vid.play().catch(() => {});
-    }
+    setOriginIndex(Math.floor(Math.random() * kenBurnsOrigins.length));
   }, [currentSlide]);
 
+  const startTimer = useCallback(() => {
+    if (timerRef.current) clearInterval(timerRef.current);
+    timerRef.current = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % showcaseProjects.length);
+    }, 6000);
+  }, []);
+
   useEffect(() => {
-    const panel = panelRef.current;
-    if (!panel) return;
-    const handleInteraction = () => {
-      if (showcaseSlides[currentSlide].type === "video" && videoRef.current) {
-        videoRef.current.play().catch(() => {});
-      }
-    };
-    panel.addEventListener("touchstart", handleInteraction, { passive: true });
-    panel.addEventListener("click", handleInteraction);
+    startTimer();
     return () => {
-      panel.removeEventListener("touchstart", handleInteraction);
-      panel.removeEventListener("click", handleInteraction);
+      if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [currentSlide]);
+  }, [startTimer]);
+
+  const goTo = useCallback(
+    (i: number) => {
+      setCurrentSlide(i);
+      startTimer();
+    },
+    [startTimer]
+  );
+
+  const prev = useCallback(() => {
+    goTo((currentSlide - 1 + showcaseProjects.length) % showcaseProjects.length);
+  }, [currentSlide, goTo]);
+
+  const next = useCallback(() => {
+    goTo((currentSlide + 1) % showcaseProjects.length);
+  }, [currentSlide, goTo]);
+
+  const project = showcaseProjects[currentSlide];
 
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const gsapInitialized = useRef(false);
@@ -84,10 +126,6 @@ export default function Hero() {
   const headlineText = t("headline");
   const splitWords = useCallback(
     (text: string) => {
-      const isEmphasis = (w: string) => {
-        const trimmed = w.replace(/[^a-zA-Z\u0900-\u097F]/g, "").toLowerCase();
-        return trimmed === "intelligent" || trimmed === "बुद्धिमान" || trimmed === "beautiful" || trimmed === "खूबसूरत";
-      };
       const emphasisClass = (w: string) => {
         const trimmed = w.replace(/[^a-zA-Z\u0900-\u097F]/g, "").toLowerCase();
         if (trimmed === "intelligent" || trimmed === "बुद्धिमान") return "hero-emphasis-intelligent";
@@ -95,11 +133,7 @@ export default function Hero() {
         return "";
       };
       return text.split(" ").map((word, i) => (
-        <span
-          key={i}
-          className="inline-block overflow-hidden"
-          style={{ perspective: "600px" }}
-        >
+        <span key={i} className="inline-block overflow-hidden" style={{ perspective: "600px" }}>
           <span className={`inline-block ${emphasisClass(word)}`}>
             {word}
             {i < text.split(" ").length - 1 ? "\u00A0" : ""}
@@ -143,9 +177,9 @@ export default function Hero() {
             {systemModules.map((module, i) => (
               <motion.div
                 key={module.labelKey}
-                className={`absolute ${module.position} opacity-20`}
+                className={`absolute ${module.position}`}
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 0.2, y: 0 }}
+                animate={{ opacity: module.labelKey === project.category.toLowerCase() ? 0.4 : 0.2, y: 0 }}
                 transition={{ delay: 0.5 + i * 0.15, duration: 0.8 }}
               >
                 <div className="system-module rounded-xl p-4 float-slow">
@@ -209,7 +243,7 @@ export default function Hero() {
               className="absolute -inset-20 bg-gradient-to-tr from-primary/20 via-secondary/15 to-tertiary/10 blur-[120px] rounded-full"
               style={{ animation: "drift 20s ease-in-out infinite alternate" }}
             />
-            
+
             <div ref={panelRef} className="relative w-full h-full glass-panel rounded-3xl overflow-hidden p-6 @[480px]:p-8 flex flex-col justify-between">
               <div className="flex items-center justify-between">
                 <div className="flex gap-2">
@@ -219,87 +253,96 @@ export default function Hero() {
                 </div>
                 <div className="flex items-center gap-2 text-on-surface-variant/40">
                   <Sparkles size={14} />
-                  <span className="text-[10px] uppercase tracking-[0.15em]">{t("systemActive")}</span>
+                  <span className="text-[10px] uppercase tracking-[0.15em]">
+                    [{project.slug.toUpperCase().replace(/-/g, "_")}]
+                  </span>
+                  <span className="text-[10px] uppercase tracking-[0.15em] text-primary/60 ml-1">
+                    {t("systemActive")}
+                  </span>
                 </div>
               </div>
 
               <div className="flex-1 relative overflow-hidden rounded-xl">
-                <video
-                  ref={videoRef}
-                  muted
-                  playsInline
-                  loop
-                  preload="auto"
-                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-800 ${
-                    showcaseSlides[currentSlide].type === "video" ? "opacity-100" : "opacity-0 pointer-events-none"
-                  }`}
-                />
                 <AnimatePresence mode="wait">
-                  {showcaseSlides[currentSlide].type !== "video" && (
-                    <motion.div
-                      key={showcaseSlides[currentSlide].src}
-                      initial={{ opacity: 0, scale: 1.05 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.95 }}
-                      transition={{ duration: 0.8, ease: "easeInOut" }}
-                      className="absolute inset-0"
-                    >
-                      <Image
-                        src={showcaseSlides[currentSlide].src}
-                        alt={showcaseSlides[currentSlide].alt}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 864px) 100vw, 480px"
-                        unoptimized
-                      />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-                <div className="absolute inset-0 bg-gradient-to-t from-surface/90 via-surface/30 to-transparent" />
-                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
-                  {showcaseSlides.map((_, i) => (
-                    <div
-                      key={i}
-                      className={`w-1.5 h-1.5 rounded-full transition-all duration-500 ${
-                        i === currentSlide
-                          ? "bg-primary w-4"
-                          : "bg-white/20"
-                      }`}
+                  <motion.div
+                    key={project.slug}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                    className="absolute inset-0"
+                  >
+                    <Image
+                      src={project.image}
+                      alt={project.client}
+                      fill
+                      className={`object-cover ${isDesktop ? "ken-burns-in" : ""}`}
+                      style={isDesktop ? { transformOrigin: kenBurnsOrigins[originIndex] } : undefined}
+                      sizes="(max-width: 864px) 100vw, 480px"
+                      unoptimized
                     />
-                  ))}
+                  </motion.div>
+                </AnimatePresence>
+                <div className="absolute inset-0 ken-burns-grain pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-surface/90 via-surface/30 to-transparent" />
+
+                <button
+                  onClick={prev}
+                  onMouseEnter={() => { if (timerRef.current) clearInterval(timerRef.current); }}
+                  onMouseLeave={() => startTimer()}
+                  className="absolute left-2 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-surface/60 backdrop-blur-sm flex items-center justify-center text-on-surface-variant/60 hover:text-on-surface hover:bg-surface/80 transition-all duration-[400ms] opacity-30 hover:opacity-90 cursor-pointer"
+                  aria-label="Previous project"
+                >
+                  <ChevronLeft size={18} />
+                </button>
+                <button
+                  onClick={next}
+                  onMouseEnter={() => { if (timerRef.current) clearInterval(timerRef.current); }}
+                  onMouseLeave={() => startTimer()}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-surface/60 backdrop-blur-sm flex items-center justify-center text-on-surface-variant/60 hover:text-on-surface hover:bg-surface/80 transition-all duration-[400ms] opacity-30 hover:opacity-90 cursor-pointer"
+                  aria-label="Next project"
+                >
+                  <ChevronRight size={18} />
+                </button>
+
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20">
+                  <span className="text-[10px] font-mono text-on-surface-variant/40 tracking-[0.1em]">
+                    {currentSlide + 1} / {showcaseProjects.length}
+                  </span>
                 </div>
               </div>
 
-              <div className="grid grid-cols-3 gap-4 pt-6 border-t border-white/[0.04]">
-                <div className="text-center">
-                  <p className="text-on-surface text-xl font-bold font-headline">99.9%</p>
-                  <p className="text-on-surface-variant/40 text-[9px] uppercase tracking-[0.12em]">{t("uptime")}</p>
-                </div>
-                <div className="text-center">
-                  <p className="text-on-surface text-xl font-bold font-headline">12ms</p>
-                  <p className="text-on-surface-variant/40 text-[9px] uppercase tracking-[0.12em]">{t("latency")}</p>
-                </div>
-                <div className="text-center">
-                  <p className="text-on-surface text-xl font-bold font-headline">256</p>
-                  <p className="text-on-surface-variant/40 text-[9px] uppercase tracking-[0.12em]">{t("encryption")}</p>
-                </div>
+              <div className="grid grid-cols-4 gap-3 pt-6 border-t border-white/[0.04]">
+                {project.metrics.map((m, i) => (
+                  <div key={m.label} className="text-center">
+                    <p className="text-on-surface text-lg font-bold font-headline">
+                      <TypewriterValue value={m.value} delay={40 + i * 20} />
+                    </p>
+                    <p className="text-on-surface-variant/40 text-[8px] uppercase tracking-[0.12em] leading-tight mt-1">
+                      {m.label}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
 
-            <motion.div
-              className="absolute -top-4 -right-4 glass rounded-xl px-4 py-2 float"
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <span className="text-primary text-[10px] font-bold uppercase tracking-[0.15em]">{t("live")}</span>
-            </motion.div>
+            {project.liveUrl && (
+              <Link
+                href={project.liveUrl}
+                target="_blank"
+                className="absolute -top-4 -right-4 glass rounded-xl px-4 py-2 float cursor-pointer block hover:bg-white/[0.06] transition-colors duration-[400ms]"
+              >
+                <span className="text-primary text-[10px] font-bold uppercase tracking-[0.15em]">{t("live")}</span>
+              </Link>
+            )}
+
             <motion.div
               className="absolute -bottom-3 -left-3 glass rounded-xl px-3 py-2 float-medium"
               style={{ animationDelay: "1s" }}
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             >
-              <span className="text-secondary text-[10px] font-bold uppercase tracking-[0.15em]">{t("version")}</span>
+              <span className="text-secondary text-[10px] font-bold uppercase tracking-[0.15em]">{project.year}</span>
             </motion.div>
           </div>
         </FadeIn>
