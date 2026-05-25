@@ -124,25 +124,16 @@ export default function Hero() {
   }, []);
 
   const headlineText = t("headline");
-  const splitWords = useCallback(
-    (text: string) => {
-      const emphasisClass = (w: string) => {
-        const trimmed = w.replace(/[^a-zA-Z\u0900-\u097F]/g, "").toLowerCase();
-        if (trimmed === "intelligent" || trimmed === "बुद्धिमान") return "hero-emphasis-intelligent";
-        if (trimmed === "beautiful" || trimmed === "खूबसूरत") return "hero-emphasis-beautiful";
-        return "";
-      };
-      return text.split(" ").map((word, i) => (
-        <span key={i} className="inline-block overflow-hidden" style={{ perspective: "600px" }}>
-          <span className={`inline-block ${emphasisClass(word)}`}>
-            {word}
-            {i < text.split(" ").length - 1 ? "\u00A0" : ""}
-          </span>
+  const splitWords = useCallback((text: string) => {
+    return text.split(" ").map((word, i) => (
+      <span key={i} className="inline-block overflow-hidden" style={{ perspective: "600px" }}>
+        <span className="inline-block">
+          {word}
+          {i < text.split(" ").length - 1 ? "\u00A0" : ""}
         </span>
-      ));
-    },
-    []
-  );
+      </span>
+    ));
+  }, []);
 
   const headlineWords = splitWords(headlineText);
 

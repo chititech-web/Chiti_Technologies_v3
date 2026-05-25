@@ -1,77 +1,75 @@
 "use client";
 
 import FadeIn from "@/components/FadeIn";
+import { Search, LayoutDashboard, Monitor, Cog, TrendingUp } from "lucide-react";
+import { useTranslations } from "next-intl";
 
-const steps = [
-  {
-    number: "01",
-    title: "Precision Design",
-    description:
-      "Crafting sophisticated interfaces where every pixel serves a strategic purpose in the user journey.",
-    color: "#9966ff",
-  },
-  {
-    number: "02",
-    title: "Iterative Prototyping",
-    description:
-      "Rapid prototyping cycles that refine interactions and validate design decisions through user feedback.",
-    color: "#5c7cfa",
-  },
-  {
-    number: "03",
-    title: "Technical Excellence",
-    description:
-      "Rigorous engineering ensures your platform is secure, exceptionally fast, and ready for global scale.",
-    color: "#5c7cfa",
-  },
-];
+const colorMap: Record<string, string> = {
+  step01: "#9966ff",
+  step02: "#5c7cfa",
+  step03: "#00bfa5",
+  step04: "#00bcd4",
+  step05: "#9966ff",
+};
+
+const iconMap: Record<string, React.ElementType> = {
+  step01: Search,
+  step02: LayoutDashboard,
+  step03: Monitor,
+  step04: Cog,
+  step05: TrendingUp,
+};
 
 export default function Process() {
+  const t = useTranslations("process");
+
   return (
-    <div className="max-w-3xl mx-auto">
+    <div className="max-w-4xl mx-auto">
       <FadeIn>
-        <div className="text-center mb-24">
-          <span className="text-tertiary/60 font-label text-[11px] tracking-[0.3em] uppercase font-medium">
-            Methodology
+        <div className="flex flex-col gap-3 mb-16">
+          <span className="text-secondary/60 font-label text-[11px] tracking-[0.25em] uppercase font-medium">
+            {t("tagline")}
           </span>
-          <h2 className="text-on-surface text-[2rem] font-extrabold font-headline mt-4 tracking-[-0.02em]">
-            The Process
-          </h2>
-          <div className="flex justify-center mt-6">
-            <div className="neon-line w-24 opacity-20" />
+          <div className="flex items-center gap-4">
+            <div className="neon-dot" />
+            <h2 className="text-on-surface text-[2rem] font-extrabold font-headline tracking-[-0.02em]">
+              {t("title")}
+            </h2>
           </div>
+          <div className="neon-line mt-2 opacity-15" />
         </div>
       </FadeIn>
 
-      <div className="space-y-20">
-        {steps.map((step, i) => (
-          <FadeIn key={step.number} delay={0.1 + i * 0.12}>
-            <div className="flex gap-8 items-start relative group">
-              <div
-                className="w-12 h-12 rounded-full glass flex items-center justify-center shrink-0 font-bold text-[14px] transition-all duration-[600ms] ease-[var(--ease-out)] cursor-default"
-                style={{ color: step.color }}
-              >
-                {step.number}
-              </div>
-              <div className="pt-1">
-                <h4 className="text-lg font-bold font-headline mb-3 tracking-[-0.01em] text-on-surface group-hover:text-on-surface transition-colors duration-[400ms]">
-                  {step.title}
-                </h4>
-                <p className="text-on-surface-variant/65 text-[15px] leading-[1.7]">
-                  {step.description}
-                </p>
-              </div>
-              {i < steps.length - 1 && (
+      <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-0">
+        {["step01", "step02", "step03", "step04", "step05"].map((step, i) => {
+          const Icon = iconMap[step];
+          return (
+            <FadeIn key={step} delay={0.08 + i * 0.1} className="w-full md:w-auto md:flex-1">
+              <div className="flex items-center gap-4 md:flex-col md:text-center group">
                 <div
-                  className="absolute left-[23px] top-12 bottom-[-52px] w-[0.5px]"
-                  style={{
-                    background: `linear-gradient(to bottom, rgba(255,255,255,0.06), transparent)`,
-                  }}
-                />
+                  className="shrink-0 size-12 md:size-14 rounded-2xl glass-panel flex items-center justify-center transition-all duration-[600ms] group-hover:-translate-y-1"
+                  style={{ color: colorMap[step] }}
+                >
+                  <Icon size={22} strokeWidth={1.5} />
+                </div>
+                <div className="md:mt-3 min-w-0">
+                  <h3 className="text-on-surface text-[14px] font-bold font-headline mb-1 tracking-[-0.01em]">
+                    {t(`${step}`)}
+                  </h3>
+                  <p className="text-on-surface-variant/60 text-[11px] leading-[1.6] max-w-[200px] md:mx-auto">
+                    {t(`${step}Desc`)}
+                  </p>
+                </div>
+                {i < 4 && (
+                  <div className="hidden md:block flex-1 h-[0.5px] bg-white/[0.06] mx-4" />
+                )}
+              </div>
+              {i < 4 && (
+                <div className="md:hidden ml-6 w-[1px] h-8 bg-white/[0.04] mx-auto" />
               )}
-            </div>
-          </FadeIn>
-        ))}
+            </FadeIn>
+          );
+        })}
       </div>
     </div>
   );

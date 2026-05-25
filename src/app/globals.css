@@ -670,28 +670,8 @@ body {
   background-clip: text;
 }
 
-/* Hero Emphasis Words */
-.hero-emphasis-intelligent {
-  background: linear-gradient(135deg, var(--color-primary-dim) 0%, var(--color-primary) 50%, var(--color-secondary) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-weight: 900;
-  display: inline-block;
-  vertical-align: middle;
-  animation: glow-breathe 3s ease-in-out infinite;
-}
+/* Hero emphasis — placeholder for future styling */
 
-.hero-emphasis-beautiful {
-  font-weight: 500;
-  color: var(--color-on-surface-variant);
-  display: inline-block;
-}
-
-@keyframes glow-breathe {
-  0%, 100% { filter: drop-shadow(0 0 12px rgba(153, 102, 255, 0.2)); }
-  50% { filter: drop-shadow(0 0 24px rgba(153, 102, 255, 0.5)); }
-}
 
 /* Premium Glow on Hover */
 .glow-hover {

@@ -2,10 +2,11 @@ import Container from "@/components/Container";
 import Section from "@/components/Section";
 import Hero from "@/components/sections/Hero";
 import MetricsStrip from "@/components/sections/MetricsStrip";
-import SystemArchitecture from "@/components/sections/SystemArchitecture";
 import ServicesGrid from "@/components/sections/ServicesGrid";
 import WorkShowcase from "@/components/sections/WorkShowcase";
 import Process from "@/components/sections/Process";
+import FounderSection from "@/components/sections/FounderSection";
+import ServiceLadder from "@/components/sections/ServiceLadder";
 import AboutPreview from "@/components/sections/AboutPreview";
 import CTASection from "@/components/sections/CTASection";
 import StudioBanner from "@/components/sections/StudioBanner";
@@ -19,14 +20,14 @@ export default function Home() {
       </Container>
 
       <Container>
-        <Section id="architecture">
-          <SystemArchitecture />
+        <Section id="services">
+          <ServicesGrid />
         </Section>
       </Container>
 
       <Container>
-        <Section id="services">
-          <ServicesGrid />
+        <Section id="process">
+          <Process />
         </Section>
       </Container>
 
@@ -37,8 +38,14 @@ export default function Home() {
       </Container>
 
       <Container>
-        <Section id="process">
-          <Process />
+        <Section id="founder">
+          <FounderSection />
+        </Section>
+      </Container>
+
+      <Container>
+        <Section id="ladder" bordered>
+          <ServiceLadder />
         </Section>
       </Container>
 

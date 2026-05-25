@@ -25,20 +25,22 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://chitistudio.com"),
-  title: {
-    default: "Chiti Technologies — Intelligent Systems & Digital Design",
+    title: {
+    default: "Chiti Technologies — AI Systems, Premium Websites & Digital Infrastructure",
     template: "%s | Chiti Technologies",
   },
   description:
-    "We build intelligent systems, automation workflows, and scalable digital infrastructure. A premium creative technology collective specializing in Product Design, web development, and brand identity.",
+    "Chiti Technologies builds AI systems, premium websites, commerce infrastructure, automation workflows, and scalable product interfaces for ambitious founders and brands.",
   keywords: [
-    "design studio",
-    "UI/UX",
-    "web development",
-    "brand identity",
-    "digital agency",
-    "automation",
-    "CRM",
+    "AI systems",
+    "premium websites",
+    "digital infrastructure",
+    "ecommerce development",
+    "SaaS design",
+    "automation workflows",
+    "CRM automation",
+    "WhatsApp automation",
+    "brand design systems",
     "chiti technologies",
   ],
   robots: { index: true, follow: true },
@@ -52,9 +54,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "Chiti Technologies",
-    title: "Chiti Technologies — Intelligent Systems & Digital Design",
+    title: "Chiti Technologies — AI Systems, Premium Websites & Digital Infrastructure",
     description:
-      "We build intelligent systems, automation workflows, and scalable digital infrastructure.",
+      "Chiti Technologies builds AI systems, premium websites, commerce infrastructure, automation workflows, and scalable product interfaces.",
     images: [
       {
         url: "/logo.png",
@@ -66,9 +68,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Chiti Technologies — Intelligent Systems & Digital Design",
+    title: "Chiti Technologies — AI Systems, Premium Websites & Digital Infrastructure",
     description:
-      "We build intelligent systems, automation workflows, and scalable digital infrastructure.",
+      "Chiti Technologies builds AI systems, premium websites, commerce infrastructure, automation workflows, and scalable product interfaces.",
     images: ["/logo.png"],
   },
 };
