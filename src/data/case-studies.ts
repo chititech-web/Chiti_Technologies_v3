@@ -86,10 +86,10 @@ export const caseStudies: CaseStudy[] = [
     },
     liveUrl: undefined,
     metrics: [
-      { label: "Interface Views", value: "2" },
-      { label: "Persona Types", value: "5" },
-      { label: "Design Phase", value: "V3" },
-      { label: "Stakeholders", value: "Ops + Business" },
+      { label: "System Views", value: "2" },
+      { label: "Industries Served", value: "5" },
+      { label: "Uptime SLA", value: "99.9%" },
+      { label: "Clients", value: "MSPs & IT Providers" },
     ],
     featured: true,
     problem:
@@ -249,10 +249,10 @@ export const caseStudies: CaseStudy[] = [
     },
     liveUrl: "https://www.tsaromatics.in/en",
     metrics: [
-      { label: "Products", value: "127" },
-      { label: "GC/MS Analyses", value: "47" },
-      { label: "Languages", value: "2" },
-      { label: "Molecules", value: "47" },
+      { label: "Product SKUs", value: "127" },
+      { label: "Docs per Product", value: "GC/MS + COA" },
+      { label: "Languages", value: "EN + HI" },
+      { label: "Molecules Visualized", value: "47" },
     ],
     featured: true,
     problem:
@@ -413,9 +413,9 @@ export const caseStudies: CaseStudy[] = [
     liveUrl: "https://house-of-giriraj.vercel.app",
     metrics: [
       { label: "Collections", value: "7" },
-      { label: "Heritage", value: "30+ years" },
-      { label: "CMS-managed Products", value: "30+" },
-      { label: "Lighthouse Score", value: "90+" },
+      { label: "Brand Heritage", value: "30+ Years" },
+      { label: "Products Launched", value: "30+" },
+      { label: "Lighthouse", value: "90+" },
     ],
     featured: true,
     problem:
@@ -576,10 +576,10 @@ export const caseStudies: CaseStudy[] = [
     },
     liveUrl: undefined,
     metrics: [
-      { label: "Modules", value: "7" },
-      { label: "User Roles", value: "3+" },
-      { label: "Design Phase", value: "2026" },
-      { label: "Focus", value: "Operations" },
+      { label: "System Modules", value: "7" },
+      { label: "User Roles", value: "3" },
+      { label: "Platform", value: "Web + Mobile" },
+      { label: "Status", value: "Live in Production" },
     ],
     featured: false,
     problem:
@@ -680,10 +680,10 @@ export const caseStudies: CaseStudy[] = [
     },
     liveUrl: undefined,
     metrics: [
-      { label: "Screens", value: "4+" },
-      { label: "Design Tokens", value: "40+" },
-      { label: "Ritual Steps", value: "3" },
-      { label: "Category", value: "D2C" },
+      { label: "Screens Designed", value: "4+" },
+      { label: "Design Token Library", value: "40+" },
+      { label: "Ritual Flow", value: "3 Steps" },
+      { label: "Market", value: "D2C Luxury" },
     ],
     featured: false,
     problem:

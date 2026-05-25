@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import FadeIn from "@/components/FadeIn";
 import { useTranslations } from "next-intl";
 
@@ -20,6 +21,15 @@ export default function FounderSection() {
           <span className="text-secondary/60 font-label text-[11px] tracking-[0.25em] uppercase font-medium">
             {t("tagline")}
           </span>
+          <div className="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden ring-2 ring-white/10">
+            <Image
+              src="/images/founder.webp"
+              alt="Prabhakar Kumar"
+              width={112}
+              height={112}
+              className="w-full h-full object-cover"
+            />
+          </div>
           <div className="flex items-center gap-4">
             <div className="neon-dot" />
             <h2 className="text-on-surface text-[2rem] md:text-[2.5rem] font-extrabold font-headline tracking-[-0.02em]">
