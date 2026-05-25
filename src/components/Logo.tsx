@@ -13,9 +13,14 @@ export default function Logo() {
         height={36}
         className="rounded-lg"
       />
-      <span className="text-on-surface font-headline font-bold text-lg tracking-[-0.02em]">
-        CHITI TECHNOLOGIES
-      </span>
+      <div className="flex flex-col leading-none">
+        <span className="text-on-surface font-headline font-bold text-xl md:text-2xl tracking-[-0.02em]">
+          CHITI
+        </span>
+        <span className="text-on-surface-variant/60 font-headline font-semibold text-[10px] md:text-[11px] tracking-[0.2em]">
+          technologies
+        </span>
+      </div>
     </Link>
   );
 }
