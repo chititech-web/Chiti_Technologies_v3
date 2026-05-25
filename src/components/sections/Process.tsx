@@ -39,6 +39,9 @@ export default function Process() {
           <p className="text-on-surface-variant/60 text-[14px] max-w-[480px] leading-[1.7] mt-1">
             Discovery → Architecture → Interface → Automation → Growth
           </p>
+          <p className="text-on-surface-variant/40 text-[13px] italic leading-[1.7] mt-6 max-w-[600px]">
+            "{t("quote")}"
+          </p>
         </div>
       </FadeIn>
 

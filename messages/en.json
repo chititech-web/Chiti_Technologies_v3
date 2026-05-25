@@ -10,7 +10,7 @@
   "hero": {
     "tagline": "System Design & Automation",
     "headline": "AI systems, premium websites, and digital infrastructure for ambitious brands.",
-    "subtitle": "We design and build scalable digital systems across commerce, SaaS, AI, automation, and brand-led web experiences.",
+    "subtitle": "Chiti designs and builds intelligent digital systems across commerce, SaaS, automation, and modern web experiences.",
     "cta": "Start a Project",
     "ctaSecondary": "View Systems",
     "systemActive": "System Active",
@@ -41,22 +41,23 @@
     "title": "What we build",
     "subtitle": "End-to-end digital systems for commerce, SaaS, AI, and brand-led experiences.",
     "card01": "Premium Websites",
-    "card01Desc": "High-performance, brand-led websites built for speed, conversion, and lasting impression.",
+    "card01Desc": "Conversion-ready websites for serious brands.",
     "card02": "AI Agents & Workflows",
-    "card02Desc": "Custom AI agents, intelligent automation pipelines, and LLM-powered workflows that reduce manual effort.",
+    "card02Desc": "Custom AI systems that reduce manual work.",
     "card03": "Ecommerce Systems",
-    "card03Desc": "Scalable storefronts, inventory engines, payment integrations, and checkout optimization.",
+    "card03Desc": "Product storytelling, checkout flows, WhatsApp inquiry, CRM-ready commerce.",
     "card04": "SaaS Dashboards",
-    "card04Desc": "Data-rich admin panels, analytics interfaces, and multi-tenant platforms with role-based access.",
-    "card05": "WhatsApp & CRM Automation",
-    "card05Desc": "Automated WhatsApp campaigns, lead routing, CRM sync, and conversational commerce flows.",
-    "card06": "Brand & Design Systems",
-    "card06Desc": "Visual identities, component libraries, and design tokens that keep your product coherent at scale."
+    "card04Desc": "Dense, scalable interfaces for data-heavy products.",
+    "card05": "Automation Infrastructure",
+    "card05Desc": "WhatsApp, CRM, forms, lead capture, follow-ups, internal workflows.",
+    "card06": "Design Systems",
+    "card06Desc": "Reusable brand/UI systems for faster future launches."
   },
 
   "process": {
     "tagline": "Chiti Method",
     "title": "How we build",
+    "quote": "We don't start with screens. We first understand the business, then design the system that should exist behind the interface.",
     "step01": "Discovery",
     "step01Desc": "Understand your goals, audit existing systems, and define measurable KPIs before writing a single line of code.",
     "step02": "Architecture",
@@ -168,27 +169,27 @@
     "tagline": "Built by",
     "name": "Prabhakar Kumar",
     "title": "Founder & Systems Architect — Chiti Technologies",
-    "copy": "Chiti exists to build intelligent, ethical, commercially useful systems — not template websites. We partner with founders who care about craft, performance, and long-term value."
+    "copy": "Chiti Technologies is built with one belief: digital products should be beautiful, intelligent, ethical, and commercially useful. We don't build template websites. We build systems that help brands operate, sell, and scale."
   },
   "ladder": {
-    "tagline": "Service Ladder",
-    "title": "From presence to full-scale growth",
+    "tagline": "Engagement Models",
+    "title": "Engagement Models",
     "subtitle": "Every engagement is custom. These tiers describe scope, not packages.",
     "tier01": "Presence",
-    "tier01Desc": "Premium website, brand identity, landing page, and launch. For founders who need a strong first impression.",
+    "tier01Desc": "Website, landing page, brand direction, launch-ready digital presence.",
     "tier01Tag": "Website · Brand · Launch",
     "tier02": "Systems",
-    "tier02Desc": "Custom ecommerce, SaaS platforms, AI products, and automation infrastructure. For businesses that need operational scale.",
+    "tier02Desc": "Ecommerce, SaaS dashboards, AI agents, workflow automation, internal tools.",
     "tier02Tag": "Ecommerce · SaaS · AI · Automation",
     "tier03": "Growth",
-    "tier03Desc": "Funnel design, ad creative systems, CRM + WhatsApp workflows, and retargeting infrastructure. For revenue-focused teams.",
+    "tier03Desc": "Funnels, CRM, WhatsApp automation, retargeting, analytics, conversion systems.",
     "tier03Tag": "Funnels · CRM · Ads · Retargeting",
-    "cta": "Tell us what you need"
+    "cta": "Discuss the right system for your brand"
   },
   "cta": {
     "headline": "Tell us what you want to build.",
-    "subtitle": "Every project starts with a conversation. Share your vision and we'll map the path forward.",
-    "button": "Send an Inquiry",
+    "subtitle": "Whether you need a premium website, an AI workflow, or a full digital system, Chiti can help you turn the idea into working infrastructure.",
+    "button": "Start a Project",
     "whatsapp": "WhatsApp"
   },
   "nova": {

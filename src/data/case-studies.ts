@@ -637,9 +637,9 @@ export const caseStudies: CaseStudy[] = [
     screenIntro:
       "These screens show how the product moves from a daily dashboard into deeper operational flows such as student management, performance analysis, and communication history.",
     impact: [
-      "Consolidated scattered institute workflows into one clearer product direction",
+      "Internal prototype — consolidated scattered institute workflows into one clearer product direction",
       "Improved visibility across student records, payments, attendance, and communication",
-      "Created a scalable base for future modules such as advanced reports and parent-facing experiences",
+      "Estimated impact: created a scalable base for future modules such as advanced reports and parent-facing experiences",
       "Turned day-to-day admin work into a more structured, decision-oriented system",
     ],
     reflection:
@@ -745,7 +745,7 @@ export const caseStudies: CaseStudy[] = [
     screenIntro:
       "The screens below show how the design system translates into a cohesive D2C experience, from the ritual homepage through the user journey and into the three-step ritual flow.",
     impact: [
-      "Reframed the brand from product-first to experience-first storytelling",
+      "Concept case study — reframed the brand from product-first to experience-first storytelling",
       "Created a design system flexible enough for editorial content and commerce",
       "Reduced user decision fatigue through guided ritual structure",
       "Established a distinctive brand presence in the crowded D2C skincare space",

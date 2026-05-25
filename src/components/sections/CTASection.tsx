@@ -38,6 +38,7 @@ export default function CTASection() {
               {t("button")}
             </Button>
             <a
+              id="whatsapp-contact"
               href="https://wa.me/919972934937"
               target="_blank"
               rel="noopener noreferrer"

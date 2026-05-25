@@ -202,12 +202,16 @@ export default function Hero() {
 
           <FadeIn direction="none" delay={0.35}>
             <div className="flex flex-wrap gap-4 relative z-10">
-              <Button variant="primary" size="md" href="/contact" data-magnetic data-cursor-text="Inquire →">
+              <span id="start-project">
+                <Button variant="primary" size="md" href="/contact" data-magnetic data-cursor-text="Inquire →">
                 {t("cta")}
               </Button>
-              <Button variant="secondary" size="md" href="/work" data-magnetic data-cursor-text="View Systems">
+              </span>
+              <span id="view-systems">
+                <Button variant="secondary" size="md" href="/work" data-magnetic data-cursor-text="View Systems">
                 {t("ctaSecondary")}
               </Button>
+              </span>
             </div>
           </FadeIn>
 

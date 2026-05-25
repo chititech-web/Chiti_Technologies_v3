@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     template: "%s | Chiti Technologies",
   },
   description:
-    "Chiti Technologies builds AI systems, premium websites, commerce infrastructure, automation workflows, and scalable product interfaces for ambitious founders and brands.",
+    "Chiti Technologies builds AI systems, premium websites, ecommerce platforms, SaaS dashboards, automation workflows, and scalable design systems for ambitious brands.",
   keywords: [
     "AI systems",
     "premium websites",
@@ -50,13 +50,13 @@ export const metadata: Metadata = {
       hi: "/hi",
     },
   },
-  openGraph: {
+    openGraph: {
     type: "website",
     locale: "en_US",
     siteName: "Chiti Technologies",
     title: "Chiti Technologies — AI Systems, Premium Websites & Digital Infrastructure",
     description:
-      "Chiti Technologies builds AI systems, premium websites, commerce infrastructure, automation workflows, and scalable product interfaces.",
+      "Chiti Technologies builds AI systems, premium websites, ecommerce platforms, SaaS dashboards, automation workflows, and scalable design systems for ambitious brands.",
     images: [
       {
         url: "/logo.png",
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Chiti Technologies — AI Systems, Premium Websites & Digital Infrastructure",
     description:
-      "Chiti Technologies builds AI systems, premium websites, commerce infrastructure, automation workflows, and scalable product interfaces.",
+      "Chiti Technologies builds AI systems, premium websites, ecommerce platforms, SaaS dashboards, automation workflows, and scalable design systems for ambitious brands.",
     images: ["/logo.png"],
   },
 };
