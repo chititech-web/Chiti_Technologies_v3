@@ -122,7 +122,7 @@ function WorkCard({
             src={project.images.hero}
             alt={project.client}
             fill
-            className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-[1.04] transition-all duration-[2000ms] ease-[var(--ease-out)]"
+            className="object-cover grayscale max-md:grayscale-0 group-hover:grayscale-0 group-hover:scale-[1.04] transition-all duration-[2000ms] ease-[var(--ease-out)]"
             sizes="(max-width: 768px) 380px, 560px"
           />
           <video

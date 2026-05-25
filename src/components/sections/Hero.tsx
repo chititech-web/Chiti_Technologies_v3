@@ -294,7 +294,7 @@ export default function Hero() {
                   onClick={prev}
                   onMouseEnter={() => { if (timerRef.current) clearInterval(timerRef.current); }}
                   onMouseLeave={() => startTimer()}
-                  className="absolute left-2 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-surface/60 backdrop-blur-sm flex items-center justify-center text-on-surface-variant/60 hover:text-on-surface hover:bg-surface/80 transition-all duration-[400ms] opacity-60 hover:opacity-100 cursor-pointer"
+                  className="absolute left-2 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-surface/60 backdrop-blur-sm flex items-center justify-center text-on-surface-variant/60 hover:text-on-surface hover:bg-surface/80 transition-all duration-[400ms] opacity-80 md:opacity-60 md:hover:opacity-100 cursor-pointer"
                   aria-label="Previous project"
                 >
                   <ChevronLeft size={18} />
@@ -303,7 +303,7 @@ export default function Hero() {
                   onClick={next}
                   onMouseEnter={() => { if (timerRef.current) clearInterval(timerRef.current); }}
                   onMouseLeave={() => startTimer()}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-surface/60 backdrop-blur-sm flex items-center justify-center text-on-surface-variant/60 hover:text-on-surface hover:bg-surface/80 transition-all duration-[400ms] opacity-60 hover:opacity-100 cursor-pointer"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-surface/60 backdrop-blur-sm flex items-center justify-center text-on-surface-variant/60 hover:text-on-surface hover:bg-surface/80 transition-all duration-[400ms] opacity-80 md:opacity-60 md:hover:opacity-100 cursor-pointer"
                   aria-label="Next project"
                 >
                   <ChevronRight size={18} />
@@ -334,14 +334,14 @@ export default function Hero() {
               <Link
                 href={project.liveUrl}
                 target="_blank"
-                className="absolute -top-4 -right-4 glass rounded-xl px-4 py-2 float cursor-pointer block hover:bg-white/[0.06] transition-colors duration-[400ms]"
+                className="absolute -top-2 md:-top-4 -right-2 md:-right-4 glass rounded-xl px-4 py-2 float cursor-pointer block hover:bg-white/[0.06] transition-colors duration-[400ms]"
               >
                 <span className="text-primary text-[10px] font-bold uppercase tracking-[0.15em]">Visit Site →</span>
               </Link>
             )}
 
             <motion.div
-              className="absolute -bottom-3 -left-3 glass rounded-xl px-3 py-2 float-medium"
+              className="absolute -bottom-2 md:-bottom-3 -left-2 md:-left-3 glass rounded-xl px-3 py-2 float-medium"
               style={{ animationDelay: "1s" }}
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}

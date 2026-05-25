@@ -8,6 +8,7 @@ import WorkShowcase from "@/components/sections/WorkShowcase";
 import Process from "@/components/sections/Process";
 import AboutPreview from "@/components/sections/AboutPreview";
 import CTASection from "@/components/sections/CTASection";
+import StudioBanner from "@/components/sections/StudioBanner";
 
 export default function Home() {
   return (
@@ -50,6 +51,12 @@ export default function Home() {
       <Container>
         <Section>
           <CTASection />
+        </Section>
+      </Container>
+
+      <Container>
+        <Section className="pb-0 md:pb-0">
+          <StudioBanner />
         </Section>
       </Container>
     </>

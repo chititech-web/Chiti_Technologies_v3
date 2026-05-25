@@ -103,7 +103,7 @@ export default function MetricsStrip() {
               </p>
               <svg
                 viewBox="0 0 100 24"
-                className="w-full h-6 opacity-0 group-hover:opacity-40 transition-opacity duration-[600ms]"
+                className="w-full h-6 opacity-30 md:opacity-0 md:group-hover:opacity-40 transition-opacity duration-[600ms]"
               >
                 <path
                   d={sparklines[i]}

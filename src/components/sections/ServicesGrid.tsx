@@ -81,7 +81,7 @@ export default function ServicesGrid() {
                   {service.description}
                 </p>
                 <div className={`w-full h-[0.5px] bg-white/[0.04] ${colors.line} transition-all duration-[600ms]`} />
-                <div className="absolute bottom-7 right-8 opacity-0 group-hover:opacity-100 transition-all duration-[500ms] translate-x-3 group-hover:translate-x-0">
+                <div className="absolute bottom-7 right-8 opacity-60 md:opacity-0 md:group-hover:opacity-100 transition-all duration-[500ms] md:translate-x-3 md:group-hover:translate-x-0">
                   <ArrowRight className={service.iconColor} size={16} strokeWidth={1.5} />
                 </div>
               </div>

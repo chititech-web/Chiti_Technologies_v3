@@ -12,10 +12,10 @@ export default function AboutPreview() {
       <FadeIn direction="left" className="order-2 md:order-1">
         <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden border border-white/[0.04]">
           <Image
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKHdJS_zm5Dppq3C5UvxeLSDa30Z1Ydgi9vyYohyd8qQ4DnzBd9pkA_1gliovoY02ykWQPHHsy7atdr21A8y2sGwuVZns7m8MHbkKQo4K2Qtw3vSXlR9gZOidxcFNYBL2xTfkvpTTcCVa8Ec71hkiU_Q6aee_4v63YQIR1cvuYm_ykSPz-wQbQJBZFueSyLvnx0xzUVjEYCWtnvBZMvYKfYdr3dY-nR-QDrH6_oz6Rx9O7eBDXHDBBdEpwiaZAlQEhgBHdmVd6slU"
+            src="/images/about/about-studio.png"
             alt="Creative team"
             fill
-            className="object-cover grayscale hover:grayscale-0 transition-all duration-[2500ms] ease-[var(--ease-out)]"
+            className="object-cover grayscale max-md:grayscale-0 hover:grayscale-0 transition-all duration-[2500ms] ease-[var(--ease-out)]"
             sizes="(max-width: 768px) 100vw, 480px"
           />
         </div>
@@ -26,7 +26,7 @@ export default function AboutPreview() {
           <span className="text-primary/60 font-label text-[11px] tracking-[0.3em] uppercase font-medium">
             {t("tagline")}
           </span>
-          <h2 className="text-on-surface text-[2.5rem] font-extrabold font-headline leading-[1.12] tracking-[-0.03em]">
+          <h2 className="text-on-surface text-[2rem] md:text-[2.5rem] font-extrabold font-headline leading-[1.12] tracking-[-0.03em]">
             Clean interfaces.{" "}
             <span className="gradient-text-aurora">Strong systems.</span>{" "}
             Better results.
