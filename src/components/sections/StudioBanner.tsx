@@ -23,11 +23,10 @@ export default function StudioBanner() {
               The Studio
             </span>
             <h2 className="text-on-surface text-[1.75rem] md:text-[2.5rem] font-extrabold font-headline leading-[1.12] tracking-[-0.02em]">
-              Where craft meets code
+              Thoughtful systems built by a small independent team.
             </h2>
             <p className="text-on-surface-variant/70 text-[14px] md:text-[16px] leading-[1.7] max-w-[400px]">
-              A high-frequency collective operating at the intersection of design,
-              engineering, and strategy.
+              A small systems studio combining design, engineering, and business thinking.
             </p>
           </div>
         </div>

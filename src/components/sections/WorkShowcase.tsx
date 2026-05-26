@@ -156,6 +156,9 @@ function WorkCard({
           <p className="text-on-surface-variant/40 text-[12px] mt-2 line-clamp-2 leading-[1.6]">
             {project.subtitle}
           </p>
+          <p className="text-primary/50 text-[10px] font-label uppercase tracking-[0.12em] mt-1.5">
+            {project.role}
+          </p>
           <div className="flex flex-wrap gap-1.5 mt-3">
             {project.tags.slice(0, 3).map((tag) => (
               <span

@@ -47,12 +47,12 @@ export default function AboutPreview() {
               </span>
             </div>
             <div className="flex flex-col gap-1.5">
-              <span className="text-on-surface text-2xl font-extrabold font-headline tracking-[-0.02em]">
-                24/7
-              </span>
-              <span className="text-on-surface-variant/40 text-[10px] font-label uppercase tracking-[0.18em]">
-                Innovation
-              </span>
+                <span className="text-on-surface text-2xl font-extrabold font-headline tracking-[-0.02em]">
+                  45+
+                </span>
+                <span className="text-on-surface-variant/40 text-[10px] font-label uppercase tracking-[0.18em]">
+                  Projects Shipped
+                </span>
             </div>
           </div>
         </div>
