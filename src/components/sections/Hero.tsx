@@ -18,7 +18,8 @@ const showcaseProjects = caseStudies.map((s) => ({
   client: s.client,
   image: s.images.hero,
   category: s.category,
-  metrics: s.metrics,
+  tags: s.tags,
+  subtitle: s.subtitle,
   liveUrl: s.liveUrl,
   year: s.year,
 }));
@@ -29,27 +30,6 @@ const systemModules = [
   { icon: BarChart3, labelKey: "analytics", position: "left-0 -translate-x-2 bottom-1/3" },
   { icon: Cpu, labelKey: "aiEngine", position: "right-0 translate-x-2 bottom-1/4" },
 ];
-
-function TypewriterValue({ value, delay = 50 }: { value?: string; delay?: number }) {
-  const [displayed, setDisplayed] = useState("");
-
-  useEffect(() => {
-    setDisplayed("");
-    let i = 0;
-    const chars = [...(value ?? "")];
-    const timer = setInterval(() => {
-      if (i < chars.length) {
-        setDisplayed((prev) => prev + chars[i]);
-        i++;
-      } else {
-        clearInterval(timer);
-      }
-    }, delay);
-    return () => clearInterval(timer);
-  }, [value, delay]);
-
-  return <span>{displayed}</span>;
-}
 
 const kenBurnsOrigins = [
   "center top",
@@ -277,15 +257,6 @@ export default function Hero() {
                     />
                   </motion.div>
                 </AnimatePresence>
-                <div className="absolute inset-0 bg-gradient-to-t from-surface/90 via-surface/30 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
-                  <p className="text-on-surface text-lg font-bold font-headline leading-tight">
-                    {project.client}
-                  </p>
-                  <p className="text-on-surface-variant/50 text-[11px] leading-relaxed mt-1 max-w-[280px] line-clamp-2">
-                    {caseStudies.find((s) => s.slug === project.slug)?.subtitle}
-                  </p>
-                </div>
 
                 <button
                   onClick={prev}
@@ -313,17 +284,23 @@ export default function Hero() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4 pt-6 border-t border-white/[0.04]">
-                {project.metrics.slice(0, 2).map((m, i) => (
-                  <div key={m.label} className="text-center">
-                    <p className="text-on-surface text-lg font-bold font-headline">
-                      <TypewriterValue value={m.value} delay={40 + i * 20} />
-                    </p>
-                    <p className="text-on-surface-variant/40 text-[8px] uppercase tracking-[0.12em] leading-tight mt-1">
-                      {m.label}
-                    </p>
-                  </div>
-                ))}
+              <div className="pt-6 border-t border-white/[0.04] space-y-3">
+                <h3 className="text-on-surface text-lg font-bold font-headline leading-tight">
+                  {project.client}
+                </h3>
+                <p className="text-on-surface-variant/50 text-[11px] leading-relaxed line-clamp-2">
+                  {project.subtitle}
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-2.5 py-0.5 rounded-full bg-white/[0.03] text-[9px] font-label uppercase tracking-[0.12em] text-primary/50 border border-white/[0.04]"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -337,15 +314,7 @@ export default function Hero() {
               </Link>
             )}
 
-            <motion.div
-              className="absolute -bottom-2 md:-bottom-3 -left-2 md:-left-3 glass rounded-xl px-3 py-2 float-medium"
-              style={{ animationDelay: "1s" }}
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <span className="text-secondary text-[10px] font-bold uppercase tracking-[0.15em]">{project.category}</span>
-            </motion.div>
-          </div>
+            </div>
         </FadeIn>
       </div>
     </div>
