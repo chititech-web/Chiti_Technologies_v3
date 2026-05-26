@@ -825,6 +825,7 @@ section.border-t {
   z-index: 9997;
   pointer-events: none;
   background: var(--color-surface);
+  clip-path: circle(0% at 50% 50%);
 }
 
 /* Sparkline undulation */
