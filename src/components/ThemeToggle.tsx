@@ -2,36 +2,65 @@
 
 import { useTheme } from "next-themes";
 import { Sun, Moon } from "lucide-react";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 
 export default function ThemeToggle() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
     setMounted(true);
+    return () => {
+      if (rafRef.current !== null) {
+        cancelAnimationFrame(rafRef.current);
+      }
+    };
   }, []);
 
   const handleClick = useCallback(
     (e: React.MouseEvent) => {
+      if (rafRef.current !== null) {
+        cancelAnimationFrame(rafRef.current);
+        rafRef.current = null;
+      }
+
       const clip = document.getElementById("theme-clip");
       if (!clip) {
         setTheme(theme === "dark" ? "light" : "dark");
         return;
       }
+
       const { clientX, clientY } = e;
+      const duration = 500;
+      let startTime: number | null = null;
+      let themeSwitched = false;
+
       clip.style.clipPath = `circle(0% at ${clientX}px ${clientY}px)`;
-      clip.classList.remove("active");
-      requestAnimationFrame(() => {
-        clip.style.clipPath = `circle(150% at ${clientX}px ${clientY}px)`;
-        clip.classList.add("active");
-      });
-      setTimeout(() => {
-        setTheme(theme === "dark" ? "light" : "dark");
-      }, 50);
-      setTimeout(() => {
-        clip.classList.remove("active");
-      }, 700);
+
+      const animate = (timestamp: number) => {
+        if (!startTime) startTime = timestamp;
+        const elapsed = timestamp - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const radius = eased * 150;
+
+        clip.style.clipPath = `circle(${radius}% at ${clientX}px ${clientY}px)`;
+
+        if (!themeSwitched && progress >= 0.3) {
+          setTheme(theme === "dark" ? "light" : "dark");
+          themeSwitched = true;
+        }
+
+        if (progress < 1) {
+          rafRef.current = requestAnimationFrame(animate);
+        } else {
+          rafRef.current = null;
+        }
+      };
+
+      rafRef.current = requestAnimationFrame(animate);
     },
     [theme, setTheme]
   );
