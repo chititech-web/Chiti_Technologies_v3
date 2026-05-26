@@ -33,7 +33,7 @@ export default function ConversationEngine() {
   } = useNovaStore();
   
   const flow: Record<string, FlowStep> = {
-    "welcome": { type: "video", videoUrl: "/nova/videos/welcome.mp4", subtitle: "Welcome. I'm Nova.", nextStep: "intent-selection" },
+    "welcome": { type: "video", videoUrl: "/nova/videos/welcome.mp4", subtitle: "Nova — Chiti's conversation layer.", nextStep: "intent-selection" },
     "intent-selection": { type: "video", videoUrl: "/nova/videos/thinking.mp4", question: "What brings you here?", options: [{ label: "Build something new", value: "build", nextStep: "project-type" }, { label: "Improve what exists", value: "improve", nextStep: "project-type" }, { label: "Just exploring", value: "explore", nextStep: "exploration" }] },
     "exploration": { type: "video", videoUrl: "/nova/videos/acknowledgement.mp4", subtitle: "Take your time. I'm here when you're ready.", nextStep: "end" },
     "project-type": { type: "video", videoUrl: "/nova/videos/thinking.mp4", question: "What type of project?", options: [{ label: "Website / Web App", value: "website", nextStep: "budget" }, { label: "Mobile App", value: "mobile", nextStep: "budget" }, { label: "Brand / Design", value: "brand", nextStep: "budget" }, { label: "SaaS / Product", value: "saas", nextStep: "budget" }, { label: "Something else", value: "other", nextStep: "budget" }], storeKey: "projectType" },

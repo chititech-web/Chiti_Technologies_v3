@@ -29,17 +29,17 @@
   "metrics": {
     "projects": "Projects Delivered",
     "clients": "Happy Clients",
-    "uptime": "Platform Uptime",
-    "awards": "Awards Won",
+    "uptime": "Years Building",
+    "awards": "Industries Served",
     "value": "24+",
     "valueClients": "45+",
-    "valueUptime": "99.9%",
-    "valueAwards": "4"
+    "valueUptime": "5+",
+    "valueAwards": "12"
   },
   "services": {
     "tagline": "Capability Stack",
     "title": "What we build",
-    "subtitle": "End-to-end digital systems for commerce, SaaS, AI, and brand-led experiences.",
+    "subtitle": "Digital systems for commerce, SaaS, AI, and brand-led experiences.",
     "card01": "Premium Websites",
     "card01Desc": "Conversion-ready websites for serious brands.",
     "card02": "AI Agents & Workflows",
@@ -71,8 +71,8 @@
   },
   "work": {
     "tagline": "Portfolio",
-    "title": "Curating Digital Excellence",
-    "subtitle": "A curated selection of projects where strategy meets craft, and ambition meets execution.",
+    "title": "Selected Work",
+    "subtitle": "Design, engineering, and business thinking working together.",
     "selectedCases": "Selected Cases",
     "allCases": "All Cases",
     "showcase": "Showcase",
@@ -99,24 +99,25 @@
     "niche": "Niche"
   },
   "about": {
-    "tagline": "चिति — The Supreme Consciousness",
-    "title": "The Core Philosophy",
-    "subtitle": "Chiti (चिति): The Supreme Consciousness. Universal Intelligence. The primal force that designs, structures, and gives form to the universe.",
-    "philosophyBody": "We do not just build websites; we architect digital infrastructure. Named after the cosmic principle of conscious creation, Chiti Technologies was founded to bring absolute precision, structural intelligence, and flawless engineering to the digital economy.\n\nWe look at businesses not as a collection of isolated pages, but as living, interconnected ecosystems. Our mission is to transform manual friction into automated flow, translating complex operational logic into beautiful, high-frequency digital realities.",
-    "collectiveTitle": "The Collective Approach",
-    "collectiveBody": "We operate as a high-frequency, decentralized collective of elite engineers, designers, and systems architects. By abandoning traditional agency bloat, we focus entirely on raw digital craft.\n\nWe partner exclusively with ambitious brands, high-growth enterprises, and luxury innovators who demand technical excellence and absolute strategic clarity.",
+    "tagline": "चिति — Thoughtful Creation",
+    "title": "About Chiti",
+    "subtitle": "A Sanskrit-rooted word associated with intelligence, awareness, and formation. For us, it represents thoughtful creation — systems designed with clarity, purpose, and responsibility.",
+    "philosophyBody": "Chiti Technologies builds websites, AI workflows, and digital systems for modern brands and products. We approach digital products as systems — not isolated pages. Design, automation, and business logic are considered together from the start.",
+    "collectiveTitle": "How we work",
+    "collectiveBody": "Small team. Focused work. We partner with brands that need more than templates — they need systems that operate, sell, and scale.",
+    "pillarsTitle": "Our Pillars of Execution",
     "pillar01": "Conscious Architecture",
-    "pillar01Desc": "Every line of code, database model, and automation pipeline is built with intent. We design systems that don't just solve today's bottlenecks but gracefully adapt to future scale.",
+    "pillar01Desc": "Every line of code, model, and pipeline is built with intent — solving today's problems while leaving room for tomorrow's growth.",
     "pillar02": "Technical Rigor",
-    "pillar02Desc": "We are obsessed with performance metrics. Sub-second latency, robust security protocols, and 99.9% uptime SLAs are our baseline standards, not an afterthought.",
+    "pillar02Desc": "Sub-second latency, strong security, and reliable uptime are our baseline — not afterthoughts.",
     "pillar03": "Invisible Complexity",
-    "pillar03Desc": "We believe the highest form of sophistication is simplicity. We take intricate business mechanics and package them into intuitive, editorial-grade user interfaces that feel effortless to navigate.",
-    "blueprintTitle": "The Infrastructure Blueprint",
-    "blueprintBody": "From custom automated workflows and tokenized CRM pipelines to immersive, components-driven design languages, we build the digital backbone that allows your business to evolve.",
+    "pillar03Desc": "The highest form of sophistication is simplicity. We take complex mechanics and make them feel effortless.",
+    "blueprintTitle": "What we deliver",
+    "blueprintBody": "Custom automated workflows, design systems, and digital products that let your business evolve without rebuilding from scratch.",
     "blueprintTagline": "Strong systems. Sharp interfaces. Uncompromising results.",
-    "statsEngineers": "Elite Engineers",
-    "statsProjects": "Global Projects",
-    "statsUptime": "Platform Uptime"
+    "statsEngineers": "Designers & Engineers",
+    "statsProjects": "Projects Built",
+    "statsUptime": "Response Time"
   },
   "contact": {
     "tagline": "Ready to evolve?",
@@ -137,23 +138,49 @@
     "formPlaceholderCompany": "The Future Inc.",
     "formPlaceholderMessage": "Briefly describe your goals, timeline, and any existing brand assets...",
     "fitTitle": "Is Chiti Technologies the right fit?",
-    "fit01": "Modern & High-End Branding",
-    "fit01Desc": "For companies looking to redefine their visual soul.",
+    "fit01": "Brand-First Products",
+    "fit01Desc": "Companies that care about how they look and how they work.",
     "fit02": "Product & UI Systems",
     "fit02Desc": "Scalable design systems built for long-term growth.",
-    "fit03": "Editorial Web Experiences",
-    "fit03Desc": "Breaking the grid with intentional and elite layouts.",
+    "fit03": "Content & Commerce",
+    "fit03Desc": "Brands with stories to tell and products to sell.",
     "responseTime": "Response Time",
     "responseDesc": "Typically within 24-48 hours. We value deep work and intentional responses over speed.",
     "directContact": "Direct Contact",
     "social": "Social",
     "location": "Location",
     "locationValue": "Remote-first,\nBased Globally.",
-    "quote": "Whether you need a full website, a product redesign, or a long-term design partner, we'd love to hear from you."
+    "quote": "Whether you need a full website, an AI workflow, or a long-term design partner, we can help."
+  },
+  "cta": {
+    "headline": "Tell us what you want to build.",
+    "subtitle": "Whether you need a premium website, AI workflow, or a complete digital system, Chiti can help turn your idea into infrastructure that works.",
+    "button": "Start a Project",
+    "whatsapp": "WhatsApp"
+  },
+  "founder": {
+    "tagline": "Founder",
+    "name": "Prabhakar Kumar",
+    "title": "Founder & System Architect — Chiti Technologies",
+    "copy": "Chiti Technologies was built on a conviction: digital products should be beautiful, intelligent, ethical, and commercially useful. We don't build template websites. We build systems that help brands operate, sell, and scale."
+  },
+  "ladder": {
+    "tagline": "Engagement Models",
+    "title": "Engagement Models",
+    "subtitle": "Every project is custom. These tiers describe scope, not packages.",
+    "tier01": "Presence",
+    "tier01Desc": "Websites, landing pages, brand direction, launch-ready digital presence.",
+    "tier01Tag": "Website · Brand · Launch",
+    "tier02": "Systems",
+    "tier02Desc": "Ecommerce, SaaS dashboards, AI agents, workflow automation, internal tools.",
+    "tier02Tag": "Ecommerce · SaaS · AI · Automation",
+    "tier03": "Growth",
+    "tier03Desc": "Funnels, CRM, WhatsApp automation, retargeting, analytics, conversion systems.",
+    "tier03Tag": "Funnels · CRM · Ads · Retargeting",
+    "cta": "Discuss the right system for your brand"
   },
   "footer": {
-    "description": "Chiti Technologies builds AI systems, premium websites, commerce infrastructure, automation workflows, and scalable product interfaces for ambitious brands.",
-    "projectsStartAt": "Projects start at ₹1.5L",
+    "description": "Chiti Technologies builds AI systems, websites, commerce infrastructure, automation workflows, and scalable product interfaces for ambitious brands.",
     "work": "Work",
     "services": "Services",
     "company": "Company",
@@ -164,36 +191,5 @@
     "about": "About",
     "contact": "Contact",
     "rights": "All rights reserved."
-  },
-  "founder": {
-    "tagline": "Built by",
-    "name": "Prabhakar Kumar",
-    "title": "Founder & Systems Architect — Chiti Technologies",
-    "copy": "Chiti Technologies is built with one belief: digital products should be beautiful, intelligent, ethical, and commercially useful. We don't build template websites. We build systems that help brands operate, sell, and scale."
-  },
-  "ladder": {
-    "tagline": "Engagement Models",
-    "title": "Engagement Models",
-    "subtitle": "Every engagement is custom. These tiers describe scope, not packages.",
-    "tier01": "Presence",
-    "tier01Desc": "Website, landing page, brand direction, launch-ready digital presence.",
-    "tier01Tag": "Website · Brand · Launch",
-    "tier02": "Systems",
-    "tier02Desc": "Ecommerce, SaaS dashboards, AI agents, workflow automation, internal tools.",
-    "tier02Tag": "Ecommerce · SaaS · AI · Automation",
-    "tier03": "Growth",
-    "tier03Desc": "Funnels, CRM, WhatsApp automation, retargeting, analytics, conversion systems.",
-    "tier03Tag": "Funnels · CRM · Ads · Retargeting",
-    "cta": "Discuss the right system for your brand"
-  },
-  "cta": {
-    "headline": "Tell us what you want to build.",
-    "subtitle": "Whether you need a premium website, an AI workflow, or a full digital system, Chiti can help you turn the idea into working infrastructure.",
-    "button": "Start a Project",
-    "whatsapp": "WhatsApp"
-  },
-  "nova": {
-    "greeting": "Hi, I'm Nova 👋",
-    "subtitle": "Your AI concierge. Ask me anything about our work or services."
   }
 }

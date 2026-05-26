@@ -155,7 +155,7 @@ export default function AboutPage() {
           <FadeIn>
             <div className="text-center mb-16">
               <h2 className="text-on-surface text-[2rem] font-extrabold font-headline tracking-[-0.02em]">
-                Our Pillars of Execution
+                {t("pillarsTitle")}
               </h2>
             </div>
           </FadeIn>

@@ -60,7 +60,7 @@ export default function WorkShowcase() {
             <div className="flex items-center gap-4">
               <div className="neon-dot" />
               <h2 className="text-on-surface text-[2rem] font-extrabold font-headline tracking-[-0.02em]">
-                Selected Work
+                {t("title")}
               </h2>
             </div>
           </div>

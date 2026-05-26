@@ -38,11 +38,6 @@ export default function Footer() {
             <p className="mt-6 text-on-surface-variant/60 text-[14px] leading-[1.7] max-w-[320px]">
               {t("description")}
             </p>
-            <div className="mt-6">
-              <span className="inline-block px-4 py-1.5 rounded-full border border-primary/20 text-primary/70 text-[11px] font-semibold tracking-wide">
-                {t("projectsStartAt")}
-              </span>
-            </div>
           </div>
 
           <div>

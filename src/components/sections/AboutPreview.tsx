@@ -35,9 +35,7 @@ export default function AboutPreview() {
           </h2>
           </div>
           <p className="text-on-surface-variant/70 text-[16px] leading-[1.75] max-w-[420px]">
-            Chiti Technologies is a high-frequency collective of specialists dedicated
-            to the art of digital craft. We partner with ambitious brands to
-            navigate the new frontier of the digital economy.
+            Chiti Technologies is a small digital systems company. We partner with brands that need more than templates — they need systems that operate, sell, and scale.
           </p>
           <div className="grid grid-cols-2 gap-8 mt-4 pt-8 border-t border-white/[0.04]">
             <div className="flex flex-col gap-1.5">

@@ -9,7 +9,7 @@ import { useTranslations } from "next-intl";
 const metrics = [
   { labelKey: "projects", valueKey: "value", suffix: "+" },
   { labelKey: "clients", valueKey: "valueClients", suffix: "+" },
-  { labelKey: "uptime", valueKey: "valueUptime", suffix: "%" },
+  { labelKey: "uptime", valueKey: "valueUptime", suffix: "+" },
   { labelKey: "awards", valueKey: "valueAwards", suffix: "" },
 ];
 
