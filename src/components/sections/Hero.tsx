@@ -30,13 +30,13 @@ const systemModules = [
   { icon: Cpu, labelKey: "aiEngine", position: "right-0 translate-x-2 bottom-1/4" },
 ];
 
-function TypewriterValue({ value, delay = 50 }: { value: string; delay?: number }) {
+function TypewriterValue({ value, delay = 50 }: { value?: string; delay?: number }) {
   const [displayed, setDisplayed] = useState("");
 
   useEffect(() => {
     setDisplayed("");
     let i = 0;
-    const chars = [...value];
+    const chars = [...(value ?? "")];
     const timer = setInterval(() => {
       if (i < chars.length) {
         setDisplayed((prev) => prev + chars[i]);
@@ -314,7 +314,7 @@ export default function Hero() {
               </div>
 
               <div className="grid grid-cols-2 gap-4 pt-6 border-t border-white/[0.04]">
-                {project.metrics.map((m, i) => (
+                {project.metrics.slice(0, 2).map((m, i) => (
                   <div key={m.label} className="text-center">
                     <p className="text-on-surface text-lg font-bold font-headline">
                       <TypewriterValue value={m.value} delay={40 + i * 20} />
