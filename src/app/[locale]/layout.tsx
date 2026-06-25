@@ -6,7 +6,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import AuroraBackground from "@/components/AuroraBackground";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import Nova from "@/components/nova/Nova";
+// import Nova from "@/components/nova/Nova";
 import Preloader from "@/components/Preloader";
 import SmoothScrollProvider from "@/components/SmoothScrollProvider";
 import CustomCursor from "@/components/CustomCursor";
@@ -42,7 +42,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           <main className="relative z-10">{children}</main>
         </SmoothScrollProvider>
         <Footer />
-        <Nova />
+        {/* <Nova /> */}
       </ThemeProvider>
     </NextIntlClientProvider>
   );
