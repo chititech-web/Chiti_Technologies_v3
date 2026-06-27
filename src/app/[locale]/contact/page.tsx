@@ -1,37 +1,63 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import Container from "@/components/Container";
 import FadeIn from "@/components/FadeIn";
 import Button from "@/components/Button";
-import { Input } from "@chiti/ui";
-import {
-  CheckCircle2,
-  Clock,
-} from "lucide-react";
-import Link from "next/link";
+import { motion } from "framer-motion";
+import { CheckCircle2, ArrowDown, Calendar } from "lucide-react";
 import { useTranslations } from "next-intl";
-
-const projectTypes = ["New Website", "App Product Design", "Branding", "Product System"];
+import CanvasParticles from "@/components/CanvasParticles";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function ContactPage() {
-  const [activeType, setActiveType] = useState("App Product Design");
+  const [submitted, setSubmitted] = useState(false);
   const t = useTranslations("contact");
+  const headlineRef = useRef<HTMLHeadingElement>(null);
+  const gsapInit = useRef(false);
 
-  const fitChecks = [
-    {
-      title: t("fit01"),
-      description: t("fit01Desc"),
-    },
-    {
-      title: t("fit02"),
-      description: t("fit02Desc"),
-    },
-    {
-      title: t("fit03"),
-      description: t("fit03Desc"),
-    },
-  ];
+  useEffect(() => {
+    if (gsapInit.current) return;
+    gsap.registerPlugin(ScrollTrigger);
+    gsapInit.current = true;
+  }, []);
+
+  const headlineText = t("heroTitle");
+  const splitWords = useCallback((text: string) => {
+    return text.split(" ").map((word, i) => (
+      <span key={i} className="inline-block overflow-hidden" style={{ perspective: "600px" }}>
+        <span className="inline-block">
+          {word}
+          {i < text.split(" ").length - 1 ? "\u00A0" : ""}
+        </span>
+      </span>
+    ));
+  }, []);
+
+  const headlineWords = splitWords(headlineText);
+
+  useEffect(() => {
+    if (!headlineRef.current) return;
+    const words = headlineRef.current.querySelectorAll("span > span");
+    if (words.length === 0) return;
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        words,
+        { y: 60, opacity: 0, rotateX: 30 },
+        {
+          y: 0,
+          opacity: 1,
+          rotateX: 0,
+          duration: 0.8,
+          stagger: 0.04,
+          ease: "power3.out",
+          scrollTrigger: { trigger: headlineRef.current, start: "top 85%" },
+        }
+      );
+    });
+    return () => ctx.revert();
+  }, []);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -40,143 +66,188 @@ export default function ContactPage() {
     const name = formData.get("name") as string;
     const email = formData.get("email") as string;
     const company = formData.get("company") as string;
-    const currency = formData.get("currency") as string;
+    const currencyVal = formData.get("currency") as string;
     const amount = formData.get("budget") as string;
-    const budget = currency && amount ? `${currency} ${amount}` : "Not specified";
+    const budget = currencyVal && amount ? `${currencyVal} ${amount}` : "Not specified";
     const message = formData.get("message") as string;
 
     const subject = `Project Inquiry from ${name}${company ? ` (${company})` : ""}`;
-    const body = `Name: ${name}
-Email: ${email}
-Company: ${company || "N/A"}
-Budget: ${budget || "Not specified"}
-Project Type: ${activeType}
+    const body = `Name: ${name}\nEmail: ${email}\nCompany: ${company || "N/A"}\nBudget: ${budget}\n\nMessage:\n${message || "No message provided."}`;
 
-Message:
-${message || "No message provided."}`;
-
-    window.location.href = `mailto:chititech@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    setSubmitted(true);
+    setTimeout(() => {
+      window.location.href = `mailto:chititech@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    }, 1500);
   };
 
+  if (submitted) {
+    return (
+      <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div className="aurora-blob aurora-blob-1" />
+        <div className="aurora-blob aurora-blob-3" />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center relative z-10 px-4"
+        >
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+            className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-8"
+          >
+            <CheckCircle2 className="text-primary" size={32} strokeWidth={1.5} />
+          </motion.div>
+          <h2 className="text-on-surface text-2xl md:text-3xl font-bold font-headline mb-4">
+            {t("formSuccess")}
+          </h2>
+          <p className="text-on-surface-variant/60 text-sm max-w-md mx-auto">
+            {t("responseDesc")}
+          </p>
+        </motion.div>
+      </div>
+    );
+  }
+
   return (
-    <>
-      <Container size="wide" className="pt-36">
-        <FadeIn>
-          <div className="max-w-3xl mb-24">
-            <span className="text-secondary/70 font-label text-[10px] tracking-[0.3em] uppercase mb-6 block font-bold neon-text-glow">
-              {t("tagline")}
-            </span>
-            <h1 className="text-on-surface text-[3rem] md:text-[4.5rem] font-extrabold font-headline tracking-[-0.04em] mb-8 leading-[0.95]">
-              {t("title")}
-            </h1>
-            <p className="text-on-surface-variant/60 text-[17px] md:text-[19px] font-light leading-[1.7] max-w-[520px]">
-              {t("subtitle")}
-            </p>
-          </div>
-        </FadeIn>
-      </Container>
+    <div className="relative">
+      {/* 1. Hero — full-viewport atmospheric */}
+      <section className="relative min-h-screen flex items-center overflow-hidden">
+        <CanvasParticles />
+        <div className="aurora-blob aurora-blob-1" />
+        <div className="aurora-blob aurora-blob-3" />
 
-      <Container size="wide">
-        <FadeIn>
-          <div className="glass-panel rounded-[1.75rem] p-6 md:p-8 lg:p-10 mb-12 relative overflow-hidden border border-white/[0.03]">
-            <div
-              className="absolute top-0 right-0 w-[250px] h-[250px] rounded-full"
-              style={{
-                background: "radial-gradient(circle, rgba(153,102,255,0.06) 0%, transparent 70%)",
-              }}
-            />
-            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
-              <div>
-                <h3 className="text-on-surface text-[1.25rem] font-bold font-headline mb-2">
-                  {t("callHeadline")}
-                </h3>
-                <p className="text-on-surface-variant/60 text-[14px] max-w-[420px]">
-                  {t("callDesc")}
-                </p>
-              </div>
-              <a
-                href="https://calendly.com/chiti-studio/discovery"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-primary to-primary-dim text-on-primary text-[14px] font-semibold hover:shadow-[0_0_30px_rgba(153,102,255,0.3)] transition-all duration-[500ms] shrink-0"
+        <Container size="wide" className="relative z-10 pt-24 pb-16">
+          <FadeIn direction="none" delay={0.15}>
+            <div className="max-w-3xl">
+              <span className="text-secondary/70 font-label text-[11px] tracking-[0.25em] uppercase mb-6 block font-medium">
+                {t("heroTagline")}
+              </span>
+              <h1
+                ref={headlineRef}
+                className="text-on-surface text-[2.75rem] md:text-[4.5rem] font-extrabold font-headline tracking-[-0.04em] mb-8 leading-[0.95]"
               >
-                {t("callCta")}
-              </a>
+                {headlineWords}
+              </h1>
+              <p className="text-on-surface-variant/60 text-[17px] md:text-[19px] font-light leading-[1.7] max-w-[520px]">
+                {t("heroSubtitle")}
+              </p>
             </div>
+          </FadeIn>
+        </Container>
+
+        <motion.div
+          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <ArrowDown size={20} className="text-on-surface-variant/30" />
+        </motion.div>
+      </section>
+
+      {/* 2. Philosophy — narrative bridge */}
+      <section className="py-24 md:py-32">
+        <Container size="wide">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { num: "01", titleKey: "phil01", descKey: "phil01Desc" },
+              { num: "02", titleKey: "phil02", descKey: "phil02Desc" },
+              { num: "03", titleKey: "phil03", descKey: "phil03Desc" },
+            ].map((item, i) => (
+              <FadeIn key={item.num} delay={0.1 + i * 0.12} direction="up">
+                <div className="glass-panel rounded-[1.75rem] p-8 md:p-10 h-full flex flex-col">
+                  <span className="text-[2rem] md:text-[2.5rem] font-bold font-headline text-primary/30 tracking-[-0.03em] leading-none mb-6 block">
+                    {item.num}
+                  </span>
+                  <h3 className="text-on-surface text-[1.1rem] md:text-[1.25rem] font-bold font-headline mb-4 tracking-[-0.01em]">
+                    {t(item.titleKey)}
+                  </h3>
+                  <p className="text-on-surface-variant/60 text-[13px] md:text-[14px] leading-[1.7] flex-1">
+                    {t(item.descKey)}
+                  </p>
+                </div>
+              </FadeIn>
+            ))}
           </div>
-        </FadeIn>
-      </Container>
+        </Container>
+      </section>
 
-      <Container size="wide">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 items-start">
-          <FadeIn className="lg:col-span-7">
-            <div className="glass-panel rounded-[1.75rem] p-6 md:p-10 lg:p-14">
-              <form onSubmit={handleSubmit} className="space-y-14">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-14 gap-y-10">
-                  {[
-                    { label: t("formName"), name: "name", type: "text", placeholder: t("formPlaceholderName"), required: true },
-                    { label: t("formEmail"), name: "email", type: "email", placeholder: t("formPlaceholderEmail"), required: true },
-                    { label: t("formCompany"), name: "company", type: "text", placeholder: t("formPlaceholderCompany"), required: false },
-                  ].map((field) => (
-                    <Input
-                      key={field.name}
-                      label={field.label}
-                      name={field.name}
-                      type={field.type}
-                      placeholder={field.placeholder}
-                      required={field.required}
-                    />
-                  ))}
-
-                  <div className="group relative">
-                    <label className="block text-[10px] uppercase tracking-[0.15em] text-on-surface-variant/50 font-label mb-3 group-focus-within:text-primary/80 transition-colors duration-[400ms]">
-                      {t("formBudget")}
-                    </label>
-                    <div className="flex items-center gap-3 border-b border-white/[0.06] group-focus-within:border-primary/50 transition-all duration-[500ms]">
-                      <select
-                        name="currency"
-                        className="bg-transparent border-0 py-3.5 pr-2 focus:ring-0 text-on-surface font-body appearance-none text-[15px] outline-none cursor-pointer min-w-[64px]"
-                      >
-                        <option className="bg-surface-container-high" value="USD">$ USD</option>
-                        <option className="bg-surface-container-high" value="INR">₹ INR</option>
-                        <option className="bg-surface-container-high" value="EUR">€ EUR</option>
-                        <option className="bg-surface-container-high" value="GBP">£ GBP</option>
-                      </select>
-                      <span className="text-on-surface-variant/30 text-[15px]">|</span>
-                      <input
-                        type="number"
-                        inputMode="numeric"
-                        pattern="[0-9]*"
-                        min="0"
-                        name="budget"
-                        placeholder="50,000"
-                        className="flex-1 bg-transparent border-0 py-3.5 px-0 focus:ring-0 text-on-surface placeholder:text-on-surface-variant/20 transition-all duration-[500ms] font-body text-[15px] outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
-                      />
-                    </div>
-                    <div className="absolute bottom-0 left-0 h-[0.5px] w-0 bg-gradient-to-r from-primary/60 to-secondary/40 group-focus-within:w-full transition-all duration-[600ms] ease-[var(--ease-out)]" />
-                  </div>
+      {/* 3. Form — centered, generous */}
+      <section className="py-24 md:py-32 relative overflow-hidden">
+        <div className="aurora-blob aurora-blob-2 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+        <Container size="wide">
+          <FadeIn>
+            <div className="max-w-2xl mx-auto relative z-10">
+              <form onSubmit={handleSubmit} className="space-y-14 md:space-y-16">
+                <div className="group relative">
+                  <label className="block text-[10px] uppercase tracking-[0.15em] text-on-surface-variant/50 font-label mb-3 group-focus-within:text-primary/80 transition-colors duration-[400ms]">
+                    {t("formName")}
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    required
+                    placeholder={t("formPlaceholderName")}
+                    className="w-full bg-transparent border-0 border-b border-white/[0.06] py-4 px-0 focus:ring-0 focus:border-primary/50 text-on-surface placeholder:text-on-surface-variant/20 transition-all duration-[500ms] font-body text-[16px] outline-none"
+                  />
+                  <div className="absolute bottom-0 left-0 h-[0.5px] w-0 bg-gradient-to-r from-primary/60 to-secondary/40 group-focus-within:w-full transition-all duration-[600ms] ease-[var(--ease-out)]" />
                 </div>
 
-                <div>
-                  <label className="block text-[10px] uppercase tracking-[0.15em] text-on-surface-variant/50 font-label mb-6">
-                    {t("formType")}
+                <div className="group relative">
+                  <label className="block text-[10px] uppercase tracking-[0.15em] text-on-surface-variant/50 font-label mb-3 group-focus-within:text-primary/80 transition-colors duration-[400ms]">
+                    {t("formEmail")}
                   </label>
-                  <div className="flex flex-wrap gap-3">
-                    {projectTypes.map((type) => (
-                      <button
-                        key={type}
-                        type="button"
-                        onClick={() => setActiveType(type)}
-                        className={`px-6 py-2.5 rounded-full border text-[12px] font-medium transition-all duration-[500ms] ease-[var(--ease-out)] cursor-pointer ${
-                          activeType === type
-                            ? "border-primary/40 bg-primary/[0.08] text-primary/90 shadow-[0_0_16px_rgba(153,102,255,0.1)]"
-                            : "border-white/[0.06] bg-white/[0.02] text-on-surface-variant/50 hover:border-primary/20 hover:bg-primary/[0.03] hover:text-primary/70"
-                        }`}
-                      >
-                        {type}
-                      </button>
-                    ))}
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    placeholder={t("formPlaceholderEmail")}
+                    className="w-full bg-transparent border-0 border-b border-white/[0.06] py-4 px-0 focus:ring-0 focus:border-primary/50 text-on-surface placeholder:text-on-surface-variant/20 transition-all duration-[500ms] font-body text-[16px] outline-none"
+                  />
+                  <div className="absolute bottom-0 left-0 h-[0.5px] w-0 bg-gradient-to-r from-primary/60 to-secondary/40 group-focus-within:w-full transition-all duration-[600ms] ease-[var(--ease-out)]" />
+                </div>
+
+                <div className="group relative">
+                  <label className="block text-[10px] uppercase tracking-[0.15em] text-on-surface-variant/50 font-label mb-3 group-focus-within:text-primary/80 transition-colors duration-[400ms]">
+                    {t("formCompany")}
+                  </label>
+                  <input
+                    type="text"
+                    name="company"
+                    placeholder={t("formPlaceholderCompany")}
+                    className="w-full bg-transparent border-0 border-b border-white/[0.06] py-4 px-0 focus:ring-0 focus:border-primary/50 text-on-surface placeholder:text-on-surface-variant/20 transition-all duration-[500ms] font-body text-[16px] outline-none"
+                  />
+                  <div className="absolute bottom-0 left-0 h-[0.5px] w-0 bg-gradient-to-r from-primary/60 to-secondary/40 group-focus-within:w-full transition-all duration-[600ms] ease-[var(--ease-out)]" />
+                </div>
+
+                <div className="group relative">
+                  <label className="block text-[10px] uppercase tracking-[0.15em] text-on-surface-variant/50 font-label mb-3 group-focus-within:text-primary/80 transition-colors duration-[400ms]">
+                    {t("formBudget")}
+                  </label>
+                  <div className="flex items-center gap-3 border-b border-white/[0.06] group-focus-within:border-primary/50 transition-all duration-[500ms]">
+                    <select
+                      name="currency"
+                      defaultValue="USD"
+                      className="bg-transparent border-0 py-4 pr-2 focus:ring-0 text-on-surface font-body appearance-none text-[16px] outline-none cursor-pointer min-w-[72px]"
+                    >
+                      <option className="bg-surface-container-high" value="USD">$ USD</option>
+                      <option className="bg-surface-container-high" value="INR">₹ INR</option>
+                      <option className="bg-surface-container-high" value="EUR">€ EUR</option>
+                      <option className="bg-surface-container-high" value="GBP">£ GBP</option>
+                    </select>
+                    <span className="text-on-surface-variant/30">|</span>
+                    <input
+                      type="number"
+                      inputMode="numeric"
+                      pattern="[0-9]*"
+                      min="0"
+                      name="budget"
+                      placeholder="50,000"
+                      className="flex-1 bg-transparent border-0 py-4 px-0 focus:ring-0 text-on-surface placeholder:text-on-surface-variant/20 transition-all duration-[500ms] font-body text-[16px] outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+                    />
                   </div>
+                  <div className="absolute bottom-0 left-0 h-[0.5px] w-0 bg-gradient-to-r from-primary/60 to-secondary/40 group-focus-within:w-full transition-all duration-[600ms] ease-[var(--ease-out)]" />
                 </div>
 
                 <div className="group relative">
@@ -185,125 +256,89 @@ ${message || "No message provided."}`;
                   </label>
                   <textarea
                     name="message"
-                    className="w-full bg-transparent border-0 border-b border-white/[0.06] py-3.5 px-0 focus:ring-0 focus:border-primary/50 text-on-surface placeholder:text-on-surface-variant/20 transition-all duration-[500ms] font-body resize-none text-[15px] outline-none"
+                    rows={5}
                     placeholder={t("formPlaceholderMessage")}
-                    rows={4}
+                    className="w-full bg-transparent border-0 border-b border-white/[0.06] py-4 px-0 focus:ring-0 focus:border-primary/50 text-on-surface placeholder:text-on-surface-variant/20 transition-all duration-[500ms] font-body text-[16px] outline-none resize-none"
                   />
                   <div className="absolute bottom-0 left-0 h-[0.5px] w-0 bg-gradient-to-r from-primary/60 to-secondary/40 group-focus-within:w-full transition-all duration-[600ms] ease-[var(--ease-out)]" />
                 </div>
 
-                <div className="pt-6">
-                  <Button variant="primary" size="lg" type="submit">
+                <div className="pt-8">
+                  <Button variant="primary" size="lg" type="submit" className="w-full">
                     {t("formSubmit")}
                   </Button>
                 </div>
               </form>
             </div>
           </FadeIn>
+        </Container>
+      </section>
 
-          <aside className="lg:col-span-5 space-y-10">
-            <FadeIn delay={0.2}>
-              <div className="glass-panel rounded-[1.75rem] p-9 relative overflow-hidden border border-white/[0.03]">
-                <div
-                  className="absolute top-0 right-0 w-20 h-20 rounded-full"
-                  style={{
-                    background: "radial-gradient(circle, rgba(153,102,255,0.06) 0%, transparent 70%)",
-                  }}
-                />
-                <h3 className="font-headline text-lg font-bold mb-8 text-on-surface tracking-[-0.01em]">
-                  {t("fitTitle")}
-                </h3>
-                <ul className="space-y-6 mb-10">
-                  {fitChecks.map((check) => (
-                    <li key={check.title} className="flex items-start gap-4 group">
-                      <div className="p-1 rounded-full bg-secondary/[0.06] group-hover:bg-secondary/[0.1] transition-colors duration-[400ms] shrink-0 mt-0.5">
-                        <CheckCircle2 className="text-secondary/70" size={16} strokeWidth={1.5} />
-                      </div>
-                      <div>
-                        <h4 className="text-[13px] font-bold text-on-surface mb-1">
-                          {check.title}
-                        </h4>
-                        <p className="text-[12px] text-on-surface-variant/55 leading-[1.6]">
-                          {check.description}
-                        </p>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="neon-line mb-8 opacity-25" />
-
-                <div className="flex items-center gap-3 mb-3">
-                  <Clock className="text-tertiary/60" size={16} strokeWidth={1.5} />
-                  <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-on-surface/80">
-                    {t("responseTime")}
-                  </span>
-                </div>
-                <p className="text-[12px] text-on-surface-variant/55 leading-[1.7]">
-                  {t("responseDesc")}
-                </p>
-              </div>
-            </FadeIn>
-
-            <FadeIn delay={0.3}>
-              <div className="px-2 space-y-10">
-                <div>
-                  <span className="text-[10px] uppercase tracking-[0.15em] text-on-surface-variant/40 font-label mb-4 block font-medium">
-                    {t("directContact")}
-                  </span>
-                  <a
-                    href="mailto:chititech@gmail.com"
-                    className="text-2xl font-headline font-bold text-on-surface hover:text-primary/80 transition-colors duration-[500ms] relative inline-block group tracking-[-0.02em]"
-                  >
-                    chititech@gmail.com
-                    <span className="absolute bottom-0 left-0 w-0 h-[0.5px] bg-primary/50 group-hover:w-full transition-all duration-[600ms] ease-[var(--ease-out)]" />
-                  </a>
-                  <a
-                    href="tel:+919972934937"
-                    className="text-2xl font-headline font-bold text-on-surface hover:text-primary/80 transition-colors duration-[500ms] relative inline-block group tracking-[-0.02em] mt-2"
-                  >
-                    +91 99729 34937
-                    <span className="absolute bottom-0 left-0 w-0 h-[0.5px] bg-primary/50 group-hover:w-full transition-all duration-[600ms] ease-[var(--ease-out)]" />
-                  </a>
-                </div>
-
-                <div className="grid grid-cols-2 gap-8">
-                  <div>
-                    <span className="text-[10px] uppercase tracking-[0.15em] text-on-surface-variant/40 font-label mb-4 block font-medium">
-                      {t("social")}
-                    </span>
-                    <div className="flex flex-col gap-2.5">
-                      {["LinkedIn", "Instagram", "Dribbble"].map((social) => (
-                        <Link
-                          key={social}
-                          href="#"
-                          className="text-[12px] font-medium text-on-surface-variant/50 hover:text-secondary/80 transition-colors duration-[400ms]"
-                        >
-                          {social}
-                        </Link>
-                      ))}
-                    </div>
+      {/* 4. Calendly — standalone ritual */}
+      <section className="py-24 md:py-32">
+        <Container size="wide">
+          <FadeIn>
+            <div className="glass-panel rounded-[1.75rem] p-8 md:p-14 relative overflow-hidden border border-white/[0.03]">
+              <div className="aurora-blob aurora-blob-1 absolute -top-20 -right-20 opacity-50" />
+              <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+                <div className="flex items-start gap-6">
+                  <div className="hidden md:flex size-14 rounded-2xl bg-primary/[0.08] items-center justify-center shrink-0">
+                    <Calendar className="text-primary" size={24} strokeWidth={1.5} />
                   </div>
                   <div>
-                    <span className="text-[10px] uppercase tracking-[0.15em] text-on-surface-variant/40 font-label mb-4 block font-medium">
-                      {t("location")}
-                    </span>
-                    <p className="text-[12px] font-medium text-on-surface/80 leading-relaxed">
-                      {t("locationValue")}
+                    <h3 className="text-on-surface text-[1.5rem] md:text-[1.75rem] font-bold font-headline mb-3 tracking-[-0.02em]">
+                      {t("callHeadline")}
+                    </h3>
+                    <p className="text-on-surface-variant/60 text-[14px] md:text-[15px] max-w-[480px] leading-[1.7]">
+                      {t("callDesc")}
                     </p>
                   </div>
                 </div>
-
-                <div className="p-7 glass-panel rounded-xl border border-white/[0.03]">
-                  <p className="text-[12px] text-on-surface-variant/50 italic leading-[1.7]">
-                    &ldquo;{t("quote")}&rdquo;
-                  </p>
-                </div>
+                <a
+                  href="https://calendly.com/chiti-studio/discovery"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-primary to-primary-dim text-on-primary text-[14px] font-semibold hover:shadow-[0_0_30px_rgba(153,102,255,0.3)] transition-all duration-[500ms] shrink-0"
+                >
+                  {t("callCta")}
+                </a>
               </div>
-            </FadeIn>
-          </aside>
-        </div>
-      </Container>
-    </>
+            </div>
+          </FadeIn>
+        </Container>
+      </section>
+
+      {/* 5. Contact info — minimal footer */}
+      <section className="pb-16 md:pb-24">
+        <Container size="wide">
+          <FadeIn delay={0.2}>
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 md:gap-12 pt-12 border-t border-white/[0.04]">
+              <div>
+                <span className="text-[10px] uppercase tracking-[0.15em] text-on-surface-variant/40 font-label block mb-2">
+                  {t("contactEmail")}
+                </span>
+                <a
+                  href="mailto:chititech@gmail.com"
+                  className="text-[15px] font-medium text-on-surface hover:text-primary/80 transition-colors duration-[400ms]"
+                >
+                  chititech@gmail.com
+                </a>
+              </div>
+              <div>
+                <span className="text-[10px] uppercase tracking-[0.15em] text-on-surface-variant/40 font-label block mb-2">
+                  {t("contactPhone")}
+                </span>
+                <a
+                  href="tel:+919972934937"
+                  className="text-[15px] font-medium text-on-surface hover:text-primary/80 transition-colors duration-[400ms]"
+                >
+                  +91 99729 34937
+                </a>
+              </div>
+            </div>
+          </FadeIn>
+        </Container>
+      </section>
+    </div>
   );
 }
