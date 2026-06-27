@@ -1,0 +1,3 @@
+{
+  "buildCommand": "dnf install -y git-lfs 2>/dev/null; git lfs install; git lfs pull; npm run build"
+}

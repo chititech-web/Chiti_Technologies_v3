@@ -21,14 +21,15 @@ export default function FounderSection() {
           <span className="text-secondary/60 font-label text-[11px] tracking-[0.25em] uppercase font-medium">
             {t("tagline")}
           </span>
-          <div className="w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden ring-2 ring-white/10">
-            <Image
-              src="/images/self-portrait.jpg"
-              alt="Prabhakar Kumar"
-              width={224}
-              height={224}
-              className="w-full h-full object-cover"
-            />
+          <div className="relative w-64 md:w-72 rounded-2xl overflow-hidden animate-frame-glow">
+            <div className="aspect-[4/3] relative">
+              <Image
+                src="/images/self-portrait.jpg"
+                alt="Prabhakar Kumar"
+                fill
+                className="object-cover"
+              />
+            </div>
           </div>
           <div className="flex items-center gap-4">
             <div className="neon-dot" />
