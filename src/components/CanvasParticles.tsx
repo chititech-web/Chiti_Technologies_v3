@@ -53,7 +53,10 @@ export default function CanvasParticles() {
 
     const draw = () => {
       if (!canvas || !ctx) return;
+      ctx.save();
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.restore();
 
       const tiltX = (mouseX / window.innerWidth - 0.5) * 0.3;
       const tiltY = (mouseY / window.innerHeight - 0.5) * 0.3;

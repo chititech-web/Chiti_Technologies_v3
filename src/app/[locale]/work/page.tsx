@@ -81,7 +81,12 @@ export default function WorkPage() {
             <FadeIn key={project.slug} delay={0.08 + i * 0.1}>
               <Link href={`/work/${project.slug}`} className="group block h-full">
                 <div className="h-full">
-                  <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-white/[0.04] mb-5">
+                    <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-white/[0.04] mb-5">
+                      {project.status === "wip" && (
+                        <div className="absolute top-3 left-3 z-20 px-3 py-1 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-400 text-[9px] font-label uppercase tracking-[0.15em] backdrop-blur-sm">
+                          {t("inProgress")}
+                        </div>
+                      )}
                     <Image
                       src={project.images.hero}
                       alt={project.client}

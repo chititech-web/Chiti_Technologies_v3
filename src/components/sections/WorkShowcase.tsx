@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import FadeIn from "@/components/FadeIn";
 import { ArrowUpRight } from "lucide-react";
 import { featuredCaseStudies } from "@/data/case-studies";
+import type { CaseStudy } from "@/data/case-studies";
 import { useTranslations } from "next-intl";
 import { useParallaxTilt } from "@/hooks/useParallaxTilt";
 import { gsap } from "gsap";
@@ -15,13 +16,10 @@ export default function WorkShowcase() {
   const t = useTranslations("work");
   const sectionRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
-  const initialized = useRef(false);
-  const [hoveredSlug, setHoveredSlug] = useState<string | null>(null);
 
   useEffect(() => {
-    if (initialized.current || window.innerWidth < 768) return;
+    if (window.innerWidth < 768) return;
     gsap.registerPlugin(ScrollTrigger);
-    initialized.current = true;
 
     const section = sectionRef.current;
     const track = trackRef.current;
@@ -83,44 +81,67 @@ export default function WorkShowcase() {
         className="flex gap-6 overflow-x-auto no-scrollbar pb-6 snap-x md:overflow-x-visible md:pb-0"
       >
         {featuredCaseStudies.map((project) => (
-          <WorkCard
-            key={project.slug}
-            project={project}
-            isHovered={hoveredSlug === project.slug}
-            onHover={setHoveredSlug}
-          />
+          <WorkCard key={project.slug} project={project} />
         ))}
       </div>
     </div>
   );
 }
 
-function WorkCard({
-  project,
-  isHovered,
-  onHover,
-}: {
-  project: (typeof featuredCaseStudies)[0];
-  isHovered: boolean;
-  onHover: (slug: string | null) => void;
-}) {
+function WorkCard({ project }: { project: CaseStudy }) {
   const t = useTranslations("work");
   const videoRef = useRef<HTMLVideoElement>(null);
+  const cardRef = useRef<HTMLDivElement | null>(null);
+  const [isInView, setIsInView] = useState(false);
   const tiltAttach = useParallaxTilt({ maxTilt: 3, scale: 1.02 });
+
+  useEffect(() => {
+    const el = cardRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.6 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (isInView) {
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+    }
+  }, [isInView]);
+
+  const combinedRef = useCallback(
+    (el: HTMLDivElement | null) => {
+      tiltAttach(el);
+      cardRef.current = el;
+    },
+    [tiltAttach]
+  );
 
   return (
     <FadeIn>
       <Link
         href={`/work/${project.slug}`}
         className="min-w-[300px] md:min-w-[380px] lg:min-w-[560px] snap-start group block shrink-0"
-        onMouseEnter={() => onHover(project.slug)}
-        onMouseLeave={() => onHover(null)}
       >
         <div
-          ref={tiltAttach}
+          ref={combinedRef}
           className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-white/[0.04] cursor-pointer"
           style={{ willChange: "transform" }}
         >
+          {project.status === "wip" && (
+            <div className="absolute top-3 left-3 z-20 px-3 py-1 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-400 text-[9px] font-label uppercase tracking-[0.15em] backdrop-blur-sm">
+              {t("inProgress")}
+            </div>
+          )}
           <Image
             src={project.images.hero}
             alt={project.client}
@@ -128,17 +149,19 @@ function WorkCard({
             className="object-cover grayscale max-md:grayscale-0 group-hover:grayscale-0 group-hover:scale-[1.04] transition-all duration-[2000ms] ease-[var(--ease-out)]"
             sizes="(max-width: 768px) 380px, 560px"
           />
-          <video
-            ref={videoRef}
-            src={project.images.hero.replace(/\.(png|jpg|jpeg|svg)$/, ".mp4")}
-            muted
-            playsInline
-            loop
-            preload="none"
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[600ms] ${
-              isHovered ? "opacity-100" : "opacity-0"
-            }`}
-          />
+          {project.video && (
+            <video
+              ref={videoRef}
+              src={project.video}
+              muted
+              playsInline
+              loop
+              preload="metadata"
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
+                isInView ? "opacity-100" : "opacity-0"
+              }`}
+            />
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-surface/80 via-surface/20 to-transparent opacity-70 group-hover:opacity-50 transition-opacity duration-[800ms]" />
         </div>
         <div className="mt-5 px-1">

@@ -21,12 +21,12 @@ export default function FounderSection() {
           <span className="text-secondary/60 font-label text-[11px] tracking-[0.25em] uppercase font-medium">
             {t("tagline")}
           </span>
-          <div className="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden ring-2 ring-white/10">
+          <div className="w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden ring-2 ring-white/10">
             <Image
-              src="/images/founder.webp"
+              src="/images/self-portrait.jpg"
               alt="Prabhakar Kumar"
-              width={112}
-              height={112}
+              width={224}
+              height={224}
               className="w-full h-full object-cover"
             />
           </div>

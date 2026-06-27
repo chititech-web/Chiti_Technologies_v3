@@ -21,6 +21,8 @@ export interface CaseStudy {
     logo?: string;
     diagram?: string;
   };
+  video?: string;
+  status?: "live" | "wip";
   testimonial?: { quote: string; author: string; title: string };
   liveUrl?: string;
   metrics: { label: string; value: string }[];
@@ -40,8 +42,10 @@ const caseStudyOrder = [
   "netq-command",
   "ts-aromatics",
   "house-of-giriraj",
+  "chiti-console",
   "batchflow",
   "bighi-brothers",
+  "jharkhand-booking",
 ];
 
 export const caseStudies: CaseStudy[] = [
@@ -241,6 +245,7 @@ export const caseStudies: CaseStudy[] = [
       cover: "/case-studies/ts-aromatics/hero.png",
       logo: "https://www.tsaromatics.in/images/logo-dark.svg",
     },
+    video: "/case-studies/ts-aromatics/hero.mp4",
     testimonial: {
       quote:
         "Chiti Technologies understood exactly what we needed — a platform that speaks to procurement professionals in a language they trust. The chromatogram integration alone has changed how our clients evaluate our products.",
@@ -410,6 +415,7 @@ export const caseStudies: CaseStudy[] = [
       cover: "/case-studies/house-of-giriraj/diamond-product.jpg",
       logo: "https://house-of-giriraj.vercel.app/assets/images/global/House_of_Giriraj.svg",
     },
+    video: "/case-studies/house-of-giriraj/hero.mp4",
     liveUrl: "https://house-of-giriraj.vercel.app",
     metrics: [
       { label: "Collections", value: "7" },
@@ -752,6 +758,271 @@ export const caseStudies: CaseStudy[] = [
     ],
     reflection:
       "The most important realization was that conversion does not require clinical efficiency. Emotional entry, guided ritual, and clear decision-making can coexist in a single experience. Designing The Sacred Threshold reinforced that the best D2C experiences do not feel like stores. They feel like invitations into a practice.",
+  },
+  {
+    slug: "chiti-console",
+    title: "Chiti Console — Unified Operations Dashboard",
+    client: "Chiti Technologies",
+    subtitle:
+      "A single-pane-of-glass for managing orders, customers, products, leads, finance, and content across multiple projects — powering the studio's entire operational stack.",
+    role: "Product Design, System Architecture, Full-Stack Engineering",
+    year: "2026",
+    summary:
+      "Chiti Console consolidates fragmented operations — spreadsheets, separate dashboards, and WhatsApp threads — into a unified platform. Built with 6 capability engines and 17 database models, it powers 3+ projects from a single interface.",
+    category: "Product Design & Systems Architecture",
+    tags: ["Product Design", "System Architecture", "Dashboard", "SaaS", "Full-Stack"],
+    techStack: [
+      "Next.js 16 (App Router, Turbopack)",
+      "TypeScript 5",
+      "Tailwind CSS v4",
+      "Prisma 7 + PostgreSQL",
+      "Auth.js v5 (Google OAuth)",
+      "Razorpay + Stripe Webhooks",
+      "OpenAI SDK",
+      "Docker + docker-compose",
+      "Vercel",
+      "GitHub Actions CI",
+    ],
+    keyFeatures: [
+      "Multi-project management with capability-based engine architecture (COMMERCE, MARKETPLACE, CRM, FINANCE, CONTENT, ANALYTICS, AI)",
+      "RBAC with 7 user roles — SUPER_ADMIN through CLIENT_VIEWER",
+      "Order management with Razorpay + Stripe payment processing",
+      "Customer management with full lifecycle tracking",
+      "Product catalog with multi-variant support and SKU management",
+      "Kanban lead management with drag-and-drop pipeline",
+      "Finance module with invoice generation and payment reconciliation",
+      "WhatsApp integration for automated customer communication",
+      "Content management with rich media support",
+      "Analytics dashboard with real-time metrics and CSV export",
+      "Client portal with separate JWT-based authentication",
+      "REST API with API key authentication and rate limiting",
+      "AI natural language query bar for ad-hoc data insights",
+    ],
+    images: {
+      hero: "/case-studies/chiti-console/hero.png",
+      cover: "/case-studies/chiti-console/hero.png",
+    },
+    metrics: [
+      { label: "Database Models", value: "17" },
+      { label: "Capability Engines", value: "6" },
+      { label: "User Roles", value: "7" },
+      { label: "Routes", value: "25+" },
+    ],
+    featured: true,
+    problem:
+      "Chiti Technologies was managing multiple projects — Bighi Brothers e-commerce, Jharkhand Booking marketplace, and internal operations — through disconnected tools. Spreadsheets tracked orders, separate dashboards managed products, and WhatsApp threads handled customer communication. There was no unified operational view. Staff constantly switched context, data was duplicated or lost, and leadership lacked a clear picture of the business. The challenge was not just building a dashboard — it was designing a system that could adapt to different project types while maintaining a coherent operational core.",
+    systemOverview: {
+      text: "We built Chiti Console as a multi-tenant operations platform organized around the concept of capability-based engines. Instead of a monolithic app with fixed features, the system defines 6 engines — Commerce, Marketplace, CRM, Finance, Content, Analytics, and AI — that can be activated per project based on its type (ECOMMERCE, MARKETPLACE, B2B_CATALOG, SAAS, CONTENT, CUSTOM). This architecture means the same codebase powers a product catalog for Bighi Brothers, a vendor management system for Jharkhand Booking, and a finance dashboard for the studio — each project sees only the capabilities it needs. The operating model dispatch ensures the interface adapts to each project's domain without branching the codebase.",
+    },
+    keyChallenges: [
+      "Designing a unified system that serves radically different project types (e-commerce, marketplace, SaaS) without becoming a generic mess",
+      "Building RBAC flexible enough for 7 roles across multiple projects with different permission needs",
+      "Creating a finance module that handles both Indian (Razorpay) and international (Stripe) payment flows",
+      "Making the AI query bar genuinely useful — not a gimmick — for operations staff who are not technical",
+      "Ensuring the client portal felt secure and premium while being lightweight enough to deploy alongside the main app",
+      "Handling webhook reliability for payment notifications, WhatsApp messages, and order sync across services",
+    ],
+    designDecisions: [
+      {
+        title: "Capability-based engine architecture",
+        text: "Instead of building features for every possible use case, we defined discrete engines that can be composed per project. A marketplace project gets the COMMERCE, CRM, and ANALYTICS engines; a content project needs CONTENT and ANALYTICS. This keeps the codebase lean while allowing the system to scale to new project types without refactoring.",
+      },
+      {
+        title: "Operating model dispatch",
+        text: "Each project has an operating model (ECOMMERCE, MARKETPLACE, B2B_CATALOG, SAAS, CONTENT, CUSTOM) that determines which engines are active and how the dashboard presents data. This lets the system serve a B2B catalog (TS Aromatics) and a D2C store (Bighi Brothers) from the same interface — the only difference is the engine configuration.",
+      },
+      {
+        title: "RBAC as a first-class concept",
+        text: "We defined 7 roles from SUPER_ADMIN to CLIENT_VIEWER, each with granular permissions scoped to projects and engines. This allows the studio to give clients read-only access to their own project data while vendors see only their orders and support agents see only their assigned tickets — all within the same system.",
+      },
+      {
+        title: "REST API as a product feature",
+        text: "The API is not an afterthought — it is a designed interface with API key authentication, rate limiting, response formatting, and comprehensive error handling. This allows external projects (like Jharkhand Booking) to integrate with the Console as their backend, turning the dashboard into a platform.",
+      },
+      {
+        title: "AI query over dashboard complexity",
+        text: "Rather than building endless filter UIs and custom report builders, we added a natural language query bar powered by OpenAI. Staff can ask 'How many orders did Bighi Brothers have last week?' or 'Show me pending payments above ₹10,000' and get instant answers. This reduced the need for custom dashboard views while making data accessible to non-technical team members.",
+      },
+      {
+        title: "Webhook-first integrations",
+        text: "Payment notifications, WhatsApp messages, and order sync all flow through webhook receivers that process events asynchronously. This ensures the system remains responsive during high-volume periods and provides clear audit trails for every transaction.",
+      },
+    ],
+    interfaceScreens: [
+      {
+        file: "/case-studies/chiti-console/hero.png",
+        caption:
+          "Dashboard overview — The central operations surface showing active projects, key metrics, and the AI query bar. Each project card shows its operating model and status at a glance.",
+      },
+      {
+        file: "/case-studies/chiti-console/dashboard.png",
+        caption:
+          "Orders and customers management — Consolidated view of all orders across projects with filtering by status, payment method, and project. Customer records show full lifecycle from first enquiry to repeat purchase.",
+      },
+      {
+        file: "/case-studies/chiti-console/analytics.png",
+        caption:
+          "Analytics and finance — Real-time metrics dashboard with revenue tracking, order trends, and CSV export. Finance module handles invoice generation, payment reconciliation, and Razorpay/Stripe integration.",
+      },
+    ],
+    screenIntro:
+      "The screens below show the main operational surfaces: a unified dashboard with AI query capabilities, order and customer management, and the analytics and finance modules that power the studio's business operations.",
+    impact: [
+      "Consolidated 3+ project operations into a single pane of glass — no more spreadsheet hopping or WhatsApp threads",
+      "Reduction in operational overhead — staff can manage orders, customers, and content without switching contexts",
+      "Multi-project capability allows the studio to onboard new clients without building new operational tooling",
+      "Client portal gives external stakeholders secure, read-only access to their own project data",
+      "REST API serves as the backend for external projects, turning the Console into a platform rather than a standalone tool",
+      "AI query bar makes data accessible to non-technical team members without custom report building",
+      "Production-ready system deployed on Vercel with Docker-based PostgreSQL for local development",
+    ],
+    reflection:
+      "Chiti Console became the operational backbone of the studio faster than expected. The most important architectural decision was the capability-based engine model — it lets the system serve fundamentally different project types from a unified codebase without accumulating feature bloat. The REST API decision proved particularly valuable: it transformed what could have been a simple internal tool into a platform that external projects use as their backend. If we were starting over, we would invest in the webhook infrastructure even earlier, as async event processing became critical once multiple projects were connected.",
+    journal: [
+      {
+        phase: "Architecture & Foundation",
+        entries: [
+          {
+            title: "Capability Engine Model",
+            body: "Architected the core engine abstraction that lets each project activate only the capabilities it needs. Defined 6 engine types (COMMERCE, MARKETPLACE, CRM, FINANCE, CONTENT, ANALYTICS, AI) with the operating model dispatch system that adapts the dashboard to each project's domain. This single decision prevents the codebase from becoming a monolithic mess as new project types are added."
+          },
+          {
+            title: "Database Schema & Prisma Models",
+            body: "Designed 17 Prisma models covering organizations, users, projects, orders, customers, products, leads, payments, invoices, content, analytics, and integrations. The schema supports multi-tenancy through project-org-user relationships, with soft delete and audit timestamps across all models."
+          }
+        ]
+      },
+      {
+        phase: "Core Features",
+        entries: [
+          {
+            title: "RBAC with 7 Roles",
+            body: "Implemented granular role-based access control with 7 roles: SUPER_ADMIN, PROJECT_ADMIN, FINANCE_MANAGER, SUPPORT_AGENT, VENDOR_USER, CLIENT_VIEWER, CONTENT_EDITOR. Each role has permissions scoped to projects and engines, allowing the same system to serve internal staff, external clients, and vendors with appropriate access levels."
+          },
+          {
+            title: "Payment Processing & Webhooks",
+            body: "Integrated Razorpay and Stripe payment processing with webhook receivers for asynchronous event handling. The webhook layer processes payment notifications, WhatsApp messages, and order sync events, ensuring the system remains responsive during high-volume periods with clear audit trails."
+          }
+        ]
+      },
+      {
+        phase: "Platform & API",
+        entries: [
+          {
+            title: "REST API & Client Portal",
+            body: "Built a comprehensive REST API with API key authentication, rate limiting, and structured responses. The client portal uses separate JWT-based authentication, allowing external stakeholders secure access to their project data. This API layer is what allows Jharkhand Booking and other projects to use the Console as their backend."
+          },
+          {
+            title: "AI Natural Language Query",
+            body: "Added an AI-powered query bar that lets staff ask plain-English questions about their data. Powered by OpenAI, it translates natural language into database queries and returns formatted responses. This eliminated the need for custom report builders and made data accessible to non-technical team members."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    slug: "jharkhand-booking",
+    title: "Booking Jharkhand — Tourism Marketplace",
+    client: "Booking Jharkhand",
+    subtitle:
+      "A bilingual digital marketplace connecting travelers with verified hotels, cabs, restaurants, and curated packages across Jharkhand's 24 districts.",
+    role: "Web Development, Product Design, System Architecture",
+    year: "2026",
+    summary:
+      "An 18-page digital tourism marketplace with bilingual interface (English/Hindi), vendor onboarding with document verification, AI trip planner, and GEO-optimized SEO across 11 structured data schemas.",
+    category: "Web Development & Platform Design",
+    tags: ["Web Development", "Product Design", "Marketplace", "Bilingual", "Tourism"],
+    techStack: [
+      "Vite 8 (MPA mode)",
+      "Tailwind CSS 3",
+      "GSAP 3 + Lenis (smooth scroll)",
+      "Custom i18n engine (EN/HI)",
+      "Custom SEO engine (11 JSON-LD schemas)",
+      "WhatsApp Chat Widget",
+      "Custom JWT auth layer",
+    ],
+    keyFeatures: [
+      "18 pages covering destinations, hotels, cab booking, restaurants, packages, travel guides, and vendor onboarding",
+      "Full bilingual interface (English/Hindi) with ~140 i18n keys and runtime language switching",
+      "Multi-step vendor onboarding with document upload and admin approval workflow",
+      "AI trip planner — form-based itinerary builder with destination recommendations",
+      "GEO-optimized SEO with 11 JSON-LD schemas (Organization, LocalBusiness, Product, FAQ, BreadcrumbList, etc.)",
+      "Automated sitemap generation and robots.txt for search engine indexing",
+      "WhatsApp chat widget for instant traveller support and enquiry capture",
+      "Custom magnetic cursor and smooth scroll (Lenis) for premium browsing feel",
+      "Verified vendor badges and admin-managed approval workflow",
+      "Chiti Console API integration for backend CRUD operations (Phase 2)",
+    ],
+    images: {
+      hero: "/case-studies/jharkhand-booking/hero.png",
+      cover: "/case-studies/jharkhand-booking/hero.png",
+    },
+    status: "wip",
+    metrics: [
+      { label: "Pages", value: "18" },
+      { label: "Languages", value: "EN + HI" },
+      { label: "JSON-LD Schemas", value: "11" },
+      { label: "Service Types", value: "4" },
+    ],
+    featured: false,
+    problem:
+      "Jharkhand tourism is fragmented. Despite having waterfalls, forests, temples, and hill stations across 24 districts, there was no centralized platform to discover and book travel services. Travelers relied on phone calls, word-of-mouth, and informal WhatsApp groups. Local vendors — hotels, cab operators, restaurants — had no digital presence and no way to reach tourists directly. The state's tourism potential was buried under fragmentation.",
+    systemOverview: {
+      text: "We designed Booking Jharkhand as a digital marketplace connecting travellers with verified local vendors. The platform spans 18 pages covering the full traveller journey — destination discovery, hotel and cab booking, restaurant exploration, package booking, and trip planning. A bilingual engine (English/Hindi) makes the platform accessible to both domestic and local travellers. The vendor onboarding flow includes document upload and admin approval, ensuring only verified partners appear on the platform. An AI trip planner helps travellers build custom itineraries based on preferences. The entire platform is powered by GEO-optimized SEO with 11 JSON-LD schemas to capture search traffic for tourism queries. Phase 2 will integrate Chiti Console as the backend API layer for managing vendors, enquiries, and bookings.",
+    },
+    keyChallenges: [
+      "Building a bilingual platform where content updates in one language are automatically reflected in both — without duplicating pages",
+      "Designing a vendor onboarding flow that balances trust (document verification, admin approval) with ease of use for non-technical vendors",
+      "Implementing GEO-optimized SEO across 18 pages without a traditional CMS backend",
+      "Creating a premium browsing experience (magnetic cursor, smooth scroll) that works alongside functional marketplace features",
+      "Building an AI trip planner that gives genuinely useful recommendations without requiring a complex ML backend",
+      "Designing for two very different user types: tech-savvy travellers and local vendors who may be using the internet for the first time",
+    ],
+    designDecisions: [
+      {
+        title: "Static-first, API-driven architecture",
+        text: "Phase 1 delivers a fully functional static frontend with pre-populated content and mock data — no backend dependency. This lets us validate the product and user flows before investing in the full API layer. Phase 2 connects to Chiti Console for real data, vendor management, and booking workflows.",
+      },
+      {
+        title: "Bilingual without complexity",
+        text: "We built a custom i18n runtime (~140 keys) that switches language at the DOM level using data-i18n attributes. Content in both languages lives in the same HTML files, ensuring zero duplication and instant switching without page reloads. The language preference persists via localStorage.",
+      },
+      {
+        title: "GEO-optimized SEO as infrastructure",
+        text: "Instead of adding SEO as an afterthought, we built a dedicated SEO runtime that generates 11 JSON-LD schemas, automated sitemaps, and robots.txt from the same content files. Every page has structured data for rich search results — crucial for a tourism marketplace where discovery happens through search engines.",
+      },
+      {
+        title: "Verified vendor system",
+        text: "Trust is the biggest barrier in an unorganised market. We implemented a multi-step vendor onboarding flow with document upload (GST, trade license, ID proof) and admin approval workflow. Verified vendors get a prominent 'Verified' badge — creating a trust signal that helps travellers choose confidently.",
+      },
+      {
+        title: "Premium feel for a marketplace",
+        text: "Most marketplace websites are utilitarian. We used GSAP animations, a custom magnetic cursor, and Lenis smooth scroll to create a browsing experience that feels premium and intentional — differentiating Booking Jharkhand from the generic booking sites travellers might compare it to.",
+      },
+      {
+        title: "AI trip planner as lead generation",
+        text: "The AI trip planner is a form-based itinerary builder that captures traveller preferences (budget, duration, interests) and returns curated recommendations. It serves two purposes: helping travellers plan their trip and generating structured lead data for the vendor network.",
+      },
+    ],
+    interfaceScreens: [
+      {
+        file: "/case-studies/jharkhand-booking/hero.png",
+        caption:
+          "Homepage hero — 'Discover the Soul of Jharkhand' with search-driven interface, destination cards, and the AI trip planner entry point. The bilingual toggle is prominently placed.",
+      },
+    ],
+    screenIntro:
+      "The screen below shows the homepage — the primary entry point for travellers exploring Jharkhand. It combines destination discovery, service categories, and the AI trip planner in a single scrollable experience.",
+    impact: [
+      "Phase 1 complete — 18-page static marketplace with full bilingual support and GEO-optimized SEO",
+      "Verified vendor onboarding flow with document upload and admin approval ready to deploy",
+      "AI trip planner creates structured leads for the vendor network while helping travellers plan their itineraries",
+      "Phase 2 (Chiti Console integration) will enable real-time booking management, vendor CRUD, and enquiry tracking",
+      "Bilingual design ensures the platform serves both domestic tourists and local travellers searching in Hindi",
+      "First centralized tourism marketplace for Jharkhand — first-mover advantage in an underserved market",
+    ],
+    reflection:
+      "Booking Jharkhand reinforced that the hardest part of building a marketplace is not the technology — it is balancing the needs of two very different user groups. Travellers want a premium, trustworthy discovery experience. Vendors need a simple onboarding flow that does not assume technical literacy. The Phase 1 / Phase 2 split was the right call: it let us ship a usable product quickly while keeping the deep backend integration for later. The bilingual engine proved simpler to build than expected — a custom runtime with ~140 keys was more maintainable than a framework-based i18n solution for a static site.",
   },
 ];
 

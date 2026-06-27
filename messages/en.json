@@ -8,7 +8,7 @@
     "startProject": "Start Project"
   },
   "hero": {
-    "tagline": "System Design & Automation",
+    "tagline": "चिति — Thoughtful Creation",
     "headline": "AI systems, premium websites, and digital infrastructure for ambitious brands.",
     "subtitle": "Chiti designs and builds intelligent digital systems across commerce, SaaS, automation, and modern web experiences.",
     "cta": "Start a Project",
@@ -96,7 +96,9 @@
     "visitLive": "Visit Live Site",
     "clickToExpand": "Click to expand",
     "role": "Role",
-    "niche": "Niche"
+    "niche": "Niche",
+    "inProgress": "In Progress",
+    "wipBanner": "This project is in active development. Screens and flows shown reflect the current iteration."
   },
   "about": {
     "tagline": "चिति — Thoughtful Creation",

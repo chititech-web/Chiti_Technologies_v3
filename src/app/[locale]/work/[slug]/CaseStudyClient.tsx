@@ -110,6 +110,26 @@ export default function CaseStudyClient() {
         </FadeIn>
       </Container>
 
+      {project.status === "wip" && (
+        <Container>
+          <FadeIn>
+            <div className="mb-14 px-6 py-4 rounded-2xl border border-amber-500/20 bg-amber-500/5 backdrop-blur-sm">
+              <div className="flex items-start gap-4">
+                <div className="w-2 h-2 rounded-full bg-amber-400 mt-1.5 shrink-0 animate-pulse" />
+                <div>
+                  <p className="text-amber-400 text-[11px] font-label uppercase tracking-[0.15em] mb-1">
+                    {t("inProgress")}
+                  </p>
+                  <p className="text-amber-300/60 text-[13px] leading-[1.6]">
+                    {t("wipBanner")}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+        </Container>
+      )}
+
       <Container size="narrow">
         <FadeIn>
           <div className="mb-14">
