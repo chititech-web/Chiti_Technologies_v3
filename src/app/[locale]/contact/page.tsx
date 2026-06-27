@@ -40,7 +40,9 @@ export default function ContactPage() {
     const name = formData.get("name") as string;
     const email = formData.get("email") as string;
     const company = formData.get("company") as string;
-    const budget = formData.get("budget") as string;
+    const currency = formData.get("currency") as string;
+    const amount = formData.get("budget") as string;
+    const budget = currency && amount ? `${currency} ${amount}` : "Not specified";
     const message = formData.get("message") as string;
 
     const subject = `Project Inquiry from ${name}${company ? ` (${company})` : ""}`;
@@ -130,15 +132,27 @@ ${message || "No message provided."}`;
                     <label className="block text-[10px] uppercase tracking-[0.15em] text-on-surface-variant/50 font-label mb-3 group-focus-within:text-primary/80 transition-colors duration-[400ms]">
                       {t("formBudget")}
                     </label>
-                    <select
-                      name="budget"
-                      className="w-full bg-transparent border-0 border-b border-white/[0.06] py-3.5 px-0 focus:ring-0 focus:border-primary/50 text-on-surface transition-all duration-[500ms] font-body appearance-none text-[15px] outline-none cursor-pointer"
-                    >
-                      <option className="bg-surface-container-high">$10k - $25k</option>
-                      <option className="bg-surface-container-high">$25k - $50k</option>
-                      <option className="bg-surface-container-high">$50k - $100k</option>
-                      <option className="bg-surface-container-high">$100k+</option>
-                    </select>
+                    <div className="flex items-center gap-3 border-b border-white/[0.06] group-focus-within:border-primary/50 transition-all duration-[500ms]">
+                      <select
+                        name="currency"
+                        className="bg-transparent border-0 py-3.5 pr-2 focus:ring-0 text-on-surface font-body appearance-none text-[15px] outline-none cursor-pointer min-w-[64px]"
+                      >
+                        <option className="bg-surface-container-high" value="USD">$ USD</option>
+                        <option className="bg-surface-container-high" value="INR">₹ INR</option>
+                        <option className="bg-surface-container-high" value="EUR">€ EUR</option>
+                        <option className="bg-surface-container-high" value="GBP">£ GBP</option>
+                      </select>
+                      <span className="text-on-surface-variant/30 text-[15px]">|</span>
+                      <input
+                        type="number"
+                        inputMode="numeric"
+                        pattern="[0-9]*"
+                        min="0"
+                        name="budget"
+                        placeholder="50,000"
+                        className="flex-1 bg-transparent border-0 py-3.5 px-0 focus:ring-0 text-on-surface placeholder:text-on-surface-variant/20 transition-all duration-[500ms] font-body text-[15px] outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+                      />
+                    </div>
                     <div className="absolute bottom-0 left-0 h-[0.5px] w-0 bg-gradient-to-r from-primary/60 to-secondary/40 group-focus-within:w-full transition-all duration-[600ms] ease-[var(--ease-out)]" />
                   </div>
                 </div>

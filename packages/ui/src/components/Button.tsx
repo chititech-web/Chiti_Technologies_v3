@@ -136,7 +136,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
           className={cn(Tag === "button" ? mergedClassName : undefined)}
           ref={ref as any}
         >
-          {Tag === "button" ? null : inner}
+          {inner}
         </Tag>
       </motion.span>
     );
