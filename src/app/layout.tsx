@@ -23,6 +23,11 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://chitistudio.com"),
     title: {
