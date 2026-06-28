@@ -86,9 +86,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html suppressHydrationWarning>
+    <html suppressHydrationWarning className="overflow-x-hidden">
       <body
-        className={`${outfit.variable} ${inter.variable} ${jetbrainsMono.variable} font-body antialiased selection:bg-primary selection:text-on-primary overflow-x-hidden`}
+        className={`${outfit.variable} ${inter.variable} ${jetbrainsMono.variable} font-body antialiased selection:bg-primary selection:text-on-primary`}
       >
         <div id="theme-clip" />
         {children}
