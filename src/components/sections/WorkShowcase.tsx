@@ -142,13 +142,21 @@ function WorkCard({ project }: { project: CaseStudy }) {
               {t("inProgress")}
             </div>
           )}
-          <Image
-            src={project.images.hero}
-            alt={project.client}
-            fill
-            className="object-cover grayscale max-md:grayscale-0 group-hover:grayscale-0 group-hover:scale-[1.04] transition-all duration-[2000ms] ease-[var(--ease-out)]"
-            sizes="(max-width: 768px) 380px, 560px"
-          />
+                          {project.images.hero.endsWith(".svg") ? (
+                            <img
+                              src={project.images.hero}
+                              alt={project.client}
+                              className="w-full h-full object-cover grayscale max-md:grayscale-0 group-hover:grayscale-0 group-hover:scale-[1.04] transition-all duration-[2000ms] ease-[var(--ease-out)]"
+                            />
+                          ) : (
+                            <Image
+                              src={project.images.hero}
+                              alt={project.client}
+                              fill
+                              className="object-cover grayscale max-md:grayscale-0 group-hover:grayscale-0 group-hover:scale-[1.04] transition-all duration-[2000ms] ease-[var(--ease-out)]"
+                              sizes="(max-width: 768px) 380px, 560px"
+                            />
+                          )}
           {project.video && (
             <video
               ref={videoRef}

@@ -66,14 +66,22 @@ export default function CaseStudyClient() {
         <Modal open={!!lightbox} onClose={() => setLightbox(null)}>
           <div className="p-6 md:p-10">
             <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden border border-white/[0.06]">
-              <Image
-                src={screenImagePath(project.slug, lightbox.file)}
-                alt={lightbox.caption}
-                fill
-                className="object-contain"
-                sizes="100vw"
-                priority
-              />
+              {screenImagePath(project.slug, lightbox.file).endsWith(".svg") ? (
+                <img
+                  src={screenImagePath(project.slug, lightbox.file)}
+                  alt={lightbox.caption}
+                  className="w-full h-full object-contain"
+                />
+              ) : (
+                <Image
+                  src={screenImagePath(project.slug, lightbox.file)}
+                  alt={lightbox.caption}
+                  fill
+                  className="object-contain"
+                  sizes="100vw"
+                  priority
+                />
+              )}
             </div>
             <p className="text-on-surface-variant/60 text-[13px] mt-4 text-center max-w-2xl mx-auto">
               {lightbox.caption}
@@ -97,14 +105,22 @@ export default function CaseStudyClient() {
       <Container>
         <FadeIn>
           <div className="relative w-full aspect-[21/9] rounded-2xl overflow-hidden border border-white/[0.04] mb-14">
-            <Image
-              src={project.images.hero}
-              alt={project.client}
-              fill
-              className="object-cover"
-              sizes="100vw"
-              priority
-            />
+            {project.images.hero.endsWith(".svg") ? (
+              <img
+                src={project.images.hero}
+                alt={project.client}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <Image
+                src={project.images.hero}
+                alt={project.client}
+                fill
+                className="object-cover"
+                sizes="100vw"
+                priority
+              />
+            )}
             <div className="absolute inset-0 bg-gradient-to-t from-surface/60 via-transparent to-transparent" />
           </div>
         </FadeIn>
@@ -220,13 +236,21 @@ export default function CaseStudyClient() {
             {project.systemOverview.diagram && (
               <FadeIn delay={0.1}>
                 <div className="relative aspect-[4/3] rounded-xl overflow-hidden border border-white/[0.04]">
-                  <Image
-                    src={screenImagePath(project.slug, project.systemOverview.diagram)}
-                    alt="System architecture diagram"
-                    fill
-                    className="object-contain p-4"
-                    sizes="(max-width: 1024px) 100vw, 480px"
-                  />
+                  {screenImagePath(project.slug, project.systemOverview.diagram).endsWith(".svg") ? (
+                    <img
+                      src={screenImagePath(project.slug, project.systemOverview.diagram)}
+                      alt="System architecture diagram"
+                      className="w-full h-full object-contain p-4"
+                    />
+                  ) : (
+                    <Image
+                      src={screenImagePath(project.slug, project.systemOverview.diagram)}
+                      alt="System architecture diagram"
+                      fill
+                      className="object-contain p-4"
+                      sizes="(max-width: 1024px) 100vw, 480px"
+                    />
+                  )}
                 </div>
               </FadeIn>
             )}
@@ -312,13 +336,21 @@ export default function CaseStudyClient() {
                     className="group cursor-pointer"
                   >
                     <div className="relative aspect-[16/10] rounded-xl overflow-hidden border border-white/[0.04] mb-3">
-                      <Image
-                        src={screenImagePath(project.slug, screen.file)}
-                        alt={screen.caption}
-                        fill
-                        className="object-cover group-hover:scale-[1.03] transition-all duration-[800ms]"
-                        sizes="(max-width: 768px) 100vw, 480px"
-                      />
+                      {screenImagePath(project.slug, screen.file).endsWith(".svg") ? (
+                        <img
+                          src={screenImagePath(project.slug, screen.file)}
+                          alt={screen.caption}
+                          className="w-full h-full object-cover group-hover:scale-[1.03] transition-all duration-[800ms]"
+                        />
+                      ) : (
+                        <Image
+                          src={screenImagePath(project.slug, screen.file)}
+                          alt={screen.caption}
+                          fill
+                          className="object-cover group-hover:scale-[1.03] transition-all duration-[800ms]"
+                          sizes="(max-width: 768px) 100vw, 480px"
+                        />
+                      )}
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-[500ms]" />
                       <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-[500ms]">
                         <span className="px-4 py-2 rounded-full bg-on-surface/90 text-surface text-[11px] font-medium backdrop-blur-sm">

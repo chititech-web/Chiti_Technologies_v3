@@ -87,13 +87,21 @@ export default function WorkPage() {
                           {t("inProgress")}
                         </div>
                       )}
-                    <Image
-                      src={project.images.hero}
-                      alt={project.client}
-                      fill
-                      className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-[1.04] transition-all duration-[2000ms] ease-[var(--ease-out)]"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 380px"
-                    />
+                    {project.images.hero.endsWith(".svg") ? (
+                      <img
+                        src={project.images.hero}
+                        alt={project.client}
+                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-[1.04] transition-all duration-[2000ms] ease-[var(--ease-out)]"
+                      />
+                    ) : (
+                      <Image
+                        src={project.images.hero}
+                        alt={project.client}
+                        fill
+                        className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-[1.04] transition-all duration-[2000ms] ease-[var(--ease-out)]"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 380px"
+                      />
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-surface/80 via-surface/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-[800ms]" />
                   </div>
                   <div className="px-1">
