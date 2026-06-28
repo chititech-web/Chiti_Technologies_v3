@@ -424,7 +424,7 @@ body {
   width: 55vw;
   height: 38vw;
   max-width: 900px;
-  maxHeight: 600px;
+  max-height: 600px;
   top: -12%;
   left: -10%;
   background: radial-gradient(ellipse at 40% 50%, rgba(153, 102, 255, 0.35) 0%, rgba(124, 77, 255, 0.2) 30%, rgba(74, 20, 140, 0.08) 55%, transparent 75%);
@@ -434,8 +434,8 @@ body {
 .aurora-blob-2 {
   width: 50vw;
   height: 32vw;
-  maxWidth: 800px;
-  maxHeight: 500px;
+  max-width: 800px;
+  max-height: 500px;
   top: 2%;
   right: -8%;
   background: radial-gradient(ellipse at 60% 40%, rgba(0, 188, 212, 0.3) 0%, rgba(0, 151, 167, 0.18) 30%, rgba(0, 96, 100, 0.06) 55%, transparent 75%);
@@ -445,8 +445,8 @@ body {
 .aurora-blob-3 {
   width: 48vw;
   height: 30vw;
-  maxWidth: 750px;
-  maxHeight: 450px;
+  max-width: 750px;
+  max-height: 450px;
   top: -5%;
   left: 28%;
   background: radial-gradient(ellipse at 50% 50%, rgba(92, 124, 250, 0.3) 0%, rgba(59, 91, 219, 0.15) 30%, rgba(40, 53, 147, 0.06) 55%, transparent 75%);
@@ -456,8 +456,8 @@ body {
 .aurora-blob-4 {
   width: 55vw;
   height: 35vw;
-  maxWidth: 850px;
-  maxHeight: 520px;
+  max-width: 850px;
+  max-height: 520px;
   top: 8%;
   left: 15%;
   background: radial-gradient(ellipse at 50% 60%, rgba(179, 136, 255, 0.25) 0%, rgba(124, 77, 255, 0.12) 30%, rgba(74, 20, 140, 0.05) 55%, transparent 75%);
@@ -467,8 +467,8 @@ body {
 .aurora-blob-5 {
   width: 45vw;
   height: 28vw;
-  maxWidth: 700px;
-  maxHeight: 400px;
+  max-width: 700px;
+  max-height: 400px;
   top: -2%;
   right: 20%;
   background: radial-gradient(ellipse at 50% 40%, rgba(92, 124, 250, 0.28) 0%, rgba(59, 91, 219, 0.14) 30%, rgba(40, 53, 147, 0.05) 55%, transparent 75%);

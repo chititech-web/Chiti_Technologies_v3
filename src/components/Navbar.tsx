@@ -44,7 +44,7 @@ export default function Navbar() {
           : "bg-transparent py-6"
       )}
     >
-      <div className="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+      <div className="mx-auto w-full px-4 sm:px-6 lg:px-8 max-w-7xl">
         <div className="flex items-center justify-between">
           <Logo />
 

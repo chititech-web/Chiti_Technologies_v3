@@ -111,7 +111,7 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="relative">
+    <div className="relative overflow-x-hidden">
       {/* 1. Hero — full-viewport atmospheric */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
         <CanvasParticles />
