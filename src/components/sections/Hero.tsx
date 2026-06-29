@@ -142,8 +142,8 @@ export default function Hero() {
   return (
     <div className="@container relative">
       <CanvasParticles />
-      <div className="flex flex-col gap-3 px-4 py-5 @[864px]:flex-row @[864px]:items-center @[864px]:gap-20 @[864px]:py-24 relative z-10">
-        <div className="flex flex-col gap-2 flex-1 relative order-2 @[864px]:order-1">
+      <div className="flex flex-col gap-5 px-4 py-5 @[864px]:flex-row @[864px]:items-center @[864px]:gap-20 @[864px]:py-24 relative z-10">
+        <div className="flex flex-col gap-3 flex-1 relative order-2 @[864px]:order-1">
           <div className="hidden @[1024px]:block absolute inset-0 pointer-events-none">
             {systemModules.map((module, i) => (
               <motion.div
@@ -164,7 +164,7 @@ export default function Hero() {
           </div>
 
           <FadeIn direction="none" delay={0.15}>
-            <div className="flex flex-col gap-2 text-center @[864px]:text-left relative z-10">
+            <div className="flex flex-col gap-3 text-center @[864px]:text-left relative z-10">
               <div className="hidden @[864px]:flex items-center gap-3">
                 <div className="neon-dot" />
                 <span className="text-secondary/70 font-label text-[11px] tracking-[0.25em] uppercase font-medium">
@@ -181,7 +181,7 @@ export default function Hero() {
           </FadeIn>
 
           <FadeIn direction="none" delay={0.35}>
-            <div className="flex flex-wrap gap-2 justify-center @[864px]:justify-start relative z-10">
+            <div className="flex flex-wrap gap-3 justify-center @[864px]:justify-start relative z-10">
               <span id="start-project">
                 <Button variant="primary" size="md" href="/contact" data-magnetic data-cursor-text="Inquire →">
                 {t("cta")}
@@ -215,7 +215,7 @@ export default function Hero() {
         </div>
 
         <FadeIn direction="none" delay={0.15} className="@[864px]:hidden order-1 @[864px]:order-2">
-          <div className="flex items-center gap-3 pb-0">
+          <div className="flex items-center gap-3 pb-1">
             <div className="neon-dot" />
             <span className="text-secondary/70 font-label text-[11px] tracking-[0.25em] uppercase font-medium">
               {t("tagline")}
