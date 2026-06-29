@@ -142,8 +142,8 @@ export default function Hero() {
   return (
     <div className="@container relative">
       <CanvasParticles />
-      <div className="flex flex-col gap-8 px-4 py-16 @[864px]:flex-row @[864px]:items-center @[864px]:gap-20 @[864px]:py-24 relative z-10">
-        <div className="flex flex-col gap-10 flex-1 relative order-2 @[864px]:order-1">
+      <div className="flex flex-col gap-6 px-4 py-8 @[864px]:flex-row @[864px]:items-center @[864px]:gap-20 @[864px]:py-24 relative z-10">
+        <div className="flex flex-col gap-4 flex-1 relative order-2 @[864px]:order-1">
           <div className="hidden @[1024px]:block absolute inset-0 pointer-events-none">
             {systemModules.map((module, i) => (
               <motion.div
@@ -164,17 +164,17 @@ export default function Hero() {
           </div>
 
           <FadeIn direction="none" delay={0.15}>
-            <div className="flex flex-col gap-6 text-center @[864px]:text-left relative z-10">
+            <div className="flex flex-col gap-4 text-center @[864px]:text-left relative z-10">
               <div className="hidden @[864px]:flex items-center gap-3">
                 <div className="neon-dot" />
                 <span className="text-secondary/70 font-label text-[11px] tracking-[0.25em] uppercase font-medium">
                   {t("tagline")}
                 </span>
               </div>
-              <h1 ref={headlineRef} className="text-on-surface text-[2.75rem] font-extrabold leading-[1.12] tracking-[-0.025em] @[480px]:text-[4rem] font-headline">
+              <h1 ref={headlineRef} className="text-on-surface text-[2rem] font-extrabold leading-[1.12] tracking-[-0.025em] @[480px]:text-[3rem] font-headline">
                 {headlineWords}
               </h1>
-              <p className="text-on-surface-variant/70 text-[17px] max-w-[480px] leading-[1.65] text-center @[864px]:text-left">
+              <p className="text-on-surface-variant/70 text-[14px] max-w-[480px] leading-[1.65] text-center @[864px]:text-left">
                 {t("subtitle")}
               </p>
             </div>
@@ -215,7 +215,7 @@ export default function Hero() {
         </div>
 
         <FadeIn direction="none" delay={0.15} className="@[864px]:hidden order-1 @[864px]:order-2">
-          <div className="flex items-center gap-3 pb-4">
+          <div className="flex items-center gap-3 pb-2">
             <div className="neon-dot" />
             <span className="text-secondary/70 font-label text-[11px] tracking-[0.25em] uppercase font-medium">
               {t("tagline")}
@@ -223,7 +223,7 @@ export default function Hero() {
           </div>
         </FadeIn>
         <FadeIn direction="right" delay={0.25} duration={1.2} className="order-1 @[864px]:order-2">
-          <div className="relative w-full @[864px]:w-[480px] @[864px]:h-[480px] h-[280px] @[480px]:h-[340px] @[864px]:min-h-0 rounded-3xl">
+          <div className="relative w-full @[864px]:w-[480px] @[864px]:h-[480px] h-[180px] @[480px]:h-[220px] @[864px]:min-h-0 rounded-3xl">
             <div className="absolute inset-0 overflow-hidden rounded-3xl pointer-events-none">
               <div
                 className="absolute -inset-20 bg-gradient-to-tr from-primary/20 via-secondary/15 to-tertiary/10 blur-[120px] rounded-full"

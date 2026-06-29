@@ -14,7 +14,7 @@ import StudioBanner from "@/components/sections/StudioBanner";
 export default function Home() {
   return (
     <>
-      <Container className="pt-28">
+      <Container className="pt-12">
         <Hero />
         <MetricsStrip />
       </Container>
