@@ -42,11 +42,11 @@ export default function ServicesGrid() {
   return (
     <div>
       <FadeIn>
-        <div className="flex flex-col gap-3 mb-16 relative">
+        <div className="flex flex-col gap-3 mb-16 relative text-center @[864px]:text-left items-center @[864px]:items-start">
           <span className="text-secondary/60 font-label text-[11px] tracking-[0.25em] uppercase font-medium">
             {t("tagline")}
           </span>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 justify-center @[864px]:justify-start">
             <div className="neon-dot" />
             <h2 className="text-on-surface text-[2rem] font-extrabold font-headline tracking-[-0.02em]">
               {t("title")}
