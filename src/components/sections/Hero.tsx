@@ -142,8 +142,8 @@ export default function Hero() {
   return (
     <div className="@container relative">
       <CanvasParticles />
-      <div className="flex flex-col gap-16 px-4 py-24 @[864px]:flex-row @[864px]:items-center @[864px]:gap-20 relative z-10">
-        <div className="flex flex-col gap-10 flex-1 relative">
+      <div className="flex flex-col gap-8 px-4 py-16 @[864px]:flex-row @[864px]:items-center @[864px]:gap-20 @[864px]:py-24 relative z-10">
+        <div className="flex flex-col gap-10 flex-1 relative order-2 @[864px]:order-1">
           <div className="hidden @[1024px]:block absolute inset-0 pointer-events-none">
             {systemModules.map((module, i) => (
               <motion.div
@@ -214,7 +214,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <FadeIn direction="right" delay={0.25} duration={1.2}>
+        <FadeIn direction="right" delay={0.25} duration={1.2} className="order-1 @[864px]:order-2">
           <div className="relative w-full @[864px]:w-[480px] @[864px]:h-[480px] h-[280px] @[480px]:h-[340px] @[864px]:min-h-0 overflow-hidden">
             <div
               className="absolute -inset-20 bg-gradient-to-tr from-primary/20 via-secondary/15 to-tertiary/10 blur-[120px] rounded-full"
