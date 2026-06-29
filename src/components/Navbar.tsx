@@ -44,7 +44,7 @@ export default function Navbar() {
           : "bg-transparent py-6"
       )}
     >
-      <div className="mx-auto w-full px-4 sm:px-6 lg:px-8 max-w-7xl">
+      <div className="mx-auto w-full px-4 sm:px-6 lg:px-8 max-w-7xl relative">
         <div className="flex items-center justify-between">
           <Logo />
 
@@ -87,7 +87,7 @@ export default function Navbar() {
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-on-surface"
+            className="absolute right-4 top-1/2 -translate-y-1/2 md:hidden p-2 text-on-surface z-10"
             aria-label="Toggle menu"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}

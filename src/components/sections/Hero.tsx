@@ -164,7 +164,7 @@ export default function Hero() {
           </div>
 
           <FadeIn direction="none" delay={0.15}>
-            <div className="flex flex-col gap-6 text-left relative z-10">
+            <div className="flex flex-col gap-6 text-center @[864px]:text-left relative z-10">
               <div className="hidden @[864px]:flex items-center gap-3">
                 <div className="neon-dot" />
                 <span className="text-secondary/70 font-label text-[11px] tracking-[0.25em] uppercase font-medium">
@@ -174,14 +174,14 @@ export default function Hero() {
               <h1 ref={headlineRef} className="text-on-surface text-[2.75rem] font-extrabold leading-[1.12] tracking-[-0.025em] @[480px]:text-[4rem] font-headline">
                 {headlineWords}
               </h1>
-              <p className="text-on-surface-variant/70 text-[17px] max-w-[480px] leading-[1.65]">
+              <p className="text-on-surface-variant/70 text-[17px] max-w-[480px] leading-[1.65] text-center @[864px]:text-left">
                 {t("subtitle")}
               </p>
             </div>
           </FadeIn>
 
           <FadeIn direction="none" delay={0.35}>
-            <div className="flex flex-wrap gap-4 relative z-10">
+            <div className="flex flex-wrap gap-4 justify-center @[864px]:justify-start relative z-10">
               <span id="start-project">
                 <Button variant="primary" size="md" href="/contact" data-magnetic data-cursor-text="Inquire →">
                 {t("cta")}
