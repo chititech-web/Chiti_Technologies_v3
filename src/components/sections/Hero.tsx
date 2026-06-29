@@ -165,7 +165,7 @@ export default function Hero() {
 
           <FadeIn direction="none" delay={0.15}>
             <div className="flex flex-col gap-6 text-left relative z-10">
-              <div className="flex items-center gap-3">
+              <div className="hidden @[864px]:flex items-center gap-3">
                 <div className="neon-dot" />
                 <span className="text-secondary/70 font-label text-[11px] tracking-[0.25em] uppercase font-medium">
                   {t("tagline")}
@@ -214,6 +214,14 @@ export default function Hero() {
           </div>
         </div>
 
+        <FadeIn direction="none" delay={0.15} className="@[864px]:hidden order-1 @[864px]:order-2">
+          <div className="flex items-center gap-3 pb-4">
+            <div className="neon-dot" />
+            <span className="text-secondary/70 font-label text-[11px] tracking-[0.25em] uppercase font-medium">
+              {t("tagline")}
+            </span>
+          </div>
+        </FadeIn>
         <FadeIn direction="right" delay={0.25} duration={1.2} className="order-1 @[864px]:order-2">
           <div className="relative w-full @[864px]:w-[480px] @[864px]:h-[480px] h-[280px] @[480px]:h-[340px] @[864px]:min-h-0 rounded-3xl">
             <div className="absolute inset-0 overflow-hidden rounded-3xl pointer-events-none">
