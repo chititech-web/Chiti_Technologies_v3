@@ -215,11 +215,13 @@ export default function Hero() {
         </div>
 
         <FadeIn direction="right" delay={0.25} duration={1.2} className="order-1 @[864px]:order-2">
-          <div className="relative w-full @[864px]:w-[480px] @[864px]:h-[480px] h-[280px] @[480px]:h-[340px] @[864px]:min-h-0 overflow-hidden rounded-3xl">
-            <div
-              className="absolute -inset-20 bg-gradient-to-tr from-primary/20 via-secondary/15 to-tertiary/10 blur-[120px] rounded-full"
-              style={{ animation: "drift 20s ease-in-out infinite alternate" }}
-            />
+          <div className="relative w-full @[864px]:w-[480px] @[864px]:h-[480px] h-[280px] @[480px]:h-[340px] @[864px]:min-h-0 rounded-3xl">
+            <div className="absolute inset-0 overflow-hidden rounded-3xl pointer-events-none">
+              <div
+                className="absolute -inset-20 bg-gradient-to-tr from-primary/20 via-secondary/15 to-tertiary/10 blur-[120px] rounded-full"
+                style={{ animation: "drift 20s ease-in-out infinite alternate" }}
+              />
+            </div>
 
             <div ref={panelRef} className="relative w-full h-full glass-panel rounded-3xl overflow-hidden p-6 @[480px]:p-8 flex flex-col justify-between">
               <div className="flex items-center justify-between">
